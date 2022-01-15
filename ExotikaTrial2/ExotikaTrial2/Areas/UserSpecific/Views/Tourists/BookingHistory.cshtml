@@ -1,0 +1,26 @@
+﻿@model IEnumerable<ExotikaTrial2.Models.ResortBookings>
+
+
+    <table>
+        <tr>
+            <th>Resort Name</th>
+            <th>City</th>
+            <th>Number of Bookings</th>
+            <th>Check In</th>
+            <th>Check Out</th>
+            <th></th>
+        </tr>
+@foreach (var booking in Model) {
+    <tr>
+        <td>@booking.Package.Resort.Name</td>
+        <td>@booking.Package.Resort.City, @booking.Package.Resort.State</td>
+        <td>@booking.noOfBookings</td>
+        <td>@booking.CheckInDate</td>
+        <td>@booking.CheckOutDate</td>
+        <td>
+            <a asp-action="Feedback" asp-route-forID="@booking.Package.ResortId">Give Feedback</a>
+            <a asp-action="Feedback">Edit Feedback</a>
+        </td>
+    </tr>
+}
+</table>

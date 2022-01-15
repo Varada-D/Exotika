@@ -1,0 +1,56 @@
+﻿
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Exotika | A Complete Marketplace for resorts pan India</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="icon" href="~/Images/Logo.png" type="image/png">
+    <link rel="stylesheet" href="~/CSS/Style.css" runat="server" />
+    <link rel="stylesheet" href="~/css/FormCSS.css" runat="server"/>
+    <link rel="stylesheet" href="~/css/bootswatch.css" runat="server"/>
+</head>
+
+
+<body>
+    <header id="header">
+        <div>
+            <a asp-area="Base" asp-controller="BasePages" asp-action="Index" tabindex="1"><img src="~/Images/ExotikaLogo.png" id="logo" alt="Exotika: A Complete Marketplace for Resorts Pan India" /></a>
+            <div id="btns-lg-screen"><partial name="_LoginPartial"></partial></div>
+            @*<a href="SignIn.html" class="SignInRegisterBtn" id="SignInRegisterBtnLS">Sign In/Register</a>*@
+      </div>
+        <nav class="topnav" id="navbar">
+            @*<a href="SignIn.html" class="SignInRegisterBtn" id="SignInRegisterBtnSS">Sign In/Register</a>*@
+            <ul>
+            <div id="btns-sm-screen"><partial name="_LoginPartial"></partial></div>
+                <li><a href="javascript:void(0);" class="icon" onclick="myFunction()"><i class="fa fa-bars"></i></a></li>
+                <li><a href="VisitorHome.html" tabindex="2">Visitor(Tourist)</a></li>
+                <li><a href="ResortOwnerHome.html" tabindex="3">Resort Owner</a></li>
+                <li><a href="VendorHome.html" tabindex="4">Vendor</a></li>
+                <li><a href="HandicraftDealer.html" tabindex="5">Local Handicraft Dealer</a></li>
+                <li><a href="Contact.html" tabindex="6">Feedback</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        @RenderBody()
+    </main>
+
+    <footer>
+        <div>
+            <i class="fa fa-facebook-square fa-custom1 fa-2x"></i>
+            <i class="fa fa-twitter-square fa-custom2 fa-2x"></i>
+            <i class="fa fa-instagram fa-custom3 fa-2x"></i>
+            <i class="fa fa-envelope fa-custom4 fa-2x"></i>
+            <i class="fa fa-linkedin-square fa-custom5 fa-2x"></i>
+        </div>
+    </footer>
+
+    <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+    <script src="~/js/NavigationBar.js"></script>
+    @RenderSection("Scripts", false);
+
+</body>
+</html>

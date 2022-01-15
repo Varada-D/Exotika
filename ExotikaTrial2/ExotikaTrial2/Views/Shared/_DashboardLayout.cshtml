@@ -1,0 +1,216 @@
+﻿@using ExotikaTrial2.Utility
+@using Microsoft.AspNetCore.Identity
+
+@inject SignInManager<IdentityUser> SignInManager
+@inject UserManager<IdentityUser> UserManager
+
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>User Dashboard | Exotika</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" href="!/images/Logo.png" type="image/png">
+    <link href='https://unpkg.com/boxicons@2.0.7/css/boxicons.min.css' rel='stylesheet'>
+    <link rel="stylesheet" href="~/CSS/Style.css" runat="server" />
+    <link rel="stylesheet" href="~/CSS/DashboardCSS.css" runat="server" />
+    <link rel="stylesheet" href="~/CSS/FormCSS.css" runat="server" />
+    <link rel="stylesheet" href="~/CSS/bootswatch.css" runat="server" />
+    <style>
+        .BlurBg {
+            filter: blur(5px);
+        }
+
+        #Table, #EditDetails {
+            margin: 20vh auto;
+            padding: 5vh 10vh;
+            width: 85%;
+            background: rgb(255,255,255);
+            border: 2px solid rgb(0,0,0);
+            border-radius: 10px;
+            text-align: justify;
+        }
+
+        #FilterBy {
+            margin-top: 2.5vh;
+            width: 90%;
+            margin-left: 5%;
+            padding: 2vh;
+            border: 2px solid rgb(0,0,0);
+            border-radius: 10px;
+            font-size: 110%;
+            margin-bottom: 20px;
+        }
+
+        #Table, #Table tr td, #Table tr th {
+            border: 2px solid rgb(0,0,0);
+            border-collapse: collapse;
+            padding: 10px;
+            text-align: center;
+        }
+
+            #Table tr th {
+                background: rgba(0,0,0, 0.1);
+            }
+
+        #EditDetails {
+            position: absolute;
+            top: 0;
+            margin-left: 6vw;
+            display: none;
+        }
+
+            #EditDetails label {
+                float: left;
+                margin-top: 5vh;
+            }
+
+            .btn, #EditDetails input {
+                margin-top: 2.5vh;
+                width: 95%;
+                margin-left: 5%;
+                padding: 2vh;
+                border: 2px solid rgb(0,0,0);
+                border-radius: 10px;
+                font-size: 110%;
+            }
+
+                .btn, #EditDetails input[type=submit], #EditDetails input[type=reset] {
+                    width: auto;
+                    margin-left: 0;
+                    margin-top: 5%;
+                    cursor: pointer;
+                    transition-duration: 0.5s;
+                    margin-right: 20px;
+                }
+
+        .btn {
+            font-size: 90%;
+            padding: 0 1px;
+            border: 1px solid rgb(0,0,0);
+            width: 45%;
+            margin-right: 0;
+        }
+
+            .btn:hover, #EditDetails input[type=submit]:hover, #EditDetails input[type=reset]:hover {
+                background-color: rgb(0,146,106);
+                color: rgb(255,255,255);
+            }
+
+        dt {
+            font-weight: 900;
+            margin-top: 5vh;
+        }
+
+        dd {
+            margin-left: 5vh;
+        }
+    </style>
+</head>
+
+
+<body>
+    <div class="sidebar">
+        <div class="logo-details">
+            <img src="~/Images/Exotika.png" id="logo-img" alt="Exotika" />
+            <a id="logo-name" href="index.html" target="_blank">Exotika</a>
+        </div>
+        <br>
+        <ul class="nav-links">
+            @if (User.IsInRole(SD.Role_User_Resort))
+            {
+                <li><a asp-action="ResortOwnerDashboard"><i class='bx bx-grid-alt'></i><span class="links_name">Statistics</span></a></li>
+                <li><a asp-controller="Resorts" asp-action="Index"><i class='bx bxs-contact'></i><span class="links_name">Resort Details</span></a></li>
+                <li><a asp-action="VendorContracts/Index"><i class='bx bxs-data'></i><span class="links_name">Ongoing Contracts</span></a></li>
+                <li><a asp-action="Employee/Index" class="active"><i class='bx bx-cart-alt'></i><span class="links_name">Empoyee Logistics</span></a></li>
+                <li><a asp-controller="Packages" asp-action="Index"><i class='bx bx-paint'></i><span class="links_name">Packages Available</span></a></li>
+                <li><a asp-action="Feedbacks"><i class='bx bx-message'></i><span class="links_name">Feedbacks</span></a></li>
+                @*<li class="log_out"><a href="SignIn.html"><i class='bx bx-log-out'></i><span class="links_name">Log out</span></a></li>*@
+            }
+            else
+            {
+                if (User.IsInRole(SD.Role_User_Tourist))
+                {
+                    <li><a asp-area="UserSpecific" asp-controller="Tourists" asp-action="Index"><i class='bx bxs-contact'></i><span class="links_name">Tourist  Details</span></a></li>
+                    <li><a asp-area="UserSpecific" asp-controller="Tourists" asp-action="BookingHistory"><i class='bx bxs-data'></i><span class="links_name">Booking History</span></a></li>
+                    <li><a asp-area="UserSpecific" asp-controller="Tourists" asp-action="Feedback"><i class='bx bx-message'></i><span class="links_name">Feedbacks</span></a></li>
+                }
+                else
+                {
+                    if (User.IsInRole(SD.Role_User_HandicraftDealer))
+                    {
+                        <li><a asp-area="UserSpecific" asp-controller="HandicraftDealer" asp-action="Index"><i class='bx bx-grid-alt'></i><span class="links_name">Statistics</span></a></li>
+                        <li><a asp-area="UserSpecific" asp-controller="HandicraftDealer" asp-action="Details"><i class='bx bxs-contact'></i><span class="links_name">Business Details</span></a></li>
+                        <li><a asp-area="UserSpecific" asp-controller="HandicraftDealer" asp-action="Products"><i class='bx bx-paint'></i><span class="links_name">Products Available</span></a></li>
+                        <li><a asp-area="UserSpecific" asp-controller="HandicraftDealer" asp-action="Feedback"><i class='bx bx-message'></i><span class="links_name">Feedbacks</span></a></li>
+                    }
+                    else
+                    {
+                        if (User.IsInRole(SD.Role_Admin))
+                        {
+                            <li><a asp-area="UserSpecific" asp-controller="Admin" asp-action="Index"><i class='bx bx-grid-alt'></i><span class="links_name">Dashboard</span></a></li>
+                            <li><a asp-area="UserSpecific" asp-controller="Admin" asp-action="UserSpecificStats" asp-route-userRole="Tourist"><i class='bx bx-walk'></i><span class="links_name">Tourists</span></a></li>
+                            <li><a asp-area="UserSpecific" asp-controller="Admin" asp-action="UserSpecificStats" asp-route-userRole="Resort"><i class='bx bx-building-house'></i><span class="links_name">Resorts</span></a></li>
+                            <li><a asp-area="UserSpecific" asp-controller="Admin" asp-action="UserSpecificStats" asp-route-userRole="Vendor"><i class='bx bx-cart-alt'></i><span class="links_name">Vendors</span></a></li>
+                            <li><a asp-area="UserSpecific" asp-controller="Admin" asp-action="UserSpecificStats" asp-route-userRole="HandicraftDealer"><i class='bx bx-paint'></i><span class="links_name">Handicraft Dealers</span></a></li>
+                            <li><a asp-area="UserSpecific" asp-controller="Admin" asp-action="Feedback"><i class='bx bx-message'></i><span class="links_name">Feedbacks</span></a></li>
+                        }
+                    }
+                }
+            }
+
+            <li class="log_out">
+                <a id="logoutForm" class="form-inline log_out" asp-area="Identity" asp-page="/Account/Logout" asp-route-returnUrl="@Url.Action("Index", "BasePages", new { area = "Base" })">
+                    <i class="bx bx-logout"></i>
+                    <span class="links_name">Logout</span>
+                </a>
+            </li>
+            @*<li class="log_out"><a href="SignIn.html"><i class='bx bx-log-out'></i><span class="links_name">Log out</span></a></li>*@
+        </ul>
+    </div>
+
+    <section class="registrations">
+        <nav>
+            <div class="sidebar-button">
+                <i class='bx bx-menu sidebarBtn'></i>
+                <span class="dashboard">Dashboard</span>
+            </div>
+            <div class="profile-details">
+                <img src="https://img.icons8.com/bubbles/500/000000/user.png" alt="" />
+                <span class="name">@UserManager.GetUserName(User)</span>
+            </div>
+        </nav>
+
+        @RenderBody()
+        @RenderSection("Scripts", required: false)
+    </section>
+
+    @*@RenderBody()
+        @RenderSection("Scripts", required: false) *@
+
+    <script>
+        let sidebar = document.querySelector(".sidebar");
+        let sidebarBtn = document.querySelector(".sidebarBtn");
+        sidebarBtn.onclick = function() {
+            sidebar.classList.toggle("active");
+            if(sidebar.classList.contains("active")){
+                sidebarBtn.classList.replace("bx-menu" ,"bx-menu-alt-right");
+                document.getElementById("logo-img").style.width = "75%";
+                document.getElementById("logo-name").style.display = "none";
+                document.getElementById("logo-img").style.margin = "0 0 0 0.5vw";
+            }
+            else {
+                sidebarBtn.classList.replace("bx-menu-alt-right", "bx-menu");
+                document.getElementById("logo-img").style.width = "25%";
+                document.getElementById("logo-name").style.display = "inline-block";
+                document.getElementById("logo-img").style.margin = "0 2vw 0 1vw";
+            }
+        }
+    </script>
+</body>
+</html>
+
+
+

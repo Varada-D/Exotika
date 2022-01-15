@@ -1,0 +1,161 @@
+
+
+html, body {
+  height: 100%;
+  width: 100%;
+  margin: 0;
+  font-family: 'Roboto', sans-serif;
+}
+ 
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 15px;
+  display: flex;
+  background: rgb(255,255,255);
+  box-shadow: 0 1px 1px rgba(0, 0, 0, 0.1);
+  border: 2px solid rgb(0,0,0);
+  border-radius: 12px;
+  padding: 5vh;
+}
+
+
+.left-column {
+  width: 50%;
+  position: relative;
+  overflow: hidden;
+}
+ 
+.right-column {
+  width: 45%;
+  padding: 5vh 10vh 10vh 10vh;
+}
+
+
+.left-column img {
+  width: 100%;
+  position: absolute;
+  left: 0;
+  top: 0;
+  transition: all 0.3s ease;
+  margin-right: 5vh;
+  border-radius: 12px;
+}
+ 
+.left-column img.active {
+  opacity: 1;
+}
+
+
+/* Fading animation */
+.fade {
+  -webkit-animation-name: fade;
+  -webkit-animation-duration: 10s;
+  -webkit-animation-iteration-count: infinite;
+  animation-name: fade;
+  animation-duration: 10s;
+  animation-iteration-count: infinite;
+}
+
+@-webkit-keyframes fade {
+  0% {
+		background: url('../Images/CrescentResort.jpg') no-repeat center; 
+		background-size: cover;
+     }
+  50% {
+		background: url('../Images/GlobalResort.jpg') no-repeat center; 
+		background-size: cover;
+     }
+  100% {
+		background: url('../Images/Bedroom.jpg') no-repeat center; 
+		background-size: cover;
+	}
+}
+
+@keyframes fade {
+  0% {
+		background: url('../Images/CrescentResort.jpg') no-repeat center; 
+		background-size: cover;
+     }
+  50% {
+		background: url('../Images/GlobalResort.jpg') no-repeat center; 
+		background-size: cover;
+     }
+  100% {
+		background: url('../Images/Bedroom.jpg') no-repeat center; 
+		background-size: cover;
+	}
+}
+.product-description {
+  border-bottom: 1px solid #E1E8EE;
+  margin-bottom: 20px;
+}
+.product-description span {
+  font-size: 12px;
+  color: #358ED7;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  text-decoration: none;
+}
+.product-description h1 {
+  font-weight: 300;
+  font-size: 52px;
+  color: #43484D;
+  letter-spacing: -2px;
+}
+.product-description p {
+  font-size: 16px;
+  font-weight: 300;
+  color: #86939E;
+  line-height: 24px;
+}
+
+
+ 
+.product-price span {
+  font-size: 26px;
+  font-weight: 300;
+  color: #43474D;
+  margin-right: 20px;
+}
+ 
+.cart-btn {
+  display: inline-block;
+  background-color: #7DC855;
+  border-radius: 6px;
+  font-size: 16px;
+  color: #FFFFFF;
+  text-decoration: none;
+  padding: 12px 30px;
+  transition: all .5s;
+}
+.cart-btn:hover {
+  background-color: #64af3d;
+}
+
+
+@media (max-width: 940px) {
+  .container {
+    flex-direction: column;
+    margin-top: 60px;
+  }
+ 
+  .left-column,
+  .right-column {
+    width: 100%;
+  }
+ 
+  .left-column img {
+    width: 300px;
+    right: 0;
+    top: -65px;
+    left: initial;
+  }
+}
+ 
+@media (max-width: 535px) {
+  .left-column img {
+    width: 220px;
+    top: -85px;
+  }
+}

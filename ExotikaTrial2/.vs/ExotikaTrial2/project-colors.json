@@ -1,0 +1,36 @@
+{
+  "Version": 1,
+  "ProjectMap": {
+    "bae5dfe1-1d16-4249-8104-58281d12f382": {
+      "ProjectGuid": "bae5dfe1-1d16-4249-8104-58281d12f382",
+      "DisplayName": "ExotikaTrial2",
+      "ColorIndex": 0
+    },
+    "a2fe74e1-b743-11d0-ae1a-00a0c90fffc3": {
+      "ProjectGuid": "a2fe74e1-b743-11d0-ae1a-00a0c90fffc3",
+      "DisplayName": "Miscellaneous Files",
+      "ColorIndex": -1
+    },
+    "dc96e2a8-8ad8-4543-a7ca-c68ee0f889f1": {
+      "ProjectGuid": "dc96e2a8-8ad8-4543-a7ca-c68ee0f889f1",
+      "DisplayName": "LogInTutorial",
+      "ColorIndex": 1
+    },
+    "3bab756d-ec35-4c79-87e8-423214222b71": {
+      "ProjectGuid": "3bab756d-ec35-4c79-87e8-423214222b71",
+      "DisplayName": "ExotikaTrial2.Utility",
+      "ColorIndex": 2
+    },
+    "505a20ad-3a56-427f-9fa8-a58072abe67e": {
+      "ProjectGuid": "505a20ad-3a56-427f-9fa8-a58072abe67e",
+      "DisplayName": "ExotikaTrial2.Models",
+      "ColorIndex": 3
+    },
+    "8b932232-9080-4efd-946a-f9ef99a9e33e": {
+      "ProjectGuid": "8b932232-9080-4efd-946a-f9ef99a9e33e",
+      "DisplayName": "ExotikaTrial2.DataAccess",
+      "ColorIndex": 4
+    }
+  },
+  "NextColorIndex": 5
+}

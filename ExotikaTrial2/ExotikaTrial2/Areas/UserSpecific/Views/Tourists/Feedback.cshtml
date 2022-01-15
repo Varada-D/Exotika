@@ -1,0 +1,32 @@
+﻿
+@model ExotikaTrial2.Models.Feedback
+
+<h1>Feedback</h1>
+
+<form method="post">
+    <div class="border p-3 mt-4">
+        @*<div asp-validation-summary="All"></div>*@
+        <div class="row pb-2">
+            <h2 class="text-primary">@ViewData["Title"]</h2>
+            <hr />
+        </div>
+        <div class="mb-3">
+            <label asp-for="Rating"></label>
+            <input asp-for="Rating" class="form-control"/>
+            <span asp-validation-for="Rating" class="text-danger"></span>
+        </div>
+        <div class="mb-3">
+            <label asp-for="FeedbackMsg"></label>
+            <textarea asp-for="FeedbackMsg" class="form-control"></textarea>
+            <span asp-validation-for="FeedbackMsg" class="text-danger"></span>
+        </div>
+        <button type="submit" class="btn btn-primary" style="width:150px">Submit</button>
+        <a asp-controller="Category" asp-action="Index" class="btn btn-secondary" style="width:150px">Back to Booking History</a>
+    </div>
+</form>
+
+@section Scripts {
+    @{
+        <partial name="_ValidationScriptsPartial"/>
+    }
+}
