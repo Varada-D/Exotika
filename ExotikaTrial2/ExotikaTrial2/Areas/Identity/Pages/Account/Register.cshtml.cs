@@ -126,6 +126,9 @@ namespace ExotikaTrial2.Areas.Identity.Pages.Account
 
             public string? Role { get; set; }
 
+            [DataType(DataType.Date)]
+            public DateTime? CreateDate { get; set; }
+
             [ValidateNever]
             public IEnumerable<SelectListItem> RoleList { get; set; }
         }
@@ -133,24 +136,38 @@ namespace ExotikaTrial2.Areas.Identity.Pages.Account
 
         public async Task OnGetAsync(string returnUrl = null)
         {
-            if (!_roleManager.RoleExistsAsync(SD.Role_Admin).GetAwaiter().GetResult())
-            {
-                _roleManager.CreateAsync(new IdentityRole(SD.Role_Admin)).GetAwaiter().GetResult();
-                _roleManager.CreateAsync(new IdentityRole(SD.Role_User_Tourist)).GetAwaiter().GetResult();
-                _roleManager.CreateAsync(new IdentityRole(SD.Role_User_Resort)).GetAwaiter().GetResult();
-                _roleManager.CreateAsync(new IdentityRole(SD.Role_User_Vendor)).GetAwaiter().GetResult();
-                _roleManager.CreateAsync(new IdentityRole(SD.Role_User_HandicraftDealer)).GetAwaiter().GetResult();
-            }
+            //if (!_roleManager.RoleExistsAsync(SD.Role_Admin).GetAwaiter().GetResult())
+            //{
+            //    _roleManager.CreateAsync(new IdentityRole(SD.Role_Admin)).GetAwaiter().GetResult();
+            //    _roleManager.CreateAsync(new IdentityRole(SD.Role_User_Tourist)).GetAwaiter().GetResult();
+            //    _roleManager.CreateAsync(new IdentityRole(SD.Role_User_Resort)).GetAwaiter().GetResult();
+            //    _roleManager.CreateAsync(new IdentityRole(SD.Role_User_Vendor)).GetAwaiter().GetResult();
+            //    _roleManager.CreateAsync(new IdentityRole(SD.Role_User_HandicraftDealer)).GetAwaiter().GetResult();
+            //}
             ReturnUrl = returnUrl;
             ExternalLogins = (await _signInManager.GetExternalAuthenticationSchemesAsync()).ToList();
-            Input = new InputModel()
+            if (User.IsInRole(SD.Role_Admin))
             {
-                RoleList = _roleManager.Roles.Select(x => x.Name).Select(i => new SelectListItem
+                Input = new InputModel()
                 {
-                    Text = i,
-                    Value = i
-                }),
-            };
+                    RoleList = _roleManager.Roles.Select(x => x.Name).Select(i => new SelectListItem
+                    {
+                        Text = i,
+                        Value = i
+                    }),
+                };
+            }
+            else
+            {
+                Input = new InputModel()
+                {
+                    RoleList = _roleManager.Roles.Where(u=>u.Name!=SD.Role_Admin).Select(x => x.Name).Select(i => new SelectListItem
+                    {
+                        Text = i,
+                        Value = i
+                    }),
+                };
+            }
         }
 
         public async Task<IActionResult> OnPostAsync(string returnUrl = null)
@@ -171,10 +188,11 @@ namespace ExotikaTrial2.Areas.Identity.Pages.Account
                 user.Name = Input.Name;
                 user.PhoneNumber = Input.PhoneNumber;
                 user.Role = Input.Role;
+                user.CreateDate = DateTime.Now;
 
                 if (user.Role == SD.Role_Admin)
                 {
-                    var adminUser = new WebAppAdmin()
+                    var adminUser = new Admin()
                     {
                         AdminId = user.Id,
                         Name = user.Name,
@@ -183,7 +201,8 @@ namespace ExotikaTrial2.Areas.Identity.Pages.Account
                         State = user.State,
                         PostalCode = user.PostalCode,
                         PhoneNumber = user.PhoneNumber,
-                        emailAddr = user.Email
+                        emailAddr = user.Email,
+                        createDate = user.CreateDate
                     };
                     _unitOfWork.Admin.Add(adminUser);
                     _unitOfWork.Save();
@@ -201,7 +220,8 @@ namespace ExotikaTrial2.Areas.Identity.Pages.Account
                             State = user.State,
                             PostalCode = user.PostalCode,
                             PhoneNumber = user.PhoneNumber,
-                            emailAddr = user.Email
+                            emailAddr = user.Email,
+                            createDate = user.CreateDate
                         };
                         _unitOfWork.Tourist.Add(touristUser);
                         _unitOfWork.Save();
@@ -219,7 +239,8 @@ namespace ExotikaTrial2.Areas.Identity.Pages.Account
                                 State = user.State,
                                 PostalCode = user.PostalCode,
                                 PhoneNumber = user.PhoneNumber,
-                                emailAddr = user.Email
+                                emailAddr = user.Email,
+                                createDate = user.CreateDate
                             };
                             _unitOfWork.Resort.Add(resortUser);
                             _unitOfWork.Save();
@@ -237,7 +258,8 @@ namespace ExotikaTrial2.Areas.Identity.Pages.Account
                                     State = user.State,
                                     PostalCode = user.PostalCode,
                                     PhoneNumber = user.PhoneNumber,
-                                    emailAddr = user.Email
+                                    emailAddr = user.Email,
+                                    createDate = user.CreateDate
                                 };
                                 _unitOfWork.Vendor.Add(vendorUser);
                                 _unitOfWork.Save();
@@ -255,7 +277,8 @@ namespace ExotikaTrial2.Areas.Identity.Pages.Account
                                         State = user.State,
                                         PostalCode = user.PostalCode,
                                         PhoneNumber = user.PhoneNumber,
-                                        emailAddr = user.Email
+                                        emailAddr = user.Email,
+                                        createDate = user.CreateDate
                                     };
                                     _unitOfWork.HandicraftDealer.Add(handicraftDealerUser);
                                     _unitOfWork.Save();

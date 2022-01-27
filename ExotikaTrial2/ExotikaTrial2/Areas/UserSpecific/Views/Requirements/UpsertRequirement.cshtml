@@ -1,0 +1,158 @@
+﻿@model ExotikaTrial2.Models.Requirement
+
+
+<div style="padding: 10vh;">
+    <div style="padding: 10vh; background-color:rgb(255,255,255); border: 2px solid rgb(0,0,0); border-radius: 12px;">
+
+
+        <form method="post" asp-action="UpsertRequirement" enctype="multipart/form-data">
+            <input asp-for="RequirementId" type="hidden" />
+            <input asp-for="lastUpdated" type="hidden" />
+            <input asp-for="Status" type="hidden" />
+            <input asp-for="ResortId" type="hidden" />
+            @*<div class="row">*@
+                <div class=" row col-12">
+                    <div class="col-12 pb-2 mb-4">
+                        <h2 class="text-primary">@(Model.RequirementId!=0?"Update":"Post") Requirement</h2>
+                        <hr />
+                    </div>
+                    @*<div asp-validation-summary="All"></div>*@
+                    <div class="mb-4 col-6">
+                        <label asp-for="Type"></label>
+                        <select asp-for="Type" class="form-control">
+                            <option disabled selected>--Select Requirement Type--</option>
+                            <option value="Product">Product</option>
+                            <option value="Service">Service</option>
+                        </select>
+                        <span asp-validation-for="Type" class="text-danger"></span>
+                    </div>
+                    <div class="mb-4 col-6">
+                        <label asp-for="Category"></label>
+                        <select asp-for="Category" rows="3" class="form-control">
+                            @*<option disabled selected>--Select Category--</option>*@
+                        </select>
+                        <span asp-validation-for="Category" class="text-danger"></span>
+                    </div>
+                    <div class="mb-4 col-6">
+                        <label asp-for="requirementName" id="reqName"></label>
+                        <input asp-for="requirementName" class="form-control" />
+                        <span asp-validation-for="requirementName" class="text-danger"></span>
+                    </div>
+                    <div class="mb-4 col-6" id="quantityInput">
+                        <label asp-for="Quantity"></label>
+                        <input asp-for="Quantity" class="form-control" />
+                        <span asp-validation-for="Quantity" class="text-danger"></span>
+                    </div>
+                    <div class="mb-4 col-6" id="durationInput">
+                        <label asp-for="Duration"></label>
+                        <input asp-for="Duration" class="form-control" />
+                        <span asp-validation-for="Duration" class="text-danger"></span>
+                    </div>
+                    <div class="mb-4 col-12">
+                        <label asp-for="Description"></label>
+                        <textarea asp-for="Description" class="form-control" rows="3"></textarea>
+                        <span asp-validation-for="Description" class="text-danger"></span>
+                    </div>
+                    <div class="mb-5 col-6">
+                        <label asp-for="requiredBy"></label>
+                        <input asp-for="requiredBy" class="form-control" />
+                        <span asp-validation-for="requiredBy" class="text-danger"></span>
+                    </div>
+                    <hr />
+                    <div class="col-12 mt-3">
+                        @if (Model.RequirementId != 0)
+                        {
+                            <button type="submit" class="btn1" style="width:150px">Update</button>
+                        }
+                        else
+                        {
+                            <button type="submit" onclick="return ValidateInput()" class="btn1" style="width:150px">Post</button>
+                        }
+                        <a asp-controller="Requirements" asp-action="RequirementsList" class="btn1" style="width:150px">Back to List</a>
+                    </div>
+                </div>
+            @*</div>*@
+        </form>
+    </div>
+</div>
+
+@section Scripts {
+    <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+    @{
+    <partial name="_ValidationScriptsPartial" />
+    }
+
+
+    <script>
+            $(document).ready(function(){
+                var categoryByType = {
+                    Product: ["Stationary", "Cutlery", "Toiletry", "Electronics", "Furniture (purchase)"],
+                    Service: ["Event Management", "Furniture Renting", "Electrician", "Plumbing Services"]
+                }
+                var date = new Date();
+                var dateVal = date.toISOString().slice(0,10);
+                $('#lastUpdated').attr('value', dateVal);
+                $('#requiredBy').attr('min', dateVal);
+                $('#requiredBy').attr('value', dateVal);
+                $('#durationInput').hide();
+                $('#quantityInput').hide();
+                value = $('#Type').val();
+                if (value==null || value.length == 0) $('#Category').html("<option disabled selected>--Select Category--</option>");
+                else {
+                    var reqId = $('#RequirementId').val();
+                    if (reqId!=0) {
+                        var catOptions = "<option disabled>--Select Category--</option>";
+                        var cat = '@Model.Category';
+                        for (categoryId in categoryByType[value]) {
+                            if (categoryByType[value][categoryId]==cat) {
+                                catOptions += "<option selected>" + categoryByType[value][categoryId] + "</option>";
+                            }
+                            else {
+                                catOptions += "<option>" + categoryByType[value][categoryId] + "</option>";
+                            }
+                        }
+                     }
+                     else {
+                         var catOptions = "<option disabled selected>--Select Category--</option>";
+                         for (categoryId in categoryByType[value]) {
+                             catOptions += "<option>" + categoryByType[value][categoryId] + "</option>";
+                         }
+                     }
+                     $('#Category').html(catOptions);
+                 }
+                if (value == "Product") {
+                    $('#quantityInput').show();
+                }
+                else {
+                    $('#durationInput').show();
+                }
+                $('#Type').change(function(){
+                    value = $('#Type').val();
+                    $('#durationInput').hide();
+                    $('#quantityInput').hide();
+                    if (value.length == 0) $('#Category').html("<option></option>");
+                    else {
+                        var catOptions = "<option disabled selected>--Select Category--</option>";
+                        for (categoryId in categoryByType[value]) {
+                            catOptions += "<option>" + categoryByType[value][categoryId] + "</option>";
+                        }
+                        $('#Category').html(catOptions);
+                    }
+                    if (value == "Product") {
+                        $('#quantityInput').show();
+                        if($('#Category').val() != null) {
+                            $('#reqName').html($('#Category').val() + " Required");
+                        }
+                    }
+                    else {
+                        $('#durationInput').show();
+                        if($('#Category').val() != null) {
+                            $('#reqName').html($('#Category').val() + " Required");
+                        }
+                    }
+                });
+            });
+</script>
+
+}
+

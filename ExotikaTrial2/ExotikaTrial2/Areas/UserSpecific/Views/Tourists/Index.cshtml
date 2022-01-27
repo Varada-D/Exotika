@@ -1,41 +1,49 @@
-﻿@model IEnumerable<ExotikaTrial2.Models.Tourist>
+﻿@model ExotikaTrial2.Models.Tourist
 
 @{
     ViewData["Title"] = "Index";
 }
 
-<h1>Index</h1>
-
-<p>
-    <a asp-action="Create">Create New</a>
-</p>
-<table class="table">
-    <thead>
-        <tr>
-            <th>
-                @Html.DisplayNameFor(model => model.PhoneNumber)
-            </th>@*
-            <th>
-                @Html.DisplayNameFor(model => model.emailID)
-            </th>*@
-            <th></th>
-        </tr>
-    </thead>
-    <tbody>
-@foreach (var item in Model) {
-        <tr>
-            <td>
-                @Html.DisplayFor(modelItem => item.PhoneNumber)
-            </td>@*
-            <td>
-                @Html.DisplayFor(modelItem => item.emailID)
-            </td>*@
-            <td>
-                <a asp-action="Edit" asp-route-id="@item.TouristId">Edit</a> |
-                <a asp-action="Details" asp-route-id="@item.TouristId">Details</a> |
-                <a asp-action="Delete" asp-route-id="@item.TouristId">Delete</a>
-            </td>
-        </tr>
-}
-    </tbody>
-</table>
+<section id="Details">
+					<h1>Tourist Details</h1><br><br>
+					<label>Name:</label>
+					<p>@Model.Name</p>
+					<br><br>
+					<label>Address: </label>
+					<p>@Model.StreetAddress, @Model.City, @Model.State - @Model.PostalCode</p>
+					<br><br>
+					<label>Phone Number: </label>
+					<p>@Model.PhoneNumber</p>
+					<br><br>
+					<label>Email Address: </label>
+					<p>@Model.emailAddr</p>
+					<br><br>
+					<button class='btn1' onclick="DetailEditing()" style="margin-top:20px;">Edit Details</button>
+				</section>
+				<section id="EditDetails">
+					<div class="modal">
+						<div class="modal-header">
+							<h1 class="modal-title">Edit Tourist Details</h1><br><br>
+							<p>Enter the details to be updated:-</p>
+						</div>
+						<div class="modal-body">
+							<form method="post">
+								<label asp-for="@Model.Name"></label>
+								<input asp-for="@Model.Name" placeholder="New  Name"/>
+								<br><br>
+								<label asp-for="@Model.StreetAddress"></label>
+								<input asp-for="@Model.StreetAddress" placeholder="New  Address"/>
+								<br><br>
+								<label asp-for="@Model.PhoneNumber"></label>
+								<input asp-for="@Model.PhoneNumber" placeholder="New  Contact Number"/>
+								<br><br>
+								<label asp-for="@Model.emailAddr">Email: </label>
+								<input asp-for="@Model.emailAddr" disabled/>
+								<br><br>
+								<input type="submit" value="Update Details" onclick="AdminCredentialCheck()"/>
+								<input type="reset" value="Reset Fields"/>
+								<button class='btn' onclick="DetailEditing()">Cancel</button>
+							</form>
+						</div>
+					</div>
+				</section>

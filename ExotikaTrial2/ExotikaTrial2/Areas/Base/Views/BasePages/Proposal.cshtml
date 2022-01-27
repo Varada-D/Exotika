@@ -1,0 +1,168 @@
+﻿@using ExotikaTrial2.Utility
+@model ExotikaTrial2.Models.Contract
+@{
+    Layout = "_Layout";
+    <link rel="stylesheet" href="~/css/vendorHome.css" runat="server" />
+}
+
+<div style="padding: 10vh;">
+    <div style="padding: 10vh; background-color:rgb(255,255,255); border: 2px solid rgb(0,0,0); border-radius: 12px">
+        <h1>Requirement Details</h1>
+
+        <div class="mb-5">
+            <hr /><br><br />
+            <div class="row">
+                <div class="mb-3">
+                    <h2>@Html.DisplayNameFor(model => model.Requirement.Resort.Name)</h2>
+                    <p>@Html.DisplayFor(model => model.Requirement.Resort.Name), @Html.DisplayFor(model => model.Requirement.Resort.City), @Html.DisplayFor(model => model.Requirement.Resort.State) - @Html.DisplayFor(model => model.Requirement.Resort.PostalCode)</p>
+                </div>
+                <div class="mb-3">
+                    <h2>@Html.DisplayNameFor(model => model.Requirement.Type)</h2>
+                    <p>@Html.DisplayFor(model => model.Requirement.Type)</p>
+                </div>
+                <div class="mb-3">
+                    <h2>@Html.DisplayNameFor(model => model.Requirement.Category)</h2>
+                    <p>@Html.DisplayFor(model => model.Requirement.Category)</p>
+                </div>
+                <div class="mb-3">
+                    <h2>@Html.DisplayNameFor(model => model.Requirement.requirementName)</h2>
+                    <p>@Html.DisplayFor(model => model.Requirement.requirementName)</p>
+                </div>
+                <div class="mb-3">
+                    <h2>@Html.DisplayNameFor(model => model.Requirement.Description)</h2>
+                    <p>@Html.DisplayFor(model => model.Requirement.Description)</p>
+                </div>
+                @if (Model.Requirement.Type == "Service")
+                {
+                    <div class="mb-3">
+                        <h2>@Html.DisplayNameFor(model => model.Requirement.Duration)</h2>
+                        <p>@Html.DisplayFor(model => model.Requirement.Duration)</p>
+                    </div>
+                }
+                else
+                {
+                    <div class="mb-3">
+                        <h2>@Html.DisplayNameFor(model => model.Requirement.Quantity)</h2>
+                        <p>@Html.DisplayFor(model => model.Requirement.Quantity)</p>
+                    </div>
+                }
+                <div class="mb-3">
+                    <h2>@Html.DisplayNameFor(model => model.Requirement.lastUpdated)</h2>
+                    <p>@Html.DisplayFor(model => model.Requirement.lastUpdated)</p>
+                </div>
+                <div class="mb-3">
+                    <h2>@Html.DisplayNameFor(model => model.Requirement.requiredBy)</h2>
+                    <p>@Html.DisplayFor(model => model.Requirement.requiredBy)</p>
+                </div>
+                <br /><br /><hr /><br /><br />
+                <a asp-action="RequirementsList" class="button" style="width:auto">Back to Vendor Home</a>
+                <a href="#Propose" class="button" style="width:auto">Give Proposal</a>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+<div style="padding: 10vh;" id="Propose">
+    <div style="padding: 10vh; background-color:rgb(255,255,255); border: 2px solid rgb(0,0,0); border-radius: 12px;">
+        <h1>Submit Proposal</h1>
+
+        <hr />
+        <div class="row">
+            <div class="col-12">
+                <form method="post" asp-action="Proposal" enctype="multipart/form-data">
+                    <input asp-for="RequirementId" type="hidden" />
+                    <div class="row col-12 mt-5">
+                        @if (Model.Requirement.Type == "Product")
+                        {
+                            <p>Expected Delivery of Product</p>
+                        }
+                        else
+                        {
+                            <p>Proposed start and end dates of the package</p>
+                        }
+                        <div class="form-floating py-2 col-6 mb-3">
+                            <input asp-for="StartDate" class="form-control" />
+                            <label asp-for="StartDate" class="control-label"></label>
+                            <span asp-validation-for="StartDate" class="text-danger"></span>
+                        </div>
+                        <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                        <div class="form-floating py-2 col-6 mb-3">
+                            <input asp-for="EndDate" min="1" class="form-control" />
+                            <label asp-for="EndDate" class="control-label"></label>
+                            <span asp-validation-for="EndDate" class="text-danger"></span>
+                        </div>
+                        <div class="form-floating py-2 col-12 mb-3">
+                            <textarea asp-for="Summary" class="form-control" rows="3"></textarea>
+                            <label asp-for="Summary" class="control-label"></label>
+                            <span asp-validation-for="Summary" class="text-danger"></span>
+                        </div>
+                        <div class="form-floating py-2 col-6 mb-3">
+                            <input asp-for="Price" class="form-control" />
+                            @if (Model.Requirement.Type == "Product")
+                            {
+                                <label asp-for="Price" class="control-label">Price per unit</label>
+                            }
+                            else
+                            {
+                                <label asp-for="Price" class="control-label">Per month cost</label>
+                            }
+                            <span asp-validation-for="Price" class="text-danger"></span>
+                        </div>
+                        <div class="form-floating py-2 col-6 mb-3">
+                            <input type="file" name="file" asp-for="ProposalFile" class="form-control" />
+                            <label asp-for="ProposalFile" class="control-label"></label>
+                            <span asp-validation-for="ProposalFile" class="text-danger"></span>
+                        </div>
+                    </div>
+                    <br /><br />
+                    <div class="form-floating">
+                        <button type="submit" class="btn1" onclick="return ValidateInput()">Create</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+        <br /><br /><hr /><br /><br />
+        <a asp-area="UserSpecific" asp-controller="BasePages" asp-action="VendorHome" class="btn1">Back to Vendor Home</a>
+    </div>
+</div>
+
+
+
+
+
+
+@section Scripts{
+<script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+<partial name="_ValidationScriptsPartial" />
+<script>
+    $(document).ready(function() {
+        var date = new Date().toISOString().slice(0,10);
+        console.log(date);
+        $('#StartDate').attr('value',date);
+        $('#StartDate').attr('min',date);
+        $('#EndDate').attr('value',date);
+        $('#EndDate').attr('min',date);
+    });
+</script>
+<script>
+    function CheckDate() {
+        var d1 = new Date(document.getElementById("StartDate").value);
+        var d2 = new Date(document.getElementById("EndDate").value);
+        console.log(d1);
+        console.log(d2);
+            if (d1.getTime() > d2.getTime()) {
+                Swal.fire({
+                icon: 'error',
+                title: 'Oops...',
+                text: 'End date of the contract must fall after its start date. Please check the dates!',
+            })
+            document.getElementById("EndDate").value = "";
+            return false;
+        }
+        return true;
+    }
+</script>
+}
+

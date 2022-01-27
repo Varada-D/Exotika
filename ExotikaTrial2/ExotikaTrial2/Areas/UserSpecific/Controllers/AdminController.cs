@@ -19,62 +19,56 @@ namespace ExotikaTrial2.Areas.UserSpecific.Controllers
         {
             StatsVM s = new StatsVM ()
             {
-                tourist = _unitOfWork.ApplicationUser.GetAll(u=>u.Role==SD.Role_User_Tourist).Count(),
-                resort = _unitOfWork.ApplicationUser.GetAll(u=>u.Role==SD.Role_User_Resort).Count(),
-                vendor = _unitOfWork.ApplicationUser.GetAll(u=>u.Role==SD.Role_User_Vendor).Count(),
-                handicraftDealer = _unitOfWork.ApplicationUser.GetAll(u=>u.Role==SD.Role_User_HandicraftDealer).Count()
+                tourist = _unitOfWork.Tourist.GetAll().Count(),
+                resort = _unitOfWork.Resort.GetAll().Count(),
+                vendor = _unitOfWork.Vendor.GetAll().Count(),
+                handicraftDealer = _unitOfWork.HandicraftDealer.GetAll().Count(),
             };
             return View(s);
         }
 
-        public IActionResult UserSpecificStats(string userRole)
-        {            
-            if (userRole == SD.Role_User_Tourist)
+        public IActionResult TouristStats()
+        {
+            UserStatsVM touristStats = new UserStatsVM()
             {
-                UserStatsVM stat = new UserStatsVM()
-                {
-                    visitors=0,
-                    registrations = _unitOfWork.Tourist.GetAll().Count(),
-                    bookings = _unitOfWork.ResortBooking.GetAll().Count()
-                };
-            }
-            else
+                visitors = 0,
+                registrations = _unitOfWork.Tourist.GetAll().Count(),
+                bookings = _unitOfWork.ResortBooking.GetAll().Count()
+            };
+            return View(touristStats);
+        }
+
+        public IActionResult ResortStats()
+        {
+            UserStatsVM resortStats = new UserStatsVM()
             {
-                if (userRole == SD.Role_User_Resort)
-                {
-                    UserStatsVM stat = new UserStatsVM()
-                    {
-                        visitors=0,
-                        registrations = _unitOfWork.Resort.GetAll().Count(),
-                        bookings = _unitOfWork.ResortBooking.GetAll().Count()
-                    };
-                }
-                else
-                {
-                    if (userRole == SD.Role_User_Vendor)
-                    {
-                        UserStatsVM stat = new UserStatsVM()
-                        {
-                            visitors=0,
-                            registrations = _unitOfWork.Vendor.GetAll().Count(),
-                            bookings = _unitOfWork.Contract.GetAll().Count()
-                        };
-                    }
-                    else
-                    {
-                        if (userRole == SD.Role_User_HandicraftDealer)
-                        {
-                            UserStatsVM stat = new UserStatsVM()
-                            {
-                                visitors = 0,
-                                registrations = _unitOfWork.HandicraftDealer.GetAll().Count(),
-                                bookings = 0
-                            };
-                        }
-                    }
-                }
-            }
-            return View(userRole);
+                visitors = 0,
+                registrations = _unitOfWork.Tourist.GetAll().Count(),
+                bookings = _unitOfWork.ResortBooking.GetAll().Count()
+            };
+            return View(resortStats);
+        }
+
+        public IActionResult VendorStats()
+        {
+            UserStatsVM vendorStats = new UserStatsVM()
+            {
+                visitors = 0,
+                registrations = _unitOfWork.Tourist.GetAll().Count(),
+                bookings = _unitOfWork.ResortBooking.GetAll().Count()
+            };
+            return View(vendorStats);
+        }
+
+        public IActionResult HandicraftDealerStats()
+        {
+            UserStatsVM handicraftDealerStats = new UserStatsVM()
+            {
+                visitors = 0,
+                registrations = _unitOfWork.Tourist.GetAll().Count(),
+                bookings = _unitOfWork.ResortBooking.GetAll().Count()
+            };
+            return View(handicraftDealerStats);
         }
     }
 }

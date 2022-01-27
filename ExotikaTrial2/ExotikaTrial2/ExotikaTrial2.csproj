@@ -28,4 +28,8 @@
     <ProjectReference Include="..\ExotikaTrial2.Utility\ExotikaTrial2.Utility.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="wwwroot\proposalFiles\" />
+  </ItemGroup>
+
 </Project>

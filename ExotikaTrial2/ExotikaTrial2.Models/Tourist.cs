@@ -20,5 +20,8 @@ namespace ExotikaTrial2.Models
 
         [DataType(DataType.EmailAddress)]
         public string? emailAddr { get; set; }
+
+        [DataType(DataType.Date)]
+        public DateTime? createDate { get; set; }
     }
 }

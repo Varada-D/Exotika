@@ -1,0 +1,49 @@
+﻿@model ExotikaTrial2.Models.ResortBookings
+
+<section id="Details">
+
+<h1>Booking Details</h1>
+<br />
+<br />
+<label>Package: </label>
+<p>@Model.Package.Name</p>
+<br /><br />
+<label>Resort Name: </label>
+<p>@Model.Resort.Name</p>
+<br />
+<br />
+<label>Resort Address: </label>
+<p>@Model.Resort.StreetAddress, @Model.Resort.City, @Model.Resort.State - @Model.Resort.PostalCode</p>
+<br />
+<br />
+<label>Resort Phone Number: </label>
+<p>@Model.Resort.PhoneNumber</p>
+<br />
+<br />
+<label>Resort Email Address: </label>
+<p>@Model.Resort.emailAddr</p>
+<br />
+<br />
+<label>Check-In Date: </label>
+<p>@Model.CheckInDate.ToLongDateString()</p>
+<br />
+<br />
+<label>Check-Out Date: </label>
+<p>@Model.CheckOutDate.ToLongDateString()</p>
+<br />
+<br />
+<label>Number of Bookings: </label>
+<p>@Model.noOfBookings</p>
+<br />
+<br />
+<label>Booking Date: </label>
+<p>@Model.CreateDate</p>
+<br />
+<br />
+<label>Bill Total: </label>
+<p>Rs. @Model.TotalPrice</p>
+<br />
+<br />
+<br />
+<a asp-area="UserSpecific" asp-controller="Tourists" asp-action="BookingHistory" class="btn1">Back to Booking History</a>
+</section>

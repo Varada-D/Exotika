@@ -29,7 +29,7 @@ function scrollFunction() {
 		}
 	else
 		{
-			document.getElementById('logo').style.width = "45vh";
+			document.getElementById('logo').style.width = "40vh";
 			//document.getElementById('SignInRegisterBtnLS').style.marginTop = "2.5vh";
 			document.getElementById('btns-lg-screen').style.marginTop = "5.5vh";
 			document.getElementById('btns-lg-screen').style.fontSize = "100%";

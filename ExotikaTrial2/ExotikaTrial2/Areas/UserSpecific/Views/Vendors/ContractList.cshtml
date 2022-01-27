@@ -1,0 +1,107 @@
+﻿@model IEnumerable<ExotikaTrial2.Models.Contract>
+
+    @{
+    <link rel="stylesheet" href="https://cdn.datatables.net/1.10.22/css/jquery.dataTables.min.css" />
+
+
+    var status = Context.Request.Query["status"];
+    var proposalSent = "text-primary";
+    var proposalApproved = "text-primary";
+    var completed = "text-primary";
+    var all = "text-primary";
+
+    switch (status)
+    {
+        case "proposalSent":
+            proposalSent = "active text-white";
+            break;
+        case "proposalApproved":
+            proposalApproved = "active text-white";
+            break;
+        case "completed":
+            completed = "active text-white";
+            break;
+        default:
+            all = "active text-white";
+            break;
+    }
+}
+
+
+
+<section id="Details">
+    <div class="d-flex justify-content-between pt-4">
+        <div class="p-2 mb-5">
+            <h2 class="text-primary">Order List</h2>
+        </div>
+        <div clas="p-2">
+            <ul class="list-group list-group-horizontal-sm">
+                <a style="text-decoration:none" asp-area="UserSpecific" asp-controller="Vendors" asp-action="ContractList" asp-route-status="proposalSent">
+                    <li class="list-group-item @proposalSent">Proposal Sent</li>
+                </a>
+                <a style="text-decoration:none" asp-area="UserSpecific" asp-controller="Vendors" asp-action="ContractList" asp-route-status="proposalApproved">
+                    <li class="list-group-item @proposalApproved">Proposal Approved</li>
+                </a>
+                <a style="text-decoration:none" asp-area="UserSpecific" asp-controller="Vendors" asp-action="ContractList" asp-route-status="completed">
+                    <li class="list-group-item @completed">Completed</li>
+                </a>
+                <a style="text-decoration:none" asp-area="UserSpecific" asp-controller="Vendors" asp-action="ContractList" asp-route-status="all">
+                    <li class="list-group-item @all">All</li>
+                </a>
+            </ul>
+        </div>
+        </div>
+    <div class="mt-5 mb-5" style="width: 100%">
+        <table id="tblData" class="display table table-striped" style="width: 100%; margin-top:5vh">
+            <thead>
+                <tr>
+                    <th>Resort</th>
+                    <th>Requirement</th>
+                    <th>Quantity/Duration</th>
+                    <th>Status</th>
+                    <th>Start Date</th>
+                    <th>End Date</th>
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var contract in Model)
+                {
+                    <tr>
+                        <td>@contract.Requirement.Resort.Name, @contract.Requirement.Resort.City, @contract.Requirement.Resort.State - @contract.Requirement.Resort.PostalCode</td>
+                        <td>@contract.Requirement.requirementName</td>
+                        @if (contract.Requirement.Type == "Product")
+                        {
+                            <td>@contract.Requirement.Quantity</td>
+                        }
+                        else
+                        {
+                            <td>@contract.Requirement.Duration Months</td>
+                        }
+                        <td>@contract.Status</td>
+                        <td>@contract.StartDate.ToLongDateString()</td>
+                        <td>@contract.EndDate.ToLongDateString()</td>
+                        <td>
+                            <a asp-area="UserSpecific" asp-controller="Vendors" asp-action="ContractDetails" asp-route-contractId="@contract.ContractId" style="display:block">View Details</a>
+                            @*<a asp-area="UserSpecific" asp-controller="Vendors" asp-action="Delete" asp-route-forID="@contract.RequirementId">Delete Requirement</a>*@
+                        </td>
+                    </tr>
+                }
+            </tbody>
+
+        </table>
+    </div>
+</section>
+
+
+
+@section Scripts {
+
+<script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+<script type="text/javascript" src="https://cdn.datatables.net/1.10.22/js/jquery.dataTables.min.js"></script>
+<script>
+    $(document).ready(function () {
+        $('#tblData').DataTable();
+    });
+</script>
+}

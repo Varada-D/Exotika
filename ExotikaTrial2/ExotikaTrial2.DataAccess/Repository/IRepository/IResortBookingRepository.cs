@@ -11,5 +11,6 @@ namespace ExotikaTrial2.DataAccess.Repository.IRepository
     public interface IResortBookingRepository : IRepository<ResortBookings>
     {
         void Update(ResortBookings obj);
+        void UpdateStripePaymentId(int id, string sessionId, string paymentIntentId);
     }
 }

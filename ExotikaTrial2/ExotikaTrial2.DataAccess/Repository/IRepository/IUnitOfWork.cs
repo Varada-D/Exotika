@@ -17,6 +17,7 @@ namespace ExotikaTrial2.DataAccess.Repository.IRepository
         IResortBookingRepository ResortBooking { get; }
         IApplicationUserRepository ApplicationUser { get; }
         IContractRepository Contract { get; }
+        IRequirementRepository Requirement { get; }
         IPackageRepository Package { get; }
         IFeedbackRepository Feedback { get; }
 

@@ -14,6 +14,7 @@
 <h4>Employee</h4>
 <hr /><br /><br />
         <form asp-action="Edit">
+            <input asp-for="ResortId" type="hidden" />
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
             <input type="hidden" asp-for="EmployeeId" />
             <div class="form-group">

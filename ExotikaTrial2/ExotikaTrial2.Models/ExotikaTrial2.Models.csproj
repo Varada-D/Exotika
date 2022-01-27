@@ -11,4 +11,8 @@
     <PackageReference Include="Microsoft.Extensions.Identity.Stores" Version="6.0.1" />
   </ItemGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\ExotikaTrial2.Utility\ExotikaTrial2.Utility.csproj" />
+  </ItemGroup>
+
 </Project>

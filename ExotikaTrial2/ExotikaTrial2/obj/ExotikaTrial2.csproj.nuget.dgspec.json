@@ -30,6 +30,9 @@
             "projectReferences": {
               "C:\\Users\\varad\\source\\repos\\ExotikaTrial2\\ExotikaTrial2.Models\\ExotikaTrial2.Models.csproj": {
                 "projectPath": "C:\\Users\\varad\\source\\repos\\ExotikaTrial2\\ExotikaTrial2.Models\\ExotikaTrial2.Models.csproj"
+              },
+              "C:\\Users\\varad\\source\\repos\\ExotikaTrial2\\ExotikaTrial2.Utility\\ExotikaTrial2.Utility.csproj": {
+                "projectPath": "C:\\Users\\varad\\source\\repos\\ExotikaTrial2\\ExotikaTrial2.Utility\\ExotikaTrial2.Utility.csproj"
               }
             }
           }
@@ -109,7 +112,11 @@
         "frameworks": {
           "net6.0": {
             "targetAlias": "net6.0",
-            "projectReferences": {}
+            "projectReferences": {
+              "C:\\Users\\varad\\source\\repos\\ExotikaTrial2\\ExotikaTrial2.Utility\\ExotikaTrial2.Utility.csproj": {
+                "projectPath": "C:\\Users\\varad\\source\\repos\\ExotikaTrial2\\ExotikaTrial2.Utility\\ExotikaTrial2.Utility.csproj"
+              }
+            }
           }
         },
         "warningProperties": {

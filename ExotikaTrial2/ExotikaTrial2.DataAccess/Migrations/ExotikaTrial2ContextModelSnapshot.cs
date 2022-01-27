@@ -22,6 +22,41 @@ namespace ExotikaTrial2.DataAccess.Migrations
 
             SqlServerModelBuilderExtensions.UseIdentityColumns(modelBuilder, 1L, 1);
 
+            modelBuilder.Entity("ExotikaTrial2.Models.Admin", b =>
+                {
+                    b.Property<string>("AdminId")
+                        .HasColumnType("nvarchar(450)");
+
+                    b.Property<string>("City")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Name")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("PhoneNumber")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("PostalCode")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("State")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("StreetAddress")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<DateTime?>("createDate")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("emailAddr")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("AdminId");
+
+                    b.ToTable("Admins");
+                });
+
             modelBuilder.Entity("ExotikaTrial2.Models.Contract", b =>
                 {
                     b.Property<int>("ContractId")
@@ -30,19 +65,28 @@ namespace ExotikaTrial2.DataAccess.Migrations
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("ContractId"), 1L, 1);
 
+                    b.Property<DateTime>("CreateDate")
+                        .HasColumnType("datetime2");
+
                     b.Property<DateTime>("EndDate")
                         .HasColumnType("datetime2");
+
+                    b.Property<double>("Price")
+                        .HasColumnType("float");
 
                     b.Property<string>("ProposalFile")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<string>("ResortId")
+                    b.Property<int?>("RequirementId")
                         .IsRequired()
-                        .HasColumnType("nvarchar(450)");
+                        .HasColumnType("int");
 
                     b.Property<DateTime>("StartDate")
                         .HasColumnType("datetime2");
+
+                    b.Property<string>("Status")
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("Summary")
                         .IsRequired()
@@ -54,7 +98,7 @@ namespace ExotikaTrial2.DataAccess.Migrations
 
                     b.HasKey("ContractId");
 
-                    b.HasIndex("ResortId");
+                    b.HasIndex("RequirementId");
 
                     b.HasIndex("VendorId");
 
@@ -111,8 +155,20 @@ namespace ExotikaTrial2.DataAccess.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<double>("Rating")
-                        .HasColumnType("float");
+                    b.Property<string>("HandicraftDealerId")
+                        .HasColumnType("nvarchar(450)");
+
+                    b.Property<int>("Rating")
+                        .HasColumnType("int");
+
+                    b.Property<string>("ResortId")
+                        .HasColumnType("nvarchar(450)");
+
+                    b.Property<string>("TouristId")
+                        .HasColumnType("nvarchar(450)");
+
+                    b.Property<string>("VendorId")
+                        .HasColumnType("nvarchar(450)");
 
                     b.Property<string>("byId")
                         .IsRequired()
@@ -122,7 +178,18 @@ namespace ExotikaTrial2.DataAccess.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
+                    b.Property<DateTime>("lastUpdated")
+                        .HasColumnType("datetime2");
+
                     b.HasKey("Id");
+
+                    b.HasIndex("HandicraftDealerId");
+
+                    b.HasIndex("ResortId");
+
+                    b.HasIndex("TouristId");
+
+                    b.HasIndex("VendorId");
 
                     b.ToTable("Feedbacks");
                 });
@@ -154,6 +221,9 @@ namespace ExotikaTrial2.DataAccess.Migrations
                     b.Property<string>("StreetAddress")
                         .HasColumnType("nvarchar(max)");
 
+                    b.Property<DateTime?>("createDate")
+                        .HasColumnType("datetime2");
+
                     b.Property<string>("emailAddr")
                         .HasColumnType("nvarchar(max)");
 
@@ -164,8 +234,11 @@ namespace ExotikaTrial2.DataAccess.Migrations
 
             modelBuilder.Entity("ExotikaTrial2.Models.Package", b =>
                 {
-                    b.Property<string>("PackageId")
-                        .HasColumnType("nvarchar(450)");
+                    b.Property<int>("PackageId")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("PackageId"), 1L, 1);
 
                     b.Property<string>("Description")
                         .IsRequired()
@@ -179,14 +252,59 @@ namespace ExotikaTrial2.DataAccess.Migrations
                         .HasColumnType("int");
 
                     b.Property<string>("ResortId")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(450)");
+                        .HasColumnType("nvarchar(max)");
 
                     b.HasKey("PackageId");
 
+                    b.ToTable("Packages");
+                });
+
+            modelBuilder.Entity("ExotikaTrial2.Models.Requirement", b =>
+                {
+                    b.Property<int>("RequirementId")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("RequirementId"), 1L, 1);
+
+                    b.Property<string>("Category")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Description")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<int?>("Duration")
+                        .HasColumnType("int");
+
+                    b.Property<int?>("Quantity")
+                        .HasColumnType("int");
+
+                    b.Property<string>("ResortId")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(450)");
+
+                    b.Property<string>("Status")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Type")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<DateTime>("lastUpdated")
+                        .HasColumnType("datetime2");
+
+                    b.Property<DateTime>("requiredBy")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("requirementName")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("RequirementId");
+
                     b.HasIndex("ResortId");
 
-                    b.ToTable("Packages");
+                    b.ToTable("Requirements");
                 });
 
             modelBuilder.Entity("ExotikaTrial2.Models.Resort", b =>
@@ -217,6 +335,9 @@ namespace ExotikaTrial2.DataAccess.Migrations
                     b.Property<string>("StreetAddress")
                         .HasColumnType("nvarchar(max)");
 
+                    b.Property<DateTime?>("createDate")
+                        .HasColumnType("datetime2");
+
                     b.Property<string>("emailAddr")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
@@ -234,15 +355,31 @@ namespace ExotikaTrial2.DataAccess.Migrations
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("BookingID"), 1L, 1);
 
+                    b.Property<string>("Carrier")
+                        .HasColumnType("nvarchar(max)");
+
                     b.Property<DateTime>("CheckInDate")
                         .HasColumnType("datetime2");
 
                     b.Property<DateTime>("CheckOutDate")
                         .HasColumnType("datetime2");
 
-                    b.Property<string>("PackageId")
+                    b.Property<DateTime>("CreateDate")
+                        .HasColumnType("datetime2");
+
+                    b.Property<int?>("PackageId")
+                        .IsRequired()
+                        .HasColumnType("int");
+
+                    b.Property<string>("PaymentIntentId")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("ResortId")
                         .IsRequired()
                         .HasColumnType("nvarchar(450)");
+
+                    b.Property<string>("SessionId")
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<int>("TotalPrice")
                         .HasColumnType("int");
@@ -250,6 +387,9 @@ namespace ExotikaTrial2.DataAccess.Migrations
                     b.Property<string>("TouristId")
                         .IsRequired()
                         .HasColumnType("nvarchar(450)");
+
+                    b.Property<string>("TrackingNumber")
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("idNumber")
                         .IsRequired()
@@ -265,6 +405,8 @@ namespace ExotikaTrial2.DataAccess.Migrations
                     b.HasKey("BookingID");
 
                     b.HasIndex("PackageId");
+
+                    b.HasIndex("ResortId");
 
                     b.HasIndex("TouristId");
 
@@ -294,6 +436,9 @@ namespace ExotikaTrial2.DataAccess.Migrations
 
                     b.Property<string>("StreetAddress")
                         .HasColumnType("nvarchar(max)");
+
+                    b.Property<DateTime?>("createDate")
+                        .HasColumnType("datetime2");
 
                     b.Property<string>("emailAddr")
                         .HasColumnType("nvarchar(max)");
@@ -330,44 +475,15 @@ namespace ExotikaTrial2.DataAccess.Migrations
                     b.Property<string>("VendorName")
                         .HasColumnType("nvarchar(max)");
 
+                    b.Property<DateTime?>("createDate")
+                        .HasColumnType("datetime2");
+
                     b.Property<string>("emailAddr")
                         .HasColumnType("nvarchar(max)");
 
                     b.HasKey("VendorId");
 
                     b.ToTable("Vendors");
-                });
-
-            modelBuilder.Entity("ExotikaTrial2.Models.WebAppAdmin", b =>
-                {
-                    b.Property<string>("AdminId")
-                        .HasColumnType("nvarchar(450)");
-
-                    b.Property<string>("City")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("Name")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("PhoneNumber")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("PostalCode")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("State")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("StreetAddress")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("emailAddr")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.HasKey("AdminId");
-
-                    b.ToTable("Admins");
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRole", b =>
@@ -434,6 +550,10 @@ namespace ExotikaTrial2.DataAccess.Migrations
                         .IsConcurrencyToken()
                         .HasColumnType("nvarchar(max)");
 
+                    b.Property<string>("Discriminator")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
                     b.Property<string>("Email")
                         .HasMaxLength(256)
                         .HasColumnType("nvarchar(256)");
@@ -485,6 +605,8 @@ namespace ExotikaTrial2.DataAccess.Migrations
                         .HasFilter("[NormalizedUserName] IS NOT NULL");
 
                     b.ToTable("AspNetUsers", (string)null);
+
+                    b.HasDiscriminator<string>("Discriminator").HasValue("IdentityUser");
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityUserClaim<string>", b =>
@@ -568,11 +690,40 @@ namespace ExotikaTrial2.DataAccess.Migrations
                     b.ToTable("AspNetUserTokens", (string)null);
                 });
 
+            modelBuilder.Entity("ExotikaTrial2.Models.ApplicationUser", b =>
+                {
+                    b.HasBaseType("Microsoft.AspNetCore.Identity.IdentityUser");
+
+                    b.Property<string>("City")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<DateTime?>("CreateDate")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("Name")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("PostalCode")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Role")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("State")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("StreetAddress")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasDiscriminator().HasValue("ApplicationUser");
+                });
+
             modelBuilder.Entity("ExotikaTrial2.Models.Contract", b =>
                 {
-                    b.HasOne("ExotikaTrial2.Models.Resort", "Resort")
+                    b.HasOne("ExotikaTrial2.Models.Requirement", "Requirement")
                         .WithMany()
-                        .HasForeignKey("ResortId")
+                        .HasForeignKey("RequirementId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
@@ -582,7 +733,7 @@ namespace ExotikaTrial2.DataAccess.Migrations
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.Navigation("Resort");
+                    b.Navigation("Requirement");
 
                     b.Navigation("Vendor");
                 });
@@ -598,7 +749,34 @@ namespace ExotikaTrial2.DataAccess.Migrations
                     b.Navigation("ResortDetails");
                 });
 
-            modelBuilder.Entity("ExotikaTrial2.Models.Package", b =>
+            modelBuilder.Entity("ExotikaTrial2.Models.Feedback", b =>
+                {
+                    b.HasOne("ExotikaTrial2.Models.HandicraftDealer", "handicraftDealer")
+                        .WithMany()
+                        .HasForeignKey("HandicraftDealerId");
+
+                    b.HasOne("ExotikaTrial2.Models.Resort", "resort")
+                        .WithMany()
+                        .HasForeignKey("ResortId");
+
+                    b.HasOne("ExotikaTrial2.Models.Tourist", "tourist")
+                        .WithMany()
+                        .HasForeignKey("TouristId");
+
+                    b.HasOne("ExotikaTrial2.Models.Vendor", "vendor")
+                        .WithMany()
+                        .HasForeignKey("VendorId");
+
+                    b.Navigation("handicraftDealer");
+
+                    b.Navigation("resort");
+
+                    b.Navigation("tourist");
+
+                    b.Navigation("vendor");
+                });
+
+            modelBuilder.Entity("ExotikaTrial2.Models.Requirement", b =>
                 {
                     b.HasOne("ExotikaTrial2.Models.Resort", "Resort")
                         .WithMany()
@@ -617,6 +795,12 @@ namespace ExotikaTrial2.DataAccess.Migrations
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
+                    b.HasOne("ExotikaTrial2.Models.Resort", "Resort")
+                        .WithMany()
+                        .HasForeignKey("ResortId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
                     b.HasOne("ExotikaTrial2.Models.Tourist", "TouristDetails")
                         .WithMany()
                         .HasForeignKey("TouristId")
@@ -624,6 +808,8 @@ namespace ExotikaTrial2.DataAccess.Migrations
                         .IsRequired();
 
                     b.Navigation("Package");
+
+                    b.Navigation("Resort");
 
                     b.Navigation("TouristDetails");
                 });

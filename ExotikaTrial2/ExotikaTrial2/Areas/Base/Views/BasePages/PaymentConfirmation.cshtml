@@ -1,0 +1,26 @@
+﻿@model ExotikaTrial2.Models.ResortBookings
+@{
+    <link rel="stylesheet" href="~/css/bootswatch.css" runat="server"/>
+    <link rel="stylesheet" href="~/css/bootswatch.css" runat="server"/>
+    <link rel="stylesheet" href="~/css/FormCSS.css" runat="server"/>
+}
+
+
+<h1 class="text-primary text-center pt-5">Payment Successful!</h1>
+
+<div class="container row m-5">
+    <div class="col-sm-12 col-md-6 text-center pt-4">
+        <h2>Booking Details for @Model.TouristDetails.Name: @Model.Package.Name</h2><br />
+        at <h3>@Model.Resort.Name, @Model.Resort.City, @Model.Resort.State - @Model.Resort.PostalCode</h3> <br /><br />
+        <p><b>Check-In</b> @Model.CheckInDate.ToLongDateString()</p>
+        <p><b>Check-Out</b> @Model.CheckOutDate.ToLongDateString()</p>
+        <p><b>Booking for:</b> @Model.noOfBookings, &nbsp; <b>Total:</b> Rs. @Model.TotalPrice</p>
+    </div>
+    <div class="col-sm-12 col-md-6 text-center pt-4" style="color:maroon">
+        <br />
+        <p style="font-size:120%">Your payment has been completed successfully, and the booking has been confirmed! You will be receiving a confirmation email shortly. Safe Travels!</p> <br />
+        <img src="~/images/ThankYou.jfif" width="80%" /><br /><br />
+        <a asp-area="UserSpecific" asp-controller="Tourists" asp-action="BookingDetail" asp-route-bookingId="@Model.BookingID" class="btn1 mt-2">Back to Order Details</a>
+    </div>
+</div>
+

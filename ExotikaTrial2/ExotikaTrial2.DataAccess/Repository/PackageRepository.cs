@@ -9,17 +9,17 @@ using System.Threading.Tasks;
 
 namespace ExotikaTrial2.DataAccess.Repository
 {
-    public class ResortBookingRepository : Repository<ResortBookings>, IResortBookingRepository
+    public class PackageRepository : Repository<Package>, IPackageRepository
     {
         private ExotikaTrial2Context _db;
 
-        public ResortBookingRepository(ExotikaTrial2Context db): base(db)
+        public PackageRepository(ExotikaTrial2Context db): base(db)
         {
             _db = db;
         }
-        public void Update(ResortBookings obj)
+        public void Update(Package obj)
         {
-            _db.ResortBookings.Update(obj);
+            _db.Packages.Update(obj);
         }
     }
 }

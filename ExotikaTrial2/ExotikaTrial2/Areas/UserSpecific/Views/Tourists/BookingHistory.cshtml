@@ -1,26 +1,47 @@
 ﻿@model IEnumerable<ExotikaTrial2.Models.ResortBookings>
 
+    @{
+<link rel="stylesheet" href="https://cdn.datatables.net/1.10.22/css/jquery.dataTables.min.css" />
+<link rel="stylesheet" type="text/css" href="http://ajax.aspnetcdn.com/ajax/jquery.dataTables/1.9.0/css/jquery.dataTables_themeroller.css">
+    }
 
-    <table>
-        <tr>
-            <th>Resort Name</th>
+<section id="Details">
+    <table id="tblData" class="display table table-striped" style="width: 100%">
+        <thead>
+            <tr>
+            <th>Package</th>
+            <th>Resort</th>
             <th>City</th>
-            <th>Number of Bookings</th>
-            <th>Check In</th>
-            <th>Check Out</th>
+            <th>Booking Date</th>
             <th></th>
         </tr>
-@foreach (var booking in Model) {
-    <tr>
-        <td>@booking.Package.Resort.Name</td>
-        <td>@booking.Package.Resort.City, @booking.Package.Resort.State</td>
-        <td>@booking.noOfBookings</td>
-        <td>@booking.CheckInDate</td>
-        <td>@booking.CheckOutDate</td>
-        <td>
-            <a asp-action="Feedback" asp-route-forID="@booking.Package.ResortId">Give Feedback</a>
-            <a asp-action="Feedback">Edit Feedback</a>
-        </td>
-    </tr>
-}
+        </thead>
+        <tbody>
+        @foreach (var booking in Model) {
+            <tr>
+                <td>@booking.Package.Name</td>
+                <td>@booking.Resort.Name</td>
+                <td>@booking.Resort.City, @booking.Resort.State</td>
+                <td>@booking.CreateDate.ToLongDateString()</td>
+                <td>
+                    <a asp-action="BookingDetail" asp-route-bookingId="@booking.BookingID" style="display:block">View Details</a>
+                    <a asp-action="Feedback" asp-route-forID="@booking.Package.ResortId">Give or Edit Feedback</a>
+                </td>
+            </tr>
+        }
+        </tbody>
+
 </table>
+</section>
+
+
+@section Scripts{
+
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
+<script type="text/javascript" src="https://cdn.datatables.net/1.10.22/js/jquery.dataTables.min.js"></script>
+<script>
+    $(document).ready(function () {
+        $('#tblData').DataTable({});
+    });
+</script>
+}

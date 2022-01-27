@@ -11,6 +11,7 @@ using Microsoft.AspNetCore.Authorization;
 using ExotikaTrial2.Utility;
 using ExotikaTrial2.DataAccess.Repository.IRepository;
 using ExotikaTrial2.Models;
+using System.Security.Claims;
 
 namespace ExotikaTrial2.Controllers
 {
@@ -27,7 +28,10 @@ namespace ExotikaTrial2.Controllers
         // GET: Employees
         public IActionResult Index()
         {
-            return View();
+            var claimsIdentity = (ClaimsIdentity)User.Identity;
+            var claim = claimsIdentity.FindFirst(ClaimTypes.NameIdentifier);
+            var employeesList = _unitOfWork.Employee.GetAll(u => u.ResortId == claim.Value);
+            return View(employeesList);
         }
 
         // GET: Employees/Details/5
@@ -38,8 +42,10 @@ namespace ExotikaTrial2.Controllers
                 return NotFound();
             }
 
+            var claimsIdentity = (ClaimsIdentity)User.Identity;
+            var claim = claimsIdentity.FindFirst(ClaimTypes.NameIdentifier);
             var employee = _unitOfWork.Employee
-                .GetFirstOrDefault(m => m.EmployeeId == id);
+                .GetFirstOrDefault(m => m.EmployeeId == id && m.ResortId==claim.Value);
             if (employee == null)
             {
                 return NotFound();
@@ -61,12 +67,17 @@ namespace ExotikaTrial2.Controllers
         [ValidateAntiForgeryToken]
         public IActionResult Create(Employee employee)
         {
+            var claimsIdentity = (ClaimsIdentity)User.Identity;
+            var claim = claimsIdentity.FindFirst(ClaimTypes.NameIdentifier);
+            employee.ResortId = claim.Value;
             if (ModelState.IsValid)
             {
                 _unitOfWork.Employee.Add(employee);
                 _unitOfWork.Save();
+                TempData["Success"] = "Emmployee Added Successfully";
                 return RedirectToAction(nameof(Index));
             }
+            TempData["Error"] = "Employee Addition Failed";
             return View(employee);
         }
 
@@ -78,7 +89,9 @@ namespace ExotikaTrial2.Controllers
                 return NotFound();
             }
 
-            var employee = _unitOfWork.Employee.GetFirstOrDefault(u=>u.EmployeeId==id);
+            var claimsIdentity = (ClaimsIdentity)User.Identity;
+            var claim = claimsIdentity.FindFirst(ClaimTypes.NameIdentifier);
+            var employee = _unitOfWork.Employee.GetFirstOrDefault(u=>u.EmployeeId==id && u.ResortId==claim.Value);
             if (employee == null)
             {
                 return NotFound();
@@ -95,6 +108,7 @@ namespace ExotikaTrial2.Controllers
         {
             if (id != employee.EmployeeId)
             {
+                TempData["Error"] = "Error Updating Employee Details";
                 return NotFound();
             }
 
@@ -104,9 +118,11 @@ namespace ExotikaTrial2.Controllers
                 {
                     _unitOfWork.Employee.Update(employee);
                     _unitOfWork.Save();
+                    TempData["Success"] = "Employee Details Updated Successfully";
                 }
                 catch (DbUpdateConcurrencyException)
                 {
+                    TempData["Error"] = "Error Updating Employee Details";
                     if (!EmployeeExists(employee.EmployeeId))
                     {
                         return NotFound();
@@ -129,8 +145,10 @@ namespace ExotikaTrial2.Controllers
                 return NotFound();
             }
 
+            var claimsIdentity = (ClaimsIdentity)User.Identity;
+            var claim = claimsIdentity.FindFirst(ClaimTypes.NameIdentifier);
             var employee = _unitOfWork.Employee
-                .GetFirstOrDefault(m => m.EmployeeId == id);
+                .GetFirstOrDefault(m => m.EmployeeId == id && m.ResortId == claim.Value);
             if (employee == null)
             {
                 return NotFound();
@@ -144,16 +162,21 @@ namespace ExotikaTrial2.Controllers
         [ValidateAntiForgeryToken]
         public IActionResult DeleteConfirmed(int id)
         {
-            var employee = _unitOfWork.Employee.GetFirstOrDefault(u=>u.EmployeeId==id);
+            var claimsIdentity = (ClaimsIdentity)User.Identity;
+            var claim = claimsIdentity.FindFirst(ClaimTypes.NameIdentifier);
+            var employee = _unitOfWork.Employee.GetFirstOrDefault(u=>u.EmployeeId== id && u.ResortId == claim.Value);
             _unitOfWork.Employee.Remove(employee);
             _unitOfWork.Save();
+            TempData["Success"] = "Employee Deleted Successfully";
             return RedirectToAction(nameof(Index));
         }
 
         
         private bool EmployeeExists(int id)
         {
-            var emp = _unitOfWork.Employee.GetFirstOrDefault(e => e.EmployeeId == id);
+            var claimsIdentity = (ClaimsIdentity)User.Identity;
+            var claim = claimsIdentity.FindFirst(ClaimTypes.NameIdentifier);
+            var emp = _unitOfWork.Employee.GetFirstOrDefault(e => e.EmployeeId == id && e.ResortId == claim.Value);
             if (emp != null)
             {
                 return true;

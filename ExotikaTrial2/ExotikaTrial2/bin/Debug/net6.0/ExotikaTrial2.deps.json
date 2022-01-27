@@ -2498,6 +2498,7 @@
       "ExotikaTrial2.DataAccess/1.0.0": {
         "dependencies": {
           "ExotikaTrial2.Models": "1.0.0",
+          "ExotikaTrial2.Utility": "1.0.0",
           "Microsoft.AspNetCore.Identity.EntityFrameworkCore": "6.0.1",
           "Microsoft.EntityFrameworkCore": "6.0.1",
           "Microsoft.EntityFrameworkCore.Relational": "6.0.1",
@@ -2509,6 +2510,7 @@
       },
       "ExotikaTrial2.Models/1.0.0": {
         "dependencies": {
+          "ExotikaTrial2.Utility": "1.0.0",
           "Microsoft.AspNetCore.Mvc.Core": "2.2.5",
           "Microsoft.Extensions.Identity.Stores": "6.0.1"
         },

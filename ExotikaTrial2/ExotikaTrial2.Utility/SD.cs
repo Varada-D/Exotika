@@ -14,18 +14,16 @@ namespace ExotikaTrial2.Utility
         public const string Role_User_HandicraftDealer = "HandicraftDealer";
         public const string Role_Admin = "Admin";
 
-        public const string StatusPending = "Pending";
-        public const string StatusApproved = "Approved";
-        public const string StatusInProcess = "Processing";
-        public const string StatusShipped = "Shipped";
-        public const string StatusCancelled = "Cancelled";
-        public const string StatusRefunded = "Refunded";
-
         public const string PaymentStatusPending = "Pending";
         public const string PaymentStatusApproved = "Approved";
         public const string PaymentStatusDelayedPayment = "ApprovedForDelayedPayment";
         public const string PaymentStatusRejected = "Rejected";
 
-        public const string SessionCart = "SessionShoppingCart";
+        public const string Requirement_Posted = "Posted";
+        public const string Requirement_ProposalsReceived = "Proposal(s) Received";
+
+        public const string Proposal_Given = "Proposal Given";
+        public const string Proposal_Accepted = "Proposal Accepted";
+        public const string Contract_Completed = "Contract Completed";
     }
 }

@@ -19,6 +19,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\ExotikaTrial2.Models\ExotikaTrial2.Models.csproj" />
+    <ProjectReference Include="..\ExotikaTrial2.Utility\ExotikaTrial2.Utility.csproj" />
   </ItemGroup>
 
 </Project>

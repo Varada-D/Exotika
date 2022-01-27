@@ -1,0 +1,40 @@
+﻿@model ExotikaTrial2.Models.Package
+
+@{
+    ViewData["Title"] = "Employee Details";
+}
+
+
+    <div style="padding: 10vh;">
+    <div style="padding: 10vh; background-color:rgb(255,255,255); border: 2px solid rgb(0,0,0); border-radius: 12px;">
+<h1>Employee Details</h1>
+
+<div>
+    <h4>Employee</h4>
+    <hr /><br><br />
+    <dl class="row">
+        <dt>
+            @Html.DisplayNameFor(model => model.Name)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Name)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Description)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Description)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Price)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Price)
+        </dd>
+    </dl>
+    <br /><br /><hr /><br /><br />
+    <a asp-action="Edit" asp-route-id="@Model?.PackageId" class="btn1">Edit</a>
+    <a asp-action="Index" class="btn1">Back to List</a>
+    </div>
+    </div>
+</div>

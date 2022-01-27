@@ -8,8 +8,8 @@ using System.Threading.Tasks;
 
 namespace ExotikaTrial2.DataAccess.Repository.IRepository
 {
-    public interface IAdminRepository : IRepository<WebAppAdmin>
+    public interface IAdminRepository : IRepository<Admin>
     {
-        void Update(WebAppAdmin obj);
+        void Update(Admin obj);
     }
 }

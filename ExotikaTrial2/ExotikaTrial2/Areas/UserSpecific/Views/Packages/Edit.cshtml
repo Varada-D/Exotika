@@ -1,0 +1,48 @@
+﻿@model ExotikaTrial2.Models.Package
+
+@{
+    ViewData["Title"] = "Edit Package Details";
+}
+
+
+
+
+<div style="padding: 10vh;">
+    <div style="padding: 10vh; background-color:rgb(255,255,255); border: 2px solid rgb(0,0,0); border-radius: 12px;">
+<h1>Edit Package Details</h1>
+
+<h4>Package</h4>
+<hr /><br /><br />
+        <form asp-action="Edit">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <input type="hidden" asp-for="PackageId" />
+            <input type="hidden" asp-for="ResortId" />
+            <div class="form-group">
+                <label asp-for="Name" class="control-label"></label>
+                <input asp-for="Name" class="form-control" />
+                <span asp-validation-for="Name" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Description" class="control-label"></label>
+                <input asp-for="Description" class="form-control" />
+                <span asp-validation-for="Description" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Price" class="control-label"></label>
+                <input asp-for="Price" class="form-control" />
+                <span asp-validation-for="Price" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Save" class="btn1"/>
+            </div>
+        </form>
+    
+    <br /><br /><hr /><br /><br />
+    <a asp-action="Index" class="btn1">Back to List</a>
+    </div>
+</div>
+
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

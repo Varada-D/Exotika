@@ -7,6 +7,7 @@ using ExotikaTrial2.DataAccess.Repository;
 using Stripe;
 using ExotikaTrial2.Utility;
 using Microsoft.AspNetCore.Identity.UI.Services;
+using ExotikaTrial2.DataAccess.DbInitializer;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -15,6 +16,7 @@ var builder = WebApplication.CreateBuilder(args);
 builder.Services.AddControllersWithViews();
 builder.Services.AddRazorPages();
 builder.Services.AddScoped<IUnitOfWork, UnitOfWork>();
+builder.Services.AddScoped<IDbInitializer, DbInitializer>();
 builder.Services.AddSingleton<IEmailSender, EmailSender>();
 
 builder.Services.AddDbContext<ExotikaTrial2Context>(options => options.UseSqlServer(
@@ -52,6 +54,8 @@ app.UseRouting();
 
 StripeConfiguration.ApiKey = builder.Configuration.GetSection("Stripe:SecretKey").Get<string>();
 
+SeedDatabase();
+
 app.UseAuthentication();
 app.UseAuthorization();
 
@@ -61,3 +65,14 @@ app.MapControllerRoute(
 	pattern: "{area=Base}/{controller=BasePages}/{action=Index}/{id?}");
 
 app.Run();
+
+
+
+void SeedDatabase()
+{
+    using (var scope = app.Services.CreateScope())
+    {
+        var dbInitializer = scope.ServiceProvider.GetRequiredService<IDbInitializer>();
+        dbInitializer.Initialize();
+    }
+}

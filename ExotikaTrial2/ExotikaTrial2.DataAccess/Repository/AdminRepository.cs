@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 
 namespace ExotikaTrial2.DataAccess.Repository
 {
-    public class AdminRepository : Repository<WebAppAdmin>, IAdminRepository
+    public class AdminRepository : Repository<Admin>, IAdminRepository
     {
         private ExotikaTrial2Context _db;
 
@@ -17,7 +17,7 @@ namespace ExotikaTrial2.DataAccess.Repository
         {
             _db = db;
         }
-        public void Update(WebAppAdmin obj)
+        public void Update(Admin obj)
         {
             _db.Admins.Update(obj);
         }

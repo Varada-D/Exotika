@@ -25,15 +25,26 @@ namespace ExotikaTrial2.Controllers
         // GET: Tourists
         public IActionResult Index()
         {
-            return View();
+            var claimsIdentity = (ClaimsIdentity)User.Identity;
+            var claim = claimsIdentity.FindFirst(ClaimTypes.NameIdentifier);
+            var userDetails = _unitOfWork.Tourist.GetFirstOrDefault(u => u.TouristId == claim.Value);
+            return View(userDetails);
         }
 
         public IActionResult BookingHistory()
         {
             var claimsIdentity = (ClaimsIdentity)User.Identity;
             var claim = claimsIdentity.FindFirst(ClaimTypes.NameIdentifier);
-            var list = _unitOfWork.ResortBooking.GetAll(u => u.TouristId.ToString() == claim.Value);
+            var list = _unitOfWork.ResortBooking.GetAll(u => u.TouristId == claim.Value, includeProperties: "Package,Resort,TouristDetails");
             return View(list);
+        }
+
+        public IActionResult BookingDetail(int? bookingId)
+        {
+            var claimsIdentity = (ClaimsIdentity)User.Identity;
+            var claim = claimsIdentity.FindFirst(ClaimTypes.NameIdentifier);
+            var detail = _unitOfWork.ResortBooking.GetFirstOrDefault(u => u.BookingID == bookingId && u.TouristId == claim.Value, includeProperties: "Package,Resort,TouristDetails");
+            return View(detail);
         }
 
         public IActionResult Feedback(string? forID)
@@ -75,5 +86,16 @@ namespace ExotikaTrial2.Controllers
             }
             return View(obj);
         }
+
+        #region API CALLS
+        [HttpGet]
+        public IActionResult GetAll()
+        {
+            var claimsIdentity = (ClaimsIdentity)User.Identity;
+            var claim = claimsIdentity.FindFirst(ClaimTypes.NameIdentifier);
+            var bookingList = _unitOfWork.ResortBooking.GetAll(u=>u.TouristId==claim.Value, includeProperties: "Package,Resort,TouristDetails");
+            return Json(new { data = bookingList });
+        }
+        #endregion
     }
 }

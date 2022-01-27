@@ -401,3 +401,83 @@ nav .profile-details i{
 ::-webkit-scrollbar-thumb {
 	background: rgb(3,46,87);
 }
+
+
+
+.BlurBg {
+	filter: blur(5px);
+}
+
+#Details, #EditDetails {
+	margin: 20vh auto;
+	padding: 5vh 10vh;
+	width: 85%;
+	background: rgb(255,255,255);
+	border: 2px solid rgb(0,0,0);
+	border-radius: 10px;
+	text-align: justify;
+}
+
+	#Details p {
+		margin-top: 2.5vh;
+		padding: 2vh;
+		border: 2px solid rgb(0,0,0);
+		border-radius: 10px;
+		font-size: 110%;
+		background: rgba(0,0,0, 0.1);
+	}
+
+	#Details img {
+		width: 48%;
+		border-radius: 5px;
+		border: 2px solid rgb(0,0,0);
+	}
+
+#EditDetails {
+	position: absolute;
+	top: 0;
+	margin-left: 6vw;
+	display: none;
+}
+
+	#EditDetails label {
+		float: left;
+		margin-top: 5vh;
+	}
+
+	.btn, #EditDetails input {
+		margin-top: 2.5vh;
+		width: 95%;
+		margin-left: 5%;
+		padding: 2vh;
+		border: 2px solid rgb(0,0,0);
+		border-radius: 10px;
+		font-size: 110%;
+	}
+
+		.btn, #EditDetails input[type=submit], #EditDetails input[type=reset] {
+			width: auto;
+			margin-left: 0;
+			margin-top: 5%;
+			cursor: pointer;
+			transition-duration: 0.5s;
+			margin-right: 20px;
+		}
+
+			.btn:hover, #EditDetails input[type=submit]:hover, #EditDetails input[type=reset]:hover {
+				background-color: rgb(0,146,106);
+				color: rgb(255,255,255);
+			}
+
+table.dataTable thead .sorting:after,
+table.dataTable thead .sorting:before,
+table.dataTable thead .sorting_asc:after,
+table.dataTable thead .sorting_asc:before,
+table.dataTable thead .sorting_asc_disabled:after,
+table.dataTable thead .sorting_asc_disabled:before,
+table.dataTable thead .sorting_desc:after,
+table.dataTable thead .sorting_desc:before,
+table.dataTable thead .sorting_desc_disabled:after,
+table.dataTable thead .sorting_desc_disabled:before {
+	bottom: .5em;
+}

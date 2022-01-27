@@ -1,0 +1,69 @@
+﻿@model IEnumerable<ExotikaTrial2.Models.Contract>
+
+    @{
+    <link rel="stylesheet" href="https://cdn.datatables.net/1.10.22/css/jquery.dataTables.min.css" />
+    <link rel="stylesheet" href="~/css/ongoingContracts.css" runat="server" />
+
+    var type = Context.Request.Query["type"];
+    var products = "text-primary";
+    var services = "text-primary";
+    var all = "text-primary";
+
+    switch (type)
+    {
+        case "products":
+            products = "active text-white";
+            break;
+        case "services":
+            services = "active text-white";
+            break;
+        default:
+            all = "active text-white";
+            break;
+    }
+}
+
+
+<section id="Details">
+    <div class="d-flex justify-content-between pt-4">
+        <div class="p-2 mb-5">
+            <h2 class="text-primary">List of Ongoing Contracts</h2>
+        </div>
+        <div clas="p-2">
+            <ul class="list-group list-group-horizontal-sm">
+                <a style="text-decoration:none" asp-area="UserSpecific" asp-controller="Requirements" asp-action="OngoingContracts" asp-route-type="products">
+                <li class="list-group-item @products">Products</li>
+                </a>
+                <a style="text-decoration:none" asp-area="UserSpecific" asp-controller="Requirements" asp-action="OngoingContracts" asp-route-type="services">
+                <li class="list-group-item @services">Services</li>
+                </a>
+                <a style="text-decoration:none" asp-area="UserSpecific" asp-controller="Requirements" asp-action="OngoingContracts" asp-route-type="all">
+                <li class="list-group-item @all">All</li>
+                </a>
+            </ul>
+        </div>
+    </div>
+    @if (Model.Count() == 0)
+    {
+        <p>No Ongoing Contracts in the given category</p>
+    }
+    else
+    {
+        @foreach (var contract in Model)
+        {
+            <div>
+                @*<img src="~/Images/stationery.jpg" />*@
+                <div class="content row" style="border: 2px solid rgb(0,0,0); border-radius: 12px">
+                    <h2>@contract.Vendor.Name</h2><br>
+                    <p>@contract.Vendor.StreetAddress, @contract.Vendor.City, @contract.Vendor.State - @contract.Vendor.PostalCode</p>
+                    <h3>Phone: @contract.Vendor.PhoneNumber</h3>
+                    <h3>Email: @contract.Vendor.emailAddr</h3><br>
+                    <p class="mb-3">In effect from @contract.StartDate.ToLongDateString() to @contract.EndDate.ToLongDateString()</p>
+                    @*<a href="" class="button">Request Contract Extension</a>*@
+                    <a asp-area="UserSpecific" asp-controller="Requirement" asp-action="ProposalDetails" asp-route-requirementId="@contract.RequirementId" class="btn1 mx-1 my-2" style="width:auto">View Contract Details</a>
+                    <a asp-area="UserSpecific" asp-controller="Resorts" asp-action="UpsertFeedback" asp-route-forId="@contract.VendorId" class="btn1 mx-1 my-2" style="width:auto">Give/ Edit Feedback</a>
+                </div>
+            </div>
+        }
+    }
+</section>

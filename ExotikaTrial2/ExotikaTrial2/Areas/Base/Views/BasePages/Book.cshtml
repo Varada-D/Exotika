@@ -1,0 +1,92 @@
+﻿@model ExotikaTrial2.Models.ResortBookings
+@{
+    Layout = "_Layout";
+} 
+
+
+
+<div style="padding: 10vh;">
+    <div style="padding: 10vh; background-color:rgb(255,255,255); border: 2px solid rgb(0,0,0); border-radius: 12px;">
+<h1>Book Package</h1>
+
+<hr />
+<div class="row">
+    <div class="col-12">
+        <form method="post">
+                <input asp-for="BookingID" type="hidden" />
+                <input asp-for="PackageId" type="hidden" />
+                <input asp-for="ResortId" type="hidden" />
+            <div class="form-floating py-2 col-6">
+                <input asp-for="Package.Name" class="form-control" disabled />
+                <label asp-for="Package.Name" class="control-label"></label>
+            </div>
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-floating py-2 col-6">
+                <input asp-for="noOfBookings" min="1" class="form-control" />
+                <label asp-for="noOfBookings" class="control-label"></label>
+                <span asp-validation-for="noOfBookings" class="text-danger"></span>
+            </div>
+            <div class="form-floating py-2 col-6">
+                <select asp-for="idType" required>
+                    <option value="" disabled selected>Select ID Type</option>
+                    <option value="Aadhar Card">Aadhar Card</option>
+                    <option value="PAN Card">PAN Card</option>
+                    <option value="Passport">Passport</option>
+                    <option value="Election ID">Election ID</option>
+                </select>
+                @*<label asp-for="idType" class="control-label"></label>*@
+                <span asp-validation-for="idType" class="text-danger"></span>
+            </div>
+            <div class="form-floating py-2 col-6">
+                <input asp-for="idNumber" class="form-control" />
+                <label asp-for="idNumber" class="control-label"></label>
+                <span asp-validation-for="idNumber" class="text-danger"></span>
+            </div>
+            <div class="form-floating py-2 col-6">
+                <input asp-for="CheckInDate" class="form-control" />
+                <label asp-for="CheckInDate" class="control-label"></label>
+                <span asp-validation-for="CheckInDate" class="text-danger"></span>
+            </div>
+            <div class="form-floating py-2 col-6">
+                <input asp-for="CheckOutDate" class="form-control"  onchange="CheckDate()" />
+                <label asp-for="CheckOutDate" class="control-label"></label>
+                <span asp-validation-for="CheckOutDate" class="text-danger"></span>
+            </div>
+            <br /><br />
+            <div class="form-floating">
+                <button type="submit" class="btn1" onclick="return ValidateInput()">Create</button>
+            </div>
+        </form>
+    </div>
+</div>
+    <br /><br /><hr /><br /><br />
+    <a asp-action="ResortsList" class="btn1">Cancel</a>
+</div>
+</div>
+
+
+
+
+
+
+@section Scripts{
+        <partial name="_ValidationScriptsPartial"/>
+    <script>
+        function CheckDate() {
+            var d1 = new Date(document.getElementById("CheckIn").value);
+            var d2 = new Date(document.getElementById("CheckOut").value);
+            console.log(d1);
+            console.log(d2);
+                if (d1.getTime() > d2.getTime()) {
+                    Swal.fire({
+                    icon: 'error',
+                    title: 'Oops...',
+                    text: 'Check-out date must fall after Check-in date. Please check the dates!',
+                })
+                return false;
+                document.getElementById("CheckOut").value = "";
+            }
+            return true;
+        }
+    </script>
+}

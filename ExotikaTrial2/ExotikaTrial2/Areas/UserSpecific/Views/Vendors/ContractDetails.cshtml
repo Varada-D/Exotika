@@ -1,0 +1,63 @@
+﻿@using ExotikaTrial2.Utility
+@model ExotikaTrial2.Models.Contract
+
+@{
+    ViewData["Title"] = "Requirements Details";
+    Layout = "_DashboardLayout";
+}
+
+
+<div style="padding: 10vh;">
+    <div style="padding: 10vh; background-color:rgb(255,255,255); border: 2px solid rgb(0,0,0); border-radius: 12px;">
+        <h1>Requirement Details</h1>
+
+        <div>
+            <br /><br /><hr /><br><br />
+            <div class="row">
+                <div class="mb-5">
+                    <h2>@Html.DisplayNameFor(model => model.Requirement.Resort.Name)</h2>
+                    <p>@Html.DisplayFor(model => model.Requirement.Resort.Name), @Html.DisplayFor(model => model.Requirement.Resort.City), @Html.DisplayFor(model => model.Requirement.Resort.State) - @Html.DisplayFor(model => model.Requirement.Resort.PostalCode)</p>
+                </div>
+                <div class="mb-5">
+                    <h2>@Html.DisplayNameFor(model => model.Requirement.Type)</h2>
+                    <p>@Html.DisplayFor(model => model.Requirement.Category)</p>
+                </div>
+                <div class="mb-5">
+                    <h2>@Html.DisplayNameFor(model => model.Requirement.requirementName)</h2>
+                    <p>@Html.DisplayFor(model => model.Requirement.requirementName)</p>
+                </div>
+                <div class="mb-5">
+                    <h2>@Html.DisplayNameFor(model => model.Requirement.Description)</h2>
+                    <p>@Html.DisplayFor(model => model.Requirement.Description)</p>
+                </div>
+                <div class="mb-5">
+                    @if (Model.Requirement.Type == "Service")
+                    {
+                        <h2>@Html.DisplayNameFor(model => model.Requirement.Duration)</h2>
+                        <p>@Html.DisplayFor(model => model.Requirement.Duration)</p>
+                    }
+                    else
+                    {
+                        <h2>@Html.DisplayNameFor(model => model.Requirement.Quantity)</h2>
+                        <p>@Html.DisplayFor(model => model.Requirement.Quantity)</p>
+                    }
+                </div>
+                <div class="mb-5">
+                    <h2>@Html.DisplayNameFor(model => model.StartDate)</h2>
+                    <p>@Html.DisplayFor(model => model.EndDate)</p>
+                </div>
+                <div class="mb-5">
+                    <h2>@Html.DisplayNameFor(model => model.CreateDate)</h2>
+                    <p>@Html.DisplayFor(model => model.CreateDate)</p>
+                </div>
+                <div class="mb-5">
+                    <h2>@Html.DisplayNameFor(model => model.Status)</h2>
+                    <p>@Html.DisplayFor(model => model.Status)</p>
+                </div>
+            </div>
+        </div>
+        <br /><br /><hr /><br /><br />
+        <a href="@Model.ProposalFile" class="btn1" target="_blank">View Proposal File</a>
+        <a asp-action="ContractList" class="btn1">Back to List</a>
+    </div>
+</div>

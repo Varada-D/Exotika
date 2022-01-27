@@ -22,19 +22,30 @@ namespace ExotikaTrial2.Models
 
 		[DataType(DataType.Date)]
 		public DateTime CheckOutDate { get; set; }
-		//public int? ResortId { get; set; }
-		//[ForeignKey("ResortId")]
-		//[ValidateNever]
-		//public Resort Resort { get; set; }
+		
+		public string? ResortId { get; set; }
+		[ForeignKey("ResortId")]
+		[ValidateNever]
+		public Resort Resort { get; set; }
 
 		public string? TouristId { get; set; }
 		[ForeignKey("TouristId")]
 		[ValidateNever]
 		public Tourist TouristDetails { get; set; }
-		public string? PackageId { get; set; }
+		public int? PackageId { get; set; }
 		[ForeignKey("PackageId")]
 		[ValidateNever]
 		public Package Package { get; set; }
+
+		[DataType(DataType.Date)]
+		public DateTime CreateDate { get; set; }
+
+
+		// Stripe - Payment Related
+		public string? TrackingNumber { get; set; }
+		public string? Carrier { get; set; }
+		public string? SessionId { get; set; }
+		public string? PaymentIntentId { get; set; }
 
 	}
 }

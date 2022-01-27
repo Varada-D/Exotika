@@ -8,10 +8,15 @@ using Microsoft.EntityFrameworkCore;
 using ExotikaTrial2.Data;
 using ExotikaTrial2.DataAccess.Repository.IRepository;
 using ExotikaTrial2.Models;
+using Microsoft.AspNetCore.Authorization;
+using ExotikaTrial2.Utility;
+using ExotikaTrial2.Models.ViewModels;
+using System.Security.Claims;
 
 namespace ExotikaTrial2.Controllers
 {
     [Area("UserSpecific")]
+    [Authorize(Roles = SD.Role_User_Resort)]
     public class ResortsController : Controller
     {
         private readonly IUnitOfWork _unitOfWork;
@@ -21,140 +26,68 @@ namespace ExotikaTrial2.Controllers
             _unitOfWork = unitOfWork;
         }
 
-        // GET: Resorts
-        public IActionResult Index()
+        public IActionResult ResortOwnerDashboard()
         {
-            return View();
-        }
-
-        // GET: Resorts/Details/5
-        public IActionResult Details(string? id)
-        {
-            if (id == null)
+            var claimsIdentity = (ClaimsIdentity)User.Identity;
+            var claim = claimsIdentity.FindFirst(ClaimTypes.NameIdentifier);
+            var stats = new UserStatsVM()
             {
-                return NotFound();
-            }
-
-            var resort = _unitOfWork.Resort
-                .GetFirstOrDefault(m => m.ResortId == id);
-            if (resort == null)
-            {
-                return NotFound();
-            }
-
-            return View(resort);
+                registrations = _unitOfWork.ResortBooking.GetAll(u => u.ResortId == claim.Value).Count(),
+            };
+            return View(stats);
         }
 
-        // GET: Resorts/Create
-        public IActionResult Create()
+        public IActionResult UpsertFeedback(string? forId)
         {
-            return View();
+            var claimsIdentity = (ClaimsIdentity)User.Identity;
+            var claim = claimsIdentity.FindFirst(ClaimTypes.NameIdentifier);
+            var fbk = _unitOfWork.Feedback.GetFirstOrDefault(u => u.forId == forId && u.byId == claim.Value, includeProperties: "vendor,resort");
+            Feedback feedback = new();
+            if (fbk == null)
+            {
+                feedback.forId = forId;
+                feedback.byId = claim.Value;
+                feedback.resort = _unitOfWork.Resort.GetFirstOrDefault(u => u.ResortId == claim.Value);
+                feedback.vendor = _unitOfWork.Vendor.GetFirstOrDefault(u => u.VendorId == forId);
+                return View(feedback);
+            }
+            else return View(fbk);
         }
 
-        // POST: Resorts/Create
-        // To protect from overposting attacks, enable the specific properties you want to bind to.
-        // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
+        //POST
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public IActionResult Create(Resort resort)
+        public IActionResult UpsertFeedback(Feedback feedback)
         {
+            var claimsIdentity = (ClaimsIdentity)User.Identity;
+            var claim = claimsIdentity.FindFirst(ClaimTypes.NameIdentifier);
             if (ModelState.IsValid)
             {
-                _unitOfWork.Resort.Add(resort);
+                if (feedback.Id == 0)
+                {
+                    feedback.lastUpdated = DateTime.Now;
+                    feedback.resort = _unitOfWork.Resort.GetFirstOrDefault(u => u.ResortId == feedback.byId);
+                    feedback.vendor = _unitOfWork.Vendor.GetFirstOrDefault(u => u.VendorId == feedback.forId);
+                    _unitOfWork.Feedback.Add(feedback);
+                    TempData["Success"] = "Feedback Posted Successfully!";
+                }
+                else
+                {
+                    if (feedback.byId == claim.Value)
+                    {
+                        feedback.lastUpdated = DateTime.Now;
+                        feedback.resort = _unitOfWork.Resort.GetFirstOrDefault(u => u.ResortId == feedback.byId);
+                        feedback.vendor = _unitOfWork.Vendor.GetFirstOrDefault(u => u.VendorId == feedback.forId);
+                        _unitOfWork.Feedback.Update(feedback);
+                        TempData["Success"] = "Feedback Updated Successfully!";
+                    }
+                }
                 _unitOfWork.Save();
-                return RedirectToAction(nameof(Index));
+                return RedirectToAction("OngoingContracts", "Requirements");   //return RedirectToAction("Index", "ControllerName"); if we want to go to some other controller
             }
-            return View(resort);
+            TempData["Error"] = "An error occured. Please try later.";
+            return View(feedback);
         }
 
-        // GET: Resorts/Edit/5
-        public IActionResult Edit(string? id)
-        {
-            if (id == null)
-            {
-                return NotFound();
-            }
-
-            var resort = _unitOfWork.Resort.GetFirstOrDefault(u=>u.ResortId==id);
-            if (resort == null)
-            {
-                return NotFound();
-            }
-            return View(resort);
-        }
-
-        // POST: Resorts/Edit/5
-        // To protect from overposting attacks, enable the specific properties you want to bind to.
-        // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
-        [HttpPost]
-        [ValidateAntiForgeryToken]
-        public IActionResult Edit(string id, Resort resort)
-        {
-            if (id != resort.ResortId)
-            {
-                return NotFound();
-            }
-
-            if (ModelState.IsValid)
-            {
-                //try
-                //{
-                    _unitOfWork.Resort.Update(resort);
-                    _unitOfWork.Save();
-                //}
-                //catch (DbUpdateConcurrencyException)
-                //{
-                //    if (!ResortExists(resort.ResortId))
-                //    {
-                //        return NotFound();
-                //    }
-                //    else
-                //    {
-                //        throw;
-                //    }
-                //}
-                return RedirectToAction(nameof(Index));
-            }
-            return View(resort);
-        }
-
-        // GET: Resorts/Delete/5
-        public IActionResult Delete(string? id)
-        {
-            if (id == null)
-            {
-                return NotFound();
-            }
-
-            var resort = _unitOfWork.Resort
-                .GetFirstOrDefault(m => m.ResortId == id);
-            if (resort == null)
-            {
-                return NotFound();
-            }
-
-            return View(resort);
-        }
-
-        // POST: Resorts/Delete/5
-        [HttpPost, ActionName("Delete")]
-        [ValidateAntiForgeryToken]
-        public IActionResult DeleteConfirmed(string id)
-        {
-            var resort = _unitOfWork.Resort.GetFirstOrDefault(u=>u.ResortId==id);
-            _unitOfWork.Resort.Remove(resort);
-            _unitOfWork.Save();
-            return RedirectToAction(nameof(Index));
-        }
-
-        private bool ResortExists(string id)
-        {
-            var res = _unitOfWork.Resort.GetFirstOrDefault(e => e.ResortId == id);
-            if (res != null)
-            {
-                return true;
-            }
-            return false;
-        }
     }
 }

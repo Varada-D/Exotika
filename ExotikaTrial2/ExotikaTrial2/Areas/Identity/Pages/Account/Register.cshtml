@@ -1,8 +1,16 @@
 ﻿@page
+@using ExotikaTrial2.Utility
 @model RegisterModel
 @{
     ViewData["Title"] = "Register";
-    Layout = "/Views/Shared/_Layout.cshtml";
+    @if (User.IsInRole(SD.Role_Admin))
+    {
+        Layout = "/Views/Shared/_DashboardLayout.cshtml";
+    }
+    else
+    {
+        Layout = "/Views/Shared/_Layout.cshtml";
+    }
 }
 
 <div class="form-container">
@@ -60,7 +68,7 @@
                 <span asp-validation-for="Input.ConfirmPassword" class="text-danger"></span>
             </div>
                 <div class="form-floating py-2 col-12">
-                    <select asp-for="Input.Role" asp-items="@Model.Input.RoleList" class="form-select">
+                    <select asp-for="Input.Role" asp-items="@Model.Input.RoleList" class="form-select" required>
                         <option disabled selected>--Select Role--</option>
                     </select>
                     <label asp-for="Input.Role"></label>

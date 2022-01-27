@@ -19,5 +19,8 @@ namespace ExotikaTrial2.Models
         public string? State { get; set; }
         public string? PostalCode { get; set; }
         public string? Role { get; set; }
+
+        [DataType(DataType.Date)]
+        public DateTime? CreateDate { get; set; }
     }
 }

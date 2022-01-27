@@ -8,7 +8,7 @@ namespace ExotikaTrial2.Models
     public class Package
     {
         [Key]
-        public string PackageId { get; set; }
+        public int PackageId { get; set; }
 
         [Required]
         public string Name { get; set; }
@@ -20,8 +20,5 @@ namespace ExotikaTrial2.Models
         public int Price { get; set; }
 
         public string? ResortId { get; set; }
-        [ForeignKey("ResortId")]
-        [ValidateNever]
-        public Resort Resort { get; set; }
     }
 }

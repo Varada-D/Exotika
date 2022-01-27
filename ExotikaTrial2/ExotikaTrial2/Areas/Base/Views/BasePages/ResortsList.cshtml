@@ -1,0 +1,159 @@
+﻿@model IEnumerable<ExotikaTrial2.Models.Resort>
+@{
+    Layout = "_Layout";
+    <link rel="stylesheet" href="~/css/VisitorPortalCSS.css"  runat="server"/>
+	
+}
+			<p style="font-size:145%;">Search for a city to view in and nearby resorts, attractions, local handicrafts and fairs/festivals.</p>
+			<br>
+			<form>
+				<label for="stateSelect">States and UTs:</label>
+				<select name="state" id="stateSelect" onchange="makeSubmenu(this.value)" style="width:92.5%;">
+					<option value="" disabled selected>Choose State</option>
+					<option value="andaman_and_nicobar">Andaman and Nicobar Islands</option>
+					<option value="andhra_pradesh">Andhra Pradesh</option>
+					<option value="arunanchal_pradesh">Arunanchal Pradesh</option>
+					<option value="assam">Assam</option>
+					<option value="bihar">Bihar</option>
+					<option value="chandigarh">Chandigarh</option>
+					<option value="chhattisgarh">Chhattisgarh</option>
+					<option value="dadra_nagar_haveli">Dadra and Nagar Haveli and Daman and Diu</option>
+					<option value="delhi">Delhi</option>
+					<option value="goa">Goa</option>
+					<option value="gujrat">Gujrat</option>
+					<option value="haryana">Haryana</option>
+					<option value="himachal_pradesh">Himachal Pradesh</option>
+					<option value="jammu_and_kashmir">Jammu and Kashmir</option>
+					<option value="jharkhand">Jharkhand</option>
+					<option value="karnataka">Karnataka</option>
+					<option value="kerala">Kerala</option>
+					<option value="ladakh">Ladakh</option>
+					<option value="lakshadweep">Lakshadweep</option>
+					<option value="madhya_pradesh">Madhya Pradesh</option>
+					<option value="maharashtra">Maharashtra</option>
+					<option value="manipur">Manipur</option>
+					<option value="meghalaya">Meghalaya</option>
+					<option value="mizoram">Mizoram</option>
+					<option value="nagaland">Nagaland</option>
+					<option value="odisha">Odisha</option>
+					<option value="puducherry">Puducherry</option>
+					<option value="punjab">Punjab</option>
+					<option value="rajasthan">Rajasthan</option>
+					<option value="sikkim">Sikkim</option>
+					<option value="tamil_nadu">Tamil Nadu</option>
+					<option value="telangana">Telangana</option>
+					<option value="tripura">Tripura</option>
+					<option value="uttarakhand">Uttarakhand</option>
+					<option value="uttar_pradesh">Uttar Pradesh</option>
+					<option value="west_bengal">West Bengal</option>
+				</select>
+				<br><br>
+				<label for="citySelect">City:</label>
+				<select id="citySelect" size="1" name="city" style="width:92.5%;">
+					<option value="" disabled selected>Choose City</option>
+				</select>
+				<br><br>
+				<input style="margin-left: 20px;" type="submit" value="Search">
+			</form>
+				<br><br><br><br>
+			
+			<section id="SearchResults">
+				<div id="tabs">
+					<div class="nav nav-tabs" id="nav-tab" role="tablist">
+						<button class="nav-link active" id="nav-resorts" data-toggle="tab" data-target="#nav-resorts" type="button" role="tab" aria-controls="nav-resorts" aria-selected="true">Resorts</button>
+						<button class="nav-link" id="nav-fests" data-toggle="tab" data-target="#nav-fests" type="button" role="tab" aria-controls="nav-fests" aria-selected="false">Fairs and Festivals Calender</button>
+						<button class="nav-link" id="nav-handicrafts" data-toggle="tab" data-target="#nav-handicrafts" type="button" role="tab" aria-controls="nav-handicrafts" aria-selected="false">Local Handicrafts</button>
+					</div>
+				</div>
+				<div class="tab-content" id="nav-tabContent">
+					<div class="tab-pane fade show active" id="nav-resorts-content" role="tabpanel" aria-labelledby="nav-resorts">
+						@foreach(var resort in Model){
+						<div class="content nav-resorts-content-div">
+							<img src="Images/CrescentResort.jpg" alt="Image of the Resort: Cresent Resort"/>
+							<div class="nav-resorts-content-info">
+								<h2>@resort.Name</h2><br>
+								<p>@resort.StreetAddress, @resort.City, @resort.State - @resort.PostalCode</p>
+								<h3>Phone: @resort.PhoneNumber</h3>
+								<h3>Email: @resort.emailAddr</h3><br>
+								<a asp-action="ResortDetails" asp-route-resortId="@resort.ResortId" target="_blank">View More</a>
+							</div>
+						</div>
+						}
+						<div class="content nav-resorts-content-div">
+							<img src="Images/GlobalResort.jpg" alt="Image of the Resort"/>
+							<div class="nav-resorts-content-info">
+								<h2>Global Resort</h2><br>
+								<p>New, Sehore Bypass Rd, Sehore, Madhya Pradesh 466001, Sehore, India</p>
+								<h3>Phone: 9586730210</h3>
+								<h3>Email: gm@globalresort.in</h3><br>
+								<a href="ResortPage.html" class="button" target="_blank">View More</a>
+							</div>
+						</div>
+					</div>
+					<div class="tab-pane fade" id="nav-fests-content" role="tabpanel" aria-labelledby="nav-fests">
+						<div class="content nav-fests-content-div">
+							<img src="Images/festival.jpg" alt="Image of the Festival"/>
+							<div class="nav-fests-content-info">
+								<h2>Festival Name</h2>
+								<h3>Date or Range</h3>
+								<p>Short Description</p>
+							</div>
+						</div>
+						<div class="content nav-fests-content-div">
+							<img src="Images/festival.jpg" alt="Image of the Festival"/>
+								<div class="nav-fests-content-info">
+								<h2>Festival Name</h2>
+								<h3>Date or Range</h3>
+								<p>Short Description</p>
+							</div>
+						</div>
+					</div>
+					<div class="tab-pane fade" id="nav-handicrafts-content" role="tabpanel" aria-labelledby="nav-handicrafts">
+						<div class="content nav-handicrafts-content-div">
+							<img src="Images/handicraft.jpg" alt="Image of the Handicraft"/>
+							<div class="nav-handicrafts-content-info">
+								<h2>Handicraft Name</h2>
+								<p>Short Description</p>
+								<h3>Dealer Name</h3>
+								<p>Dealer Details</p>
+							</div>
+						</div>
+						<div class="content nav-handicrafts-content-div">
+							<img src="Images/handicraft.jpg" alt="Image of the Handicraft"/>
+							<div class="nav-handicrafts-content-info">
+								<h2>Handicraft Name</h2>
+								<p>Short Description</p>
+								<h3>Dealer Name</h3>
+								<p>Dealer Details</p>
+							</div>
+						</div>
+					</div>
+				</div>
+			</section>
+
+
+
+@section Scripts{
+		<script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+		<script>
+			$(function () {
+				"use strict";
+				$(".tab-content div").hide();
+				$("#nav-resorts-content").show();
+				$(".nav-resorts-content-div").show();
+				$(".nav-resorts-content-info").show();
+				$(".nav-link").on("click", function () {
+					var myID = $(this).attr("id");
+					$(this).removeClass("active").siblings().addClass("active");
+					$(".tab-content div").hide();
+					console.log(myID);
+					console.log("#" + myID + "-content");
+					console.log("." + myID + "-content-div");
+					console.log("." + myID + "-content-info");
+	        			$("#" + myID + "-content").fadeIn(1000);
+	        			$("." + myID + "-content-div").fadeIn(1000);
+	        			$("." + myID + "-content-info").fadeIn(1000);
+   				 });
+			});
+		</script>
+}

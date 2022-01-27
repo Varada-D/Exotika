@@ -2,7 +2,6 @@ C:\Users\varad\source\repos\ExotikaTrial2\ExotikaTrial2.Utility\bin\Debug\net6.0
 C:\Users\varad\source\repos\ExotikaTrial2\ExotikaTrial2.Utility\bin\Debug\net6.0\ExotikaTrial2.Utility.dll
 C:\Users\varad\source\repos\ExotikaTrial2\ExotikaTrial2.Utility\bin\Debug\net6.0\ref\ExotikaTrial2.Utility.dll
 C:\Users\varad\source\repos\ExotikaTrial2\ExotikaTrial2.Utility\bin\Debug\net6.0\ExotikaTrial2.Utility.pdb
-C:\Users\varad\source\repos\ExotikaTrial2\ExotikaTrial2.Utility\obj\Debug\net6.0\ExotikaTrial2.Utility.csproj.AssemblyReference.cache
 C:\Users\varad\source\repos\ExotikaTrial2\ExotikaTrial2.Utility\obj\Debug\net6.0\ExotikaTrial2.Utility.GeneratedMSBuildEditorConfig.editorconfig
 C:\Users\varad\source\repos\ExotikaTrial2\ExotikaTrial2.Utility\obj\Debug\net6.0\ExotikaTrial2.Utility.AssemblyInfoInputs.cache
 C:\Users\varad\source\repos\ExotikaTrial2\ExotikaTrial2.Utility\obj\Debug\net6.0\ExotikaTrial2.Utility.AssemblyInfo.cs
@@ -10,3 +9,4 @@ C:\Users\varad\source\repos\ExotikaTrial2\ExotikaTrial2.Utility\obj\Debug\net6.0
 C:\Users\varad\source\repos\ExotikaTrial2\ExotikaTrial2.Utility\obj\Debug\net6.0\ExotikaTrial2.Utility.dll
 C:\Users\varad\source\repos\ExotikaTrial2\ExotikaTrial2.Utility\obj\Debug\net6.0\ref\ExotikaTrial2.Utility.dll
 C:\Users\varad\source\repos\ExotikaTrial2\ExotikaTrial2.Utility\obj\Debug\net6.0\ExotikaTrial2.Utility.pdb
+C:\Users\varad\source\repos\ExotikaTrial2\ExotikaTrial2.Utility\obj\Debug\net6.0\ExotikaTrial2.Utility.csproj.AssemblyReference.cache

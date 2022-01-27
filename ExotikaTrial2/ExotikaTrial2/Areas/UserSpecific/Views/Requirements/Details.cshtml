@@ -1,0 +1,94 @@
+﻿@using ExotikaTrial2.Utility
+@model ExotikaTrial2.Models.Requirement
+
+@{
+    ViewData["Title"] = "Requirements Details";
+}
+
+
+<div style="padding: 10vh;">
+    <div style="padding: 10vh; background-color:rgb(255,255,255); border: 2px solid rgb(0,0,0); border-radius: 12px;">
+        <h1>Requirement Details</h1>
+
+        <div>
+            <br /><br /><hr /><br><br />
+            <div class="row">
+                <div class="mb-5">
+                    <h2>
+                        @Html.DisplayNameFor(model => model.Type)
+                    </h2>
+                    <p>
+                        @Html.DisplayFor(model => model.Type)
+                    </p>
+                </div>
+                <div class="mb-5">
+                    <h2>
+                        @Html.DisplayNameFor(model => model.Category)
+                    </h2>
+                    <p>
+                        @Html.DisplayFor(model => model.Category)
+                    </p>
+                </div>
+                <div class="mb-5">
+                    <h2>
+                        @Html.DisplayNameFor(model => model.Description)
+                    </h2>
+                    <p>
+                        @Html.DisplayFor(model => model.Description)
+                    </p>
+                </div>
+                <div class="mb-5">
+                    @if (Model.Type == "Service")
+                    {
+                        <h2>
+                            @Html.DisplayNameFor(model => model.Duration)
+                        </h2>
+                        <p>
+                            @Html.DisplayFor(model => model.Duration)
+                        </p>
+                    }
+                    else
+                    {
+                        <h2>
+                            @Html.DisplayNameFor(model => model.Quantity)
+                        </h2>
+                        <p>
+                            @Html.DisplayFor(model => model.Quantity)
+                        </p>
+                    }
+                </div>
+                <div class="mb-5">
+                    <h2>
+                        @Html.DisplayNameFor(model => model.lastUpdated)
+                    </h2>
+                    <p>
+                        @Html.DisplayFor(model => model.lastUpdated)
+                    </p>
+                </div>
+                <div class="mb-5">
+                    <h2>
+                        @Html.DisplayNameFor(model => model.requiredBy)
+                    </h2>
+                    <p>
+                        @Html.DisplayFor(model => model.requiredBy)
+                    </p>
+                </div>
+                <div class="mb-5">
+                    <h2>
+                        @Html.DisplayNameFor(model => model.Status)
+                    </h2>
+                    <p>
+                        @Html.DisplayFor(model => model.Status)
+                    </p>
+                </div>
+            </div>
+        </div>
+        <br /><br /><hr /><br /><br />
+        @if (Model.Status == SD.Requirement_Posted)
+        {
+            <a asp-action="UpsertRequirement" asp-route-requirementId="@Model?.RequirementId" class="btn1">Edit</a>
+        }
+        <a asp-action="RequirementsList" class="btn1">Back to List</a>
+            <a asp-action="ProposalList" asp-route-requirementId="@Model?.RequirementId" class="btn1">View Proposals</a>
+    </div>
+</div>

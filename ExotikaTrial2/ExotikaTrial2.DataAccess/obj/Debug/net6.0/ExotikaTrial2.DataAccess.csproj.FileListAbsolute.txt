@@ -1,8 +1,8 @@
+C:\Users\varad\source\repos\ExotikaTrial2\ExotikaTrial2.DataAccess\obj\Debug\net6.0\ExotikaTrial2.DataAccess.csproj.AssemblyReference.cache
 C:\Users\varad\source\repos\ExotikaTrial2\ExotikaTrial2.DataAccess\obj\Debug\net6.0\ExotikaTrial2.DataAccess.GeneratedMSBuildEditorConfig.editorconfig
 C:\Users\varad\source\repos\ExotikaTrial2\ExotikaTrial2.DataAccess\obj\Debug\net6.0\ExotikaTrial2.DataAccess.AssemblyInfoInputs.cache
 C:\Users\varad\source\repos\ExotikaTrial2\ExotikaTrial2.DataAccess\obj\Debug\net6.0\ExotikaTrial2.DataAccess.AssemblyInfo.cs
 C:\Users\varad\source\repos\ExotikaTrial2\ExotikaTrial2.DataAccess\obj\Debug\net6.0\ExotikaTrial2.DataAccess.csproj.CoreCompileInputs.cache
-C:\Users\varad\source\repos\ExotikaTrial2\ExotikaTrial2.DataAccess\obj\Debug\net6.0\ExotikaTrial2.DataAccess.csproj.AssemblyReference.cache
 C:\Users\varad\source\repos\ExotikaTrial2\ExotikaTrial2.DataAccess\bin\Debug\net6.0\ExotikaTrial2.DataAccess.deps.json
 C:\Users\varad\source\repos\ExotikaTrial2\ExotikaTrial2.DataAccess\bin\Debug\net6.0\ExotikaTrial2.DataAccess.runtimeconfig.json
 C:\Users\varad\source\repos\ExotikaTrial2\ExotikaTrial2.DataAccess\bin\Debug\net6.0\ExotikaTrial2.DataAccess.dll
@@ -15,3 +15,5 @@ C:\Users\varad\source\repos\ExotikaTrial2\ExotikaTrial2.DataAccess\obj\Debug\net
 C:\Users\varad\source\repos\ExotikaTrial2\ExotikaTrial2.DataAccess\obj\Debug\net6.0\ref\ExotikaTrial2.DataAccess.dll
 C:\Users\varad\source\repos\ExotikaTrial2\ExotikaTrial2.DataAccess\obj\Debug\net6.0\ExotikaTrial2.DataAccess.pdb
 C:\Users\varad\source\repos\ExotikaTrial2\ExotikaTrial2.DataAccess\obj\Debug\net6.0\ExotikaTrial2.DataAccess.genruntimeconfig.cache
+C:\Users\varad\source\repos\ExotikaTrial2\ExotikaTrial2.DataAccess\bin\Debug\net6.0\ExotikaTrial2.Utility.dll
+C:\Users\varad\source\repos\ExotikaTrial2\ExotikaTrial2.DataAccess\bin\Debug\net6.0\ExotikaTrial2.Utility.pdb

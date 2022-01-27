@@ -16,6 +16,7 @@ namespace ExotikaTrial2.Data
         {
         }
 
+        public DbSet<ApplicationUser> ApplicationUsers { get; set; }
         public DbSet<Employee> Employees { get; set; }
 
         public DbSet<Contract> Contracts { get; set; }
@@ -26,9 +27,10 @@ namespace ExotikaTrial2.Data
 
         public DbSet<Vendor> Vendors { get; set; }
         public DbSet<HandicraftDealer> HandicraftDealers { get; set; }
-        public DbSet<WebAppAdmin> Admins { get; set; }
+        public DbSet<Admin> Admins { get; set; }
 
         public DbSet<ResortBookings> ResortBookings { get; set; }
+        public DbSet<Requirement> Requirements { get; set; }
 
         public DbSet<Package> Packages { get; set; }
         public DbSet<Feedback> Feedbacks { get; set; }
