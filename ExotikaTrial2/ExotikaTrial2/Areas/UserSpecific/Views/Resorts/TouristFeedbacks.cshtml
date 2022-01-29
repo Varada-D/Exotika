@@ -1,0 +1,56 @@
+﻿@model IEnumerable<ExotikaTrial2.Models.Feedback>
+
+    @{
+    <link rel="stylesheet" href="~/css/feedback.css" runat="server" />
+    <link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+}
+
+
+<div class="registrationGlance">
+    <h1>Reviews</h1>
+    <div class="overview-boxes">
+        @foreach (var fbk in Model)
+        {
+            <div class="comment-part" style="width:100%">
+                <div class="user-img-part">
+                    @*
+                        <div class="user-img">
+                        <img src="https://st3.depositphotos.com/1037987/15097/i/600/depositphotos_150975580-stock-photo-portrait-of-businesswoman-in-office.jpg">
+                        </div>*@
+                    <div class="user-text">
+                        @if ((Convert.ToInt32((DateTime.Now - fbk.lastUpdated).TotalDays)) == 0)
+                        {
+                            <h4>Today</h4>
+                        }
+                        else
+                        {
+                            if ((Convert.ToInt32((DateTime.Now - fbk.lastUpdated).TotalDays)) == 1)
+                            {
+                                <h4>Yesterday</h4>
+                            }
+                            else
+                            {
+                                <h4>@(Convert.ToInt32((DateTime.Now - fbk.lastUpdated).TotalDays)) days ago</h4>
+                            }
+                        }
+                        <p>@fbk.tourist.Name</p>
+                        <span>@fbk.tourist.City, @fbk.tourist.State</span>
+                    </div>
+                    <div style="clear: both;"></div>
+                </div>
+                <div class="comment">
+                    @for (var i = 0; i < fbk.Rating; i++)
+                    {
+                        <i aria-hidden="true" class="fa fa-star"></i>
+                    }
+                    @for (var i = 0; i < (5 - fbk.Rating); i++)
+                    {
+                        <i aria-hidden="true" class="fa fa-star-o"></i>
+                    }
+                    <p>@fbk.FeedbackMsg</p><br>
+                </div>
+                <div style="clear: both;"></div>
+            </div>
+        }
+    </div>
+</div>

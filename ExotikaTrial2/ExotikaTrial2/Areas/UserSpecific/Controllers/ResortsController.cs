@@ -69,6 +69,7 @@ namespace ExotikaTrial2.Controllers
                     feedback.resort = _unitOfWork.Resort.GetFirstOrDefault(u => u.ResortId == feedback.byId);
                     feedback.vendor = _unitOfWork.Vendor.GetFirstOrDefault(u => u.VendorId == feedback.forId);
                     _unitOfWork.Feedback.Add(feedback);
+                    _unitOfWork.Save();
                     TempData["Success"] = "Feedback Posted Successfully!";
                 }
                 else
@@ -79,14 +80,28 @@ namespace ExotikaTrial2.Controllers
                         feedback.resort = _unitOfWork.Resort.GetFirstOrDefault(u => u.ResortId == feedback.byId);
                         feedback.vendor = _unitOfWork.Vendor.GetFirstOrDefault(u => u.VendorId == feedback.forId);
                         _unitOfWork.Feedback.Update(feedback);
+                        _unitOfWork.Save();
                         TempData["Success"] = "Feedback Updated Successfully!";
                     }
                 }
-                _unitOfWork.Save();
                 return RedirectToAction("OngoingContracts", "Requirements");   //return RedirectToAction("Index", "ControllerName"); if we want to go to some other controller
             }
             TempData["Error"] = "An error occured. Please try later.";
             return View(feedback);
+        }
+
+
+
+        public IActionResult TouristFeedbacks()
+        {
+            var claimsIdentity = (ClaimsIdentity)User.Identity;
+            var claim = claimsIdentity.FindFirst(ClaimTypes.NameIdentifier);
+            var feedbackList = _unitOfWork.Feedback.GetAll(u => u.forId == claim.Value, includeProperties: "tourist,resort");
+            if (feedbackList == null)
+            {
+                return NotFound();
+            }
+            return View(feedbackList);
         }
 
     }

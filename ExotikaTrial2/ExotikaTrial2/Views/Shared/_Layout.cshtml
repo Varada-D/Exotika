@@ -1,4 +1,6 @@
-﻿
+﻿@using Microsoft.AspNetCore.Identity
+@inject SignInManager<IdentityUser> SignInManager
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -8,8 +10,8 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <link rel="icon" href="~/Images/Logo.png" type="image/png">
     <link rel="stylesheet" href="~/CSS/Style.css" runat="server" />
-    <link rel="stylesheet" href="~/css/FormCSS.css" runat="server"/>
-    <link rel="stylesheet" href="~/css/bootswatch.css" runat="server"/>
+    <link rel="stylesheet" href="~/css/FormCSS.css" runat="server" />
+    <link rel="stylesheet" href="~/css/bootswatch.css" runat="server" />
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.css" />
 </head>
 
@@ -17,21 +19,30 @@
 <body>
     <header id="header">
         <div>
-            <a asp-area="Base" asp-controller="BasePages" asp-action="Index" tabindex="1"><img src="~/Images/ExotikaLogo.png" id="logo" alt="Exotika: A Complete Marketplace for Resorts Pan India" /></a>
+            @if (!SignInManager.IsSignedIn(User)){
+                <a asp-area="Base" asp-controller="BasePages" asp-action="Index" tabindex="1"><img src="~/Images/ExotikaLogo.png" id="logo" alt="Exotika: A Complete Marketplace for Resorts Pan India" /></a>
+            }
+            else
+            {
+                <img src="~/Images/ExotikaLogo.png" id="logo" alt="Exotika: A Complete Marketplace for Resorts Pan India" />
+            }
             <div id="btns-lg-screen"><partial name="_LoginPartial"></partial></div>
             @*<a href="SignIn.html" class="SignInRegisterBtn" id="SignInRegisterBtnLS">Sign In/Register</a>*@
-      </div>
+        </div>
         <nav class="topnav" id="navbar">
             <div id="btns-sm-screen"><partial name="_LoginPartial"></partial></div>
-            @*<a href="SignIn.html" class="SignInRegisterBtn" id="SignInRegisterBtnSS">Sign In/Register</a>*@
-            <ul>
-                <li><a href="javascript:void(0);" class="icon" onclick="myFunction()"><i class="fa fa-bars"></i></a></li>
-                <li><a asp-area="Base" asp-controller="BasePages" asp-action="ResortsList" tabindex="2">Visitor(Tourist)</a></li>
-                <li><a asp-area="Base" asp-controller="BasePages" asp-action="ResortHome" tabindex="3">Resort Owner</a></li>
-                <li><a  asp-area="Base" asp-controller="BasePages" asp-action="VendorHome" tabindex="4">Vendor</a></li>
-                <li><a  asp-area="Base" asp-controller="BasePages" asp-action="HandicraftDealerHome" tabindex="5">Local Handicraft Dealer</a></li>
-                <li><a href="Contact.html" tabindex="6">Feedback</a></li>
-            </ul>
+            @if (!SignInManager.IsSignedIn(User))
+            {
+                @*<a href="SignIn.html" class="SignInRegisterBtn" id="SignInRegisterBtnSS">Sign In/Register</a>*@
+                <ul>
+                    <li><a href="javascript:void(0);" class="icon" onclick="myFunction()"><i class="fa fa-bars"></i></a></li>
+                    <li><a asp-area="Base" asp-controller="BasePages" asp-action="ResortsList" tabindex="2">Visitor(Tourist)</a></li>
+                    <li><a asp-area="Base" asp-controller="BasePages" asp-action="ResortHome" tabindex="3">Resort Owner</a></li>
+                    <li><a asp-area="Base" asp-controller="BasePages" asp-action="VendorHome" tabindex="4">Vendor</a></li>
+                    <li><a asp-area="Base" asp-controller="BasePages" asp-action="HandicraftDealerHome" tabindex="5">Local Handicraft Dealer</a></li>
+                    <li><a href="Contact.html" tabindex="6">Feedback</a></li>
+                </ul>
+            }
         </nav>
     </header>
 

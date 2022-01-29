@@ -116,7 +116,17 @@
     <div class="sidebar">
         <div class="logo-details">
             <img src="~/Images/Exotika.png" id="logo-img" alt="Exotika" />
-            <a id="logo-name" href="index.html" target="_blank">Exotika</a>
+            @if (User.IsInRole(SD.Role_User_Tourist))
+            {
+                <a id="logo-name" asp-area="Base" asp-controller="BasePages" asp-action="ResortsList" target="_blank">Exotika</a>
+            }
+            else
+            {
+                if (User.IsInRole(SD.Role_User_Vendor))
+                {
+                    <a id="logo-name" asp-area="Base" asp-controller="BasePages" asp-action="VendorHome" target="_blank">Exotika</a>
+                }
+            }
         </div>
         <br>
         <ul class="nav-links">
@@ -128,7 +138,7 @@
                 <li><a asp-area="UserSpecific" asp-controller="Requirements" asp-action="OngoingContracts"><i class='bx bxs-data'></i><span class="links_name">Ongoing Contracts</span></a></li>
                 <li><a asp-area="UserSpecific" asp-controller="Employees" asp-action="Index"><i class='bx bx-cart-alt'></i><span class="links_name">Empoyee Logistics</span></a></li>
                 <li><a asp-area="UserSpecific" asp-controller="Packages" asp-action="Index"><i class='bx bx-paint'></i><span class="links_name">Packages Available</span></a></li>
-                <li><a asp-area="UserSpecific" asp-controller="Feedbacks" asp-action="Index"><i class='bx bx-message'></i><span class="links_name">Feedbacks</span></a></li>
+                <li><a asp-area="UserSpecific" asp-controller="Resorts" asp-action="TouristFeedbacks"><i class='bx bx-message'></i><span class="links_name">Feedbacks</span></a></li>
                 @*<li class="log_out"><a href="SignIn.html"><i class='bx bx-log-out'></i><span class="links_name">Log out</span></a></li>*@
             }
             else
@@ -190,7 +200,7 @@
                 <span class="dashboard">Dashboard</span>
             </div>
             <div class="profile-details">
-                <img src="https://img.icons8.com/bubbles/500/000000/user.png" alt="" />
+                <img src="https://img.icons8.com/bubbles/500/000000/test-account.png" alt="" />
                 <span class="name">@UserManager.GetUserName(User)</span>
             </div>
         </nav>

@@ -4,7 +4,8 @@
     ViewData["Title"] = "Log out";
 }
 
-<header>
+<section id="Details">
+
     <h1>@ViewData["Title"]</h1>
     @{
         if (User.Identity.IsAuthenticated)
@@ -18,4 +19,4 @@
             <p>You have successfully logged out of the application.</p>
         }
     }
-</header>
+</section>

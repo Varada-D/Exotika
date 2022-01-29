@@ -47,44 +47,57 @@ namespace ExotikaTrial2.Controllers
             return View(detail);
         }
 
-        public IActionResult Feedback(string? forID)
+        public IActionResult UpsertFeedback(string? forId)
         {
             var claimsIdentity = (ClaimsIdentity)User.Identity;
             var claim = claimsIdentity.FindFirst(ClaimTypes.NameIdentifier);
+            var fbk = _unitOfWork.Feedback.GetFirstOrDefault(u => u.forId == forId && u.byId == claim.Value, includeProperties: "tourist,resort");
             Feedback feedback = new();
-            if (forID == null) //|| forID == 0
+            if (fbk == null)
             {
+                feedback.forId = forId;
+                feedback.byId = claim.Value;
+                feedback.resort = _unitOfWork.Resort.GetFirstOrDefault(u => u.ResortId == forId);
+                feedback.tourist = _unitOfWork.Tourist.GetFirstOrDefault(u => u.TouristId == claim.Value);
                 return View(feedback);
             }
-            else
-            {
-                feedback = _unitOfWork.Feedback.GetFirstOrDefault(u => u.forId == forID && u.byId.ToString() == claim.Value);
-                return View(feedback);
-            }
+            else return View(fbk);
         }
 
         //POST
         [HttpPost]
-        [ActionName("Feedback")]
         [ValidateAntiForgeryToken]
-        public IActionResult FeedbackPOST(Feedback obj)
+        public IActionResult UpsertFeedback(Feedback feedback)
         {
+            var claimsIdentity = (ClaimsIdentity)User.Identity;
+            var claim = claimsIdentity.FindFirst(ClaimTypes.NameIdentifier);
             if (ModelState.IsValid)
             {
-                if (obj.Id == 0)
+                if (feedback.Id == 0)
                 {
-                    _unitOfWork.Feedback.Add(obj);
-                    // TempData["Success"] = "Company Created Successfully!";
+                    feedback.lastUpdated = DateTime.Now;
+                    feedback.resort = _unitOfWork.Resort.GetFirstOrDefault(u => u.ResortId == feedback.forId);
+                    feedback.tourist = _unitOfWork.Tourist.GetFirstOrDefault(u => u.TouristId == feedback.byId);
+                    _unitOfWork.Feedback.Add(feedback);
+                    _unitOfWork.Save();
+                    TempData["Success"] = "Feedback Posted Successfully!";
                 }
                 else
                 {
-                    _unitOfWork.Feedback.Update(obj);
-                    // TempData["Success"] = "Company Updated Successfully!";
+                    if (feedback.byId == claim.Value)
+                    {
+                        feedback.lastUpdated = DateTime.Now;
+                        feedback.resort = _unitOfWork.Resort.GetFirstOrDefault(u => u.ResortId == feedback.forId);
+                        feedback.tourist = _unitOfWork.Tourist.GetFirstOrDefault(u => u.TouristId == feedback.byId);
+                        _unitOfWork.Feedback.Update(feedback);
+                        _unitOfWork.Save();
+                        TempData["Success"] = "Feedback Updated Successfully!";
+                    }
                 }
-                _unitOfWork.Save();
-                return RedirectToAction("Index");   //return RedirectToAction("Index", "ControllerName"); if we want to go to some other controller
+                return RedirectToAction("BookingHistory");   //return RedirectToAction("Index", "ControllerName"); if we want to go to some other controller
             }
-            return View(obj);
+            TempData["Error"] = "An error occured. Please try later.";
+            return View(feedback);
         }
 
         #region API CALLS

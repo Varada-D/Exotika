@@ -339,6 +339,10 @@ build_metadata.AdditionalFiles.CssScope =
 build_metadata.AdditionalFiles.TargetPath = QXJlYXNcVXNlclNwZWNpZmljXFZpZXdzXFJlc29ydHNcUmVzb3J0T3duZXJEYXNoYm9hcmQuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
+[C:/Users/varad/source/repos/ExotikaTrial2/ExotikaTrial2/Areas/UserSpecific/Views/Resorts/TouristFeedbacks.cshtml]
+build_metadata.AdditionalFiles.TargetPath = QXJlYXNcVXNlclNwZWNpZmljXFZpZXdzXFJlc29ydHNcVG91cmlzdEZlZWRiYWNrcy5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
 [C:/Users/varad/source/repos/ExotikaTrial2/ExotikaTrial2/Areas/UserSpecific/Views/Resorts/UpsertFeedback.cshtml]
 build_metadata.AdditionalFiles.TargetPath = QXJlYXNcVXNlclNwZWNpZmljXFZpZXdzXFJlc29ydHNcVXBzZXJ0RmVlZGJhY2suY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
@@ -357,6 +361,10 @@ build_metadata.AdditionalFiles.CssScope =
 
 [C:/Users/varad/source/repos/ExotikaTrial2/ExotikaTrial2/Areas/UserSpecific/Views/Tourists/Index.cshtml]
 build_metadata.AdditionalFiles.TargetPath = QXJlYXNcVXNlclNwZWNpZmljXFZpZXdzXFRvdXJpc3RzXEluZGV4LmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/varad/source/repos/ExotikaTrial2/ExotikaTrial2/Areas/UserSpecific/Views/Tourists/UpsertFeedback.cshtml]
+build_metadata.AdditionalFiles.TargetPath = QXJlYXNcVXNlclNwZWNpZmljXFZpZXdzXFRvdXJpc3RzXFVwc2VydEZlZWRiYWNrLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
 [C:/Users/varad/source/repos/ExotikaTrial2/ExotikaTrial2/Areas/UserSpecific/Views/VendorContracts/Create.cshtml]
