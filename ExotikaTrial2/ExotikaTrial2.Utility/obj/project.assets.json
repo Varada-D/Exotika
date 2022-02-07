@@ -1037,11 +1037,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\varad\\source\\repos\\ExotikaTrial2\\ExotikaTrial2.Utility\\ExotikaTrial2.Utility.csproj",
+      "projectUniqueName": "C:\\Users\\varad\\source\\ExotikaTrial2\\ExotikaTrial2.Utility\\ExotikaTrial2.Utility.csproj",
       "projectName": "ExotikaTrial2.Utility",
-      "projectPath": "C:\\Users\\varad\\source\\repos\\ExotikaTrial2\\ExotikaTrial2.Utility\\ExotikaTrial2.Utility.csproj",
+      "projectPath": "C:\\Users\\varad\\source\\ExotikaTrial2\\ExotikaTrial2.Utility\\ExotikaTrial2.Utility.csproj",
       "packagesPath": "C:\\Users\\varad\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\varad\\source\\repos\\ExotikaTrial2\\ExotikaTrial2.Utility\\obj\\",
+      "outputPath": "C:\\Users\\varad\\source\\ExotikaTrial2\\ExotikaTrial2.Utility\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
         "C:\\Users\\varad\\AppData\\Roaming\\NuGet\\NuGet.Config",

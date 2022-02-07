@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "nZX30Nav4fdmRKcpTKRqkl/223JI0GemjPRJTt1Polsm4bRl+NXpngoPaiB06NCJO42cFfgf94cRXPcq1bd0Kg==",
+  "dgSpecHash": "MK5aWmL1NxR4joKmmcTjzDQI2UFFF3gw4v8h9VOhiiGP/D7iYFamEQR7FP3k+QvSfJ6P6BKzd3Pg1EEDI1lpdw==",
   "success": true,
-  "projectFilePath": "C:\\Users\\varad\\source\\repos\\ExotikaTrial2\\ExotikaTrial2.DataAccess\\ExotikaTrial2.DataAccess.csproj",
+  "projectFilePath": "C:\\Users\\varad\\source\\ExotikaTrial2\\ExotikaTrial2.DataAccess\\ExotikaTrial2.DataAccess.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\varad\\.nuget\\packages\\humanizer.core\\2.8.26\\humanizer.core.2.8.26.nupkg.sha512",
     "C:\\Users\\varad\\.nuget\\packages\\mailkit\\3.0.0\\mailkit.3.0.0.nupkg.sha512",

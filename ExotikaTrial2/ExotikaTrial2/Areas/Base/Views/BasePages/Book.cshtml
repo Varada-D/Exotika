@@ -1,4 +1,4 @@
-﻿@model ExotikaTrial2.Models.ResortBookings
+﻿@model ExotikaTrial2.Models.Booking
 @{
     Layout = "_Layout";
 } 
@@ -71,6 +71,16 @@
 
 @section Scripts{
         <partial name="_ValidationScriptsPartial"/>
+        <script>
+    $(document).ready(function() {
+        var date = new Date().toISOString().slice(0,10);
+        console.log(date);
+        $('#CheckInDate').attr('value',date);
+        $('#CheckInDate').attr('min',date);
+        $('#CheckOutDate').attr('value',date);
+        $('#CheckOutDate').attr('min',date);
+    });
+            </script>
     <script>
         function CheckDate() {
             var d1 = new Date(document.getElementById("CheckIn").value);

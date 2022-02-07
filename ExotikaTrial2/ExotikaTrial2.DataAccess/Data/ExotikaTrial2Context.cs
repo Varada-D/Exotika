@@ -30,6 +30,7 @@ namespace ExotikaTrial2.Data
         public DbSet<Admin> Admins { get; set; }
 
         public DbSet<ResortBookings> ResortBookings { get; set; }
+        public DbSet<Booking> Bookings { get; set; }
         public DbSet<Requirement> Requirements { get; set; }
 
         public DbSet<Package> Packages { get; set; }

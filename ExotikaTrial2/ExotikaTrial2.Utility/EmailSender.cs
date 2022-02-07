@@ -28,7 +28,7 @@ namespace ExotikaTrial2.Utility
                 // Establish connection to smtp server
                 emailClient.Connect("smtp.gmail.com", 587, MailKit.Security.SecureSocketOptions.StartTls); // smtp for google, default port number for google is 587, security
                 // email id, pwd for authentication
-                emailClient.Authenticate("exotikaindia@gmail.com", "Exotika@123");
+                emailClient.Authenticate("exotikaindia@gmail.com", "Exotika2823@BW");
                 // send the mail
                 emailClient.Send(emailToSend);
                 // it is always a good idea to disconnect your email client after this is done

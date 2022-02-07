@@ -14,6 +14,7 @@ namespace ExotikaTrial2.DataAccess.Repository.IRepository
         ITouristRepository Tourist { get; }
         IAdminRepository Admin { get; }
         IHandicraftDealerRepository HandicraftDealer { get; }
+        IBookRepository Bookings { get; }
         IResortBookingRepository ResortBooking { get; }
         IApplicationUserRepository ApplicationUser { get; }
         IContractRepository Contract { get; }

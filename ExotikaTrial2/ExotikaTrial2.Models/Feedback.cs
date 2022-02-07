@@ -26,7 +26,7 @@ namespace ExotikaTrial2.Models
         public int Rating { get; set; }
 
         [Display(Name ="Feedback / Message")]
-        public string FeedbackMsg { get; set; }
+        public string? FeedbackMsg { get; set; }
 
         [DataType(DataType.Date)]
         public DateTime lastUpdated { get; set; }

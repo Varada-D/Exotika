@@ -4531,11 +4531,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\varad\\source\\repos\\ExotikaTrial2\\ExotikaTrial2.Models\\ExotikaTrial2.Models.csproj",
+      "projectUniqueName": "C:\\Users\\varad\\source\\ExotikaTrial2\\ExotikaTrial2.Models\\ExotikaTrial2.Models.csproj",
       "projectName": "ExotikaTrial2.Models",
-      "projectPath": "C:\\Users\\varad\\source\\repos\\ExotikaTrial2\\ExotikaTrial2.Models\\ExotikaTrial2.Models.csproj",
+      "projectPath": "C:\\Users\\varad\\source\\ExotikaTrial2\\ExotikaTrial2.Models\\ExotikaTrial2.Models.csproj",
       "packagesPath": "C:\\Users\\varad\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\varad\\source\\repos\\ExotikaTrial2\\ExotikaTrial2.Models\\obj\\",
+      "outputPath": "C:\\Users\\varad\\source\\ExotikaTrial2\\ExotikaTrial2.Models\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
         "C:\\Users\\varad\\AppData\\Roaming\\NuGet\\NuGet.Config",
@@ -4552,8 +4552,8 @@
         "net6.0": {
           "targetAlias": "net6.0",
           "projectReferences": {
-            "C:\\Users\\varad\\source\\repos\\ExotikaTrial2\\ExotikaTrial2.Utility\\ExotikaTrial2.Utility.csproj": {
-              "projectPath": "C:\\Users\\varad\\source\\repos\\ExotikaTrial2\\ExotikaTrial2.Utility\\ExotikaTrial2.Utility.csproj"
+            "C:\\Users\\varad\\source\\ExotikaTrial2\\ExotikaTrial2.Utility\\ExotikaTrial2.Utility.csproj": {
+              "projectPath": "C:\\Users\\varad\\source\\ExotikaTrial2\\ExotikaTrial2.Utility\\ExotikaTrial2.Utility.csproj"
             }
           }
         }

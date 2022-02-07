@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "/saIK3kdSt9ns57eou1guzdQE9pSEr7T4csJYJmyY871/9O8MFjyDDjRJSs4jKOTnKWsnMgMoqY/MEoM6smVwQ==",
+  "dgSpecHash": "2K/JrLAQaqdpDL1LZ2Ib+LemKz8x44TEXVuqngK9/zcoyqPs9OEjS8L/EPbGKIGYdZdquruaMZUc1cZRhcFdnw==",
   "success": true,
-  "projectFilePath": "C:\\Users\\varad\\source\\repos\\ExotikaTrial2\\ExotikaTrial2.Models\\ExotikaTrial2.Models.csproj",
+  "projectFilePath": "C:\\Users\\varad\\source\\ExotikaTrial2\\ExotikaTrial2.Models\\ExotikaTrial2.Models.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\varad\\.nuget\\packages\\mailkit\\3.0.0\\mailkit.3.0.0.nupkg.sha512",
     "C:\\Users\\varad\\.nuget\\packages\\microsoft.aspnetcore.authentication.abstractions\\2.2.0\\microsoft.aspnetcore.authentication.abstractions.2.2.0.nupkg.sha512",

@@ -17,6 +17,7 @@ namespace ExotikaTrial2.DataAccess.Repository
         public ITouristRepository Tourist { get; private set; }
         public IAdminRepository Admin { get; private set; }
         public IHandicraftDealerRepository HandicraftDealer { get; private set; }
+        public IBookRepository Bookings { get; private set; }
         public IResortBookingRepository ResortBooking { get; private set; }
         public IApplicationUserRepository ApplicationUser { get; private set; }
         public IContractRepository Contract { get; private set; }
@@ -35,6 +36,7 @@ namespace ExotikaTrial2.DataAccess.Repository
             HandicraftDealer = new HandicraftDealerRepository(_db);
             Admin = new AdminRepository(_db);
             ResortBooking = new ResortBookingRepository(_db);
+            Bookings = new BookRepository(_db);
             ApplicationUser = new ApplicationUserRepository(_db);
             Contract = new ContractRepository(_db);
             Package = new PackageRepository(_db);

@@ -329,6 +329,45 @@ namespace ExotikaTrial2.DataAccess.Migrations
                 });
 
             migrationBuilder.CreateTable(
+                name: "Bookings",
+                columns: table => new
+                {
+                    BookingID = table.Column<int>(type: "int", nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
+                    noOfBookings = table.Column<int>(type: "int", nullable: false),
+                    idType = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    idNumber = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    TotalPrice = table.Column<int>(type: "int", nullable: false),
+                    CheckInDate = table.Column<DateTime>(type: "datetime2", nullable: false),
+                    CheckOutDate = table.Column<DateTime>(type: "datetime2", nullable: false),
+                    ResortId = table.Column<string>(type: "nvarchar(450)", nullable: false),
+                    TouristId = table.Column<string>(type: "nvarchar(450)", nullable: false),
+                    PackageId = table.Column<int>(type: "int", nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_Bookings", x => x.BookingID);
+                    table.ForeignKey(
+                        name: "FK_Bookings_Packages_PackageId",
+                        column: x => x.PackageId,
+                        principalTable: "Packages",
+                        principalColumn: "PackageId",
+                        onDelete: ReferentialAction.Cascade);
+                    table.ForeignKey(
+                        name: "FK_Bookings_Resorts_ResortId",
+                        column: x => x.ResortId,
+                        principalTable: "Resorts",
+                        principalColumn: "ResortId",
+                        onDelete: ReferentialAction.Cascade);
+                    table.ForeignKey(
+                        name: "FK_Bookings_Tourists_TouristId",
+                        column: x => x.TouristId,
+                        principalTable: "Tourists",
+                        principalColumn: "TouristId",
+                        onDelete: ReferentialAction.Cascade);
+                });
+
+            migrationBuilder.CreateTable(
                 name: "ResortBookings",
                 columns: table => new
                 {
@@ -384,7 +423,7 @@ namespace ExotikaTrial2.DataAccess.Migrations
                     VendorId = table.Column<string>(type: "nvarchar(450)", nullable: true),
                     TouristId = table.Column<string>(type: "nvarchar(450)", nullable: true),
                     HandicraftDealerId = table.Column<string>(type: "nvarchar(450)", nullable: true),
-                    Rating = table.Column<double>(type: "float", nullable: false),
+                    Rating = table.Column<int>(type: "int", nullable: false),
                     FeedbackMsg = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     lastUpdated = table.Column<DateTime>(type: "datetime2", nullable: false)
                 },
@@ -486,6 +525,21 @@ namespace ExotikaTrial2.DataAccess.Migrations
                 filter: "[NormalizedUserName] IS NOT NULL");
 
             migrationBuilder.CreateIndex(
+                name: "IX_Bookings_PackageId",
+                table: "Bookings",
+                column: "PackageId");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_Bookings_ResortId",
+                table: "Bookings",
+                column: "ResortId");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_Bookings_TouristId",
+                table: "Bookings",
+                column: "TouristId");
+
+            migrationBuilder.CreateIndex(
                 name: "IX_Contracts_RequirementId",
                 table: "Contracts",
                 column: "RequirementId");
@@ -560,6 +614,9 @@ namespace ExotikaTrial2.DataAccess.Migrations
 
             migrationBuilder.DropTable(
                 name: "AspNetUserTokens");
+
+            migrationBuilder.DropTable(
+                name: "Bookings");
 
             migrationBuilder.DropTable(
                 name: "Contracts");
