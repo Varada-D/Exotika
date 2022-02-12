@@ -31,8 +31,8 @@
         </div>
         <nav class="topnav" id="navbar">
             <div id="btns-sm-screen"><partial name="_LoginPartial"></partial></div>
-            @if (!SignInManager.IsSignedIn(User))
-            {
+           @* @if (!SignInManager.IsSignedIn(User))
+            {*@
                 @*<a href="SignIn.html" class="SignInRegisterBtn" id="SignInRegisterBtnSS">Sign In/Register</a>*@
                 <ul>
                     <li><a href="javascript:void(0);" class="icon" onclick="myFunction()"><i class="fa fa-bars"></i></a></li>
@@ -42,7 +42,7 @@
                     <li><a asp-area="Base" asp-controller="BasePages" asp-action="HandicraftDealerHome" tabindex="5">Local Handicraft Dealer</a></li>
                     <li><a href="Contact.html" tabindex="6">Feedback</a></li>
                 </ul>
-            }
+            @*}*@
         </nav>
     </header>
 

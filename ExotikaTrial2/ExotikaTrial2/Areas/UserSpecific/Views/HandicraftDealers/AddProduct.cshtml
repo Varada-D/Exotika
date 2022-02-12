@@ -1,0 +1,48 @@
+﻿@model ExotikaTrial2.Models.Product
+
+
+<div style="padding: 10vh;">
+    <div style="padding: 10vh; background-color:rgb(255,255,255); border: 2px solid rgb(0,0,0); border-radius: 12px;">
+
+
+        <form method="post" asp-action="AddProduct" enctype="multipart/form-data">
+            @*<div class="row">*@
+                <div class=" row col-12">
+                    <div class="col-12 pb-2 mb-4">
+                        <h2 class="text-primary">Add Product</h2>
+                        <hr />
+                    </div>
+                    @*<div asp-validation-summary="All"></div>*@
+                    <div class="mb-4 col-6">
+                        <label asp-for="ProductName" id="reqName"></label>
+                        <input asp-for="ProductName" class="form-control" />
+                        <span asp-validation-for="ProductName" class="text-danger"></span>
+                    </div>
+                    <div class="mb-4 col-6">
+                        <label asp-for="Price"></label>
+                        <input asp-for="Price" class="form-control" />
+                        <span asp-validation-for="Price" class="text-danger"></span>
+                    </div>
+                    <div class="mb-4 col-12">
+                        <label asp-for="Description"></label>
+                        <textarea asp-for="Description" class="form-control" rows="3"></textarea>
+                        <span asp-validation-for="Description" class="text-danger"></span>
+                    </div>
+                    <hr />
+                    <div class="col-12 mt-3">
+                        <button type="submit" onclick="return ValidateInput()" class="btn1" style="width:150px">Add</button>
+                        <a asp-controller="HandicraftDealers" asp-action="ProductsList" class="btn1" style="width:150px">Back to Products List</a>
+                    </div>
+                </div>
+            @*</div>*@
+        </form>
+    </div>
+</div>
+
+@section Scripts {
+    <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+    @{
+        <partial name="_ValidationScriptsPartial" />
+    }
+}
+

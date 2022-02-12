@@ -1,0 +1,875 @@
+* {
+    margin: 0;
+    overflow-x: hidden;
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+header {
+    background-color: rgb(255,255,255);
+    padding: 3vh 0 0 0;
+    position: fixed;
+    top: 0;
+    z-index: 400;
+    width: 100vw;
+}
+
+    header > div > a {
+        float: right;
+        margin-right: 10vh;
+        margin-top: 5vh;
+    }
+
+    header > div > img {
+        float: left;
+    }
+
+    header > div > a:first-child {
+        float: left;
+        margin-top: 0;
+        margin-right: 0;
+    }
+
+
+#logo {
+    width: 40vh;
+    margin-left: 3vh;
+}
+
+#SignInRegisterBtnSS {
+    display: none;
+}
+
+.SignInRegisterBtn {
+    background-color: rgb(3,46,87);
+    text-decoration: none;
+    padding: 3vh 5vh;
+    margin-top: 3.5vh;
+    border-radius: 50%;
+    color: rgb(255,255,255);
+    transition-duration: 1s;
+}
+
+    .SignInRegisterBtn:hover {
+        background-color: rgb(0,146,106);
+        font-size: 110%;
+        transition-duration: 0.5s;
+    }
+
+
+nav {
+    margin-top: 3vh;
+    background-color: rgb(0,146,106);
+}
+
+
+    nav > ul {
+        list-style-type: none;
+        text-align: center;
+        padding: 0;
+    }
+
+
+        nav > ul > li {
+            display: inline-block;
+            padding: 2vh 5vh 0 5vh;
+            overflow-y: hidden;
+        }
+
+
+#active {
+    border-bottom: 0.5vh dotted rgb(3,46,87);
+    font-weight: 400;
+    transform: translateY(-1.5vh);
+}
+
+    #active:hover {
+        border-bottom: 0.5vh solid rgb(3,46,87);
+    }
+
+
+nav > ul > li:first-of-type {
+    float: right;
+    display: none;
+}
+
+
+
+nav > ul > li:not(:first-of-type) > a {
+    transform: translateY(0);
+    transition-duration: 0.5s;
+}
+
+
+
+    nav > ul > li:not(:first-of-type) > a:hover {
+        border-bottom: 0.5vh solid rgb(3,46,87);
+        transform: translateY(-1.5vh);
+        transition-duration: 0.5s;
+    }
+
+
+
+nav > ul > li > a {
+    text-decoration: none;
+    color: rgb(255,255,255);
+    display: inline-block;
+    padding: 2vh;
+    font-size: 120%;
+}
+
+
+main {
+    padding: 15vh 10vh;
+    margin: 30vh 0 0 0;
+    background: url('../Images/bg.jpg') no-repeat center;
+    background-attachment: fixed;
+    background-size: cover;
+    width: 100vw;
+    color: rgb(0,0,0);
+}
+
+h1 {
+    font-size: 200%;
+    text-align: center;
+}
+
+p {
+    text-align: justify;
+    font-size: 120%;
+}
+
+
+#AboutExotika div {
+    background-color: rgb(3,46,87);
+    color: rgb(255,255,255);
+    padding: 8vh 5vh;
+}
+
+
+#AboutExotika p {
+    background-color: rgb(3,46,87);
+    font-size: 150%;
+}
+
+
+#AboutExotika ul li {
+    line-height: 5vh;
+    font-size: 120%;
+}
+
+
+div.Portal, div.card-body:last-child {
+    display: -webkit-flex;
+    display: flex;
+}
+
+
+div.break {
+    width: 50%;
+    display: -webkit-flex;
+    display: flex;
+    -webkit-flex: 1; /* Safari */
+    -ms-flex: 1; /* IE 10 */
+    flex: 1; /* Standard syntax */
+}
+
+div.Portal > div.break, div.Portal > div.card, div.card-body:last-child > a {
+    -webkit-flex: 1; /* Safari */
+    -ms-flex: 1; /* IE 10 */
+    flex: 1; /* Standard syntax */
+}
+
+
+div.Portal div.card {
+    background-color: rgb(3,46,87);
+    margin: 0 1.5vh;
+    width: 50%;
+    padding: 5vh 2vh 2vh 2vh;
+}
+
+.GoToPortalBtn {
+    display: inline-block;
+    color: rgb(255,255,255);
+    background-color: rgb(0,146,106);
+    font-size: 120%;
+    text-align: center;
+    padding: 1%;
+    margin-top: 20px;
+    font-weight: 400;
+    border-radius: 6px;
+    border: 2px solid rgb(0,146,106);
+    transition: all 0.3s ease;
+}
+
+
+    .GoToPortalBtn:hover {
+        background: none;
+    }
+
+
+    .GoToPortalBtn span {
+        cursor: pointer;
+        display: inline-block;
+        position: relative;
+        transition: 0.5s;
+        overflow: hidden;
+    }
+
+
+        .GoToPortalBtn span:after {
+            color: rgb(244,247,118);
+            content: '>>';
+            position: absolute;
+            opacity: 0;
+            top: 10%;
+            right: -25px;
+            transition: 0.5s;
+        }
+
+
+    .GoToPortalBtn:hover span {
+        padding-right: 25px;
+        color: rgb(244,247,118);
+    }
+
+
+        .GoToPortalBtn:hover span:after {
+            opacity: 1;
+            right: 0;
+        }
+
+
+    .GoToPortalBtn:active {
+        background-color: rgb(0,146,106);
+        box-shadow: 0 5px rgb(255,255,255);
+        color: rgb(255,255,255);
+        transform: translateY(4px);
+    }
+
+
+        .GoToPortalBtn:active span:after {
+            color: rgb(3,46,87);
+        }
+
+
+    .GoToPortalBtn a {
+        text-decoration: none;
+    }
+
+
+@media screen and (max-width: 1260px) {
+    div.Portal {
+        display: block;
+        width: 100%;
+    }
+
+    div.break {
+        width: 100%;
+        margin: 2vh 0;
+        padding: 2.5vh 5vh;
+    }
+}
+
+
+
+@media screen and (max-width: 850px) {
+    div.break {
+        padding: 2.5vh 0;
+    }
+}
+
+
+
+
+@media screen and (max-width: 750px) {
+    div.break {
+        display: block;
+        width: 100%;
+        padding: 0vh 5vh;
+        margin: 0;
+    }
+
+        div.break > div.card {
+            width: 65%;
+            margin: 2.5vh auto;
+        }
+
+            div.break > div.card:nth-child(2) {
+                margin-bottom: 0;
+            }
+
+            div.break > div.card:nth-child(3) {
+                margin-top: 0;
+            }
+}
+
+
+
+
+@media screen and (max-width: 600px) {
+    div.break > div.card {
+        width: 75%;
+    }
+
+    main {
+        padding-left: 5vh;
+        padding-right: 5vh;
+    }
+}
+
+
+
+@media screen and (max-width: 550px) {
+    div.break > div.card {
+        width: 95%;
+    }
+}
+
+
+
+@media screen and (max-width: 400px) {
+    div.break {
+        padding: 0 1vh;
+    }
+
+        div.break > div.card {
+            width: 100%;
+        }
+
+    main {
+        padding-left: 2.5vh;
+        padding-right: 2.5vh;
+    }
+}
+
+
+@media screen and (max-width: 400px) {
+    div.break {
+        padding: 0 1vh;
+    }
+
+        div.break > div.card {
+            padding: 1vh;
+        }
+
+    main {
+        padding-left: 2.5vh;
+        padding-right: 2.5vh;
+    }
+}
+
+
+.card img {
+    width: 98%;
+    margin: 0 auto;
+    height: 60%;
+}
+
+
+.card-title {
+    text-align: center;
+    font-size: 150%;
+    margin-bottom: 5vh;
+}
+
+
+.card-body {
+    color: rgb(255,255,255);
+    text-align: center;
+    padding-bottom: 5vh;
+}
+
+    .card-body:last-child {
+        display: -webkit-flex;
+        display: flex;
+    }
+
+
+    .card-body a {
+        -webkit-flex: 1; /* Safari */
+        -ms-flex: 1; /* IE 10 */
+        flex: 1; /* Standard syntax */
+        text-align: center;
+    }
+
+    .card-body p {
+        font-size: 120%;
+        text-align: justify;
+    }
+
+
+footer {
+    background-color: rgb(0,0,0);
+    color: rgb(255,255,255);
+    width: 100%;
+    height: auto;
+    padding: 1% 1% 1% 12%;
+}
+
+    footer div {
+        display: -webkit-flex;
+        display: flex;
+        margin: 0 auto;
+    }
+
+
+    footer span:first-child {
+        font-family: 'Brush Script MT', cursive;
+        font-size: 150%;
+        float: left;
+    }
+
+    footer span:last-child {
+        margin-top: 1vh;
+    }
+
+
+    footer div i {
+        display: -webkit-flex;
+        display: flex;
+        -webkit-flex: 1; /* Safari */
+        -ms-flex: 1; /* IE 10 */
+        flex: 1; /* Standard syntax */
+        padding: 0;
+    }
+
+
+.fa-custom5 {
+    color: rgb(255,255,255);
+}
+
+
+    .fa-custom1:hover, .fa-custom2:hover, .fa-custom4:hover, .fa-custom5:hover {
+        color: rgb(0,157,255);
+        cursor: pointer;
+        width: 5vh;
+    }
+
+.fa-custom3:hover {
+    color: rgb(217,0,255);
+    cursor: pointer;
+    font-size: 200%;
+}
+
+
+
+@media screen and (max-width:1400px) {
+    header > nav > ul > li {
+        padding: 2vh 0 2vh 2vh;
+    }
+
+    #SignInRegisterBtnLS {
+        margin-right: 2.5vh;
+    }
+}
+
+
+
+@media screen and (max-width: 900px) {
+
+    header {
+        padding: 2vh 0 0 0;
+    }
+
+    .topnav a {
+        display: none;
+    }
+
+
+    nav > ul > li:first-of-type {
+        display: block;
+        float: right;
+        margin-right: 2vh;
+    }
+
+    nav > ul > li > a.icon:hover {
+        color: rgb(3,46,87);
+    }
+
+    header > nav > ul {
+        text-align: right;
+    }
+
+        header > nav > ul > li {
+            padding-right: 0;
+            padding-left: 0;
+            float: right;
+        }
+
+    .topnav a {
+        display: none;
+    }
+
+        .topnav a.icon {
+            display: block;
+            float: right;
+        }
+
+    .topnav.responsive {
+        position: relative;
+        margin: 3.5vh 1.7vw 0 0;
+        padding-bottom: 5vh;
+        width: 99vw;
+    }
+
+        .topnav.responsive a.icon {
+            position: absolute;
+            top: 0;
+            right: 0;
+            margin-bottom: 5vh;
+            display: block;
+            float: right;
+            width: auto;
+        }
+
+        .topnav.responsive > ul > li:not(:first-of-type) > a {
+            display: block;
+            text-align: center;
+            padding: 2vh;
+            float: left;
+            width: 95vw;
+            margin-left: 2vh;
+            word-wrap: break-word;
+        }
+
+        .topnav.responsive > ul > li:nth-child(3) {
+            margin-top: 5vh;
+        }
+
+    #SignInRegisterBtnSS {
+        display: inline-block;
+        float: left;
+        margin: 2vh;
+    }
+
+    #SignInRegisterBtnLS {
+        display: none;
+    }
+}
+
+
+
+@media screen and (max-width: 700px) {
+    nav.responsive > ul {
+        display: block;
+        clear: both;
+    }
+
+    footer > div {
+        margin-top: 5vh;
+    }
+
+    footer > div {
+        margin: 5vh 0;
+    }
+}
+
+
+@media screen and (max-width: 360px) {
+    #logo {
+        width: 80vw;
+    }
+}
+
+@media screen and (max-width: 330px) {
+    nav > ul {
+        clear: both;
+        text-align: center;
+    }
+
+        nav > ul > li {
+            float: left;
+        }
+}
+
+
+@media screen and (max-width: 290px) {
+    #logo {
+        width: 70vw;
+    }
+}
+
+
+/* width */
+::-webkit-scrollbar {
+    width: 1vw;
+}
+
+
+
+/* Track */
+::-webkit-scrollbar-track {
+    box-shadow: inset 0 0 5px rgb(3,46,87);
+    border-radius: 10px;
+}
+
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+    background: rgb(3,46,87);
+    -o-background-image: linear-gradient(rgb(0,146,106), rgb(244,247,118));
+    -moz-background-image: linear-gradient(rgb(0,146,106), rgb(244,247,118));
+    -ms-background-image: linear-gradient(rgb(0,146,106), rgb(244,247,118));
+    background-image: linear-gradient(rgb(0,146,106), rgb(244,247,118));
+    border-radius: 10px;
+}
+
+::selection {
+    background: rgb(0,146,106); /* WebKit/Blink Browsers */
+    color: rgb(244,247,118);
+}
+
+::-moz-selection {
+    background: rgb(0,146,106); /* Gecko Browsers */
+    color: rgb(244,247,118);
+}
+
+
+
+.navbar-nav {
+    width: auto;
+    float: right;
+}
+
+
+    .navbar-nav .nav-item {
+        background: rgb(3,46,87);
+        padding: 15px;
+        width: fit-content;
+        color: rgb(255,255,255);
+        margin-right: 5vh;
+        display: inline-block;
+    }
+
+
+        .navbar-nav .nav-item a, #logout {
+            text-decoration: none;
+            color: rgb(255,255,255);
+            font-size: 120%;
+        }
+
+#logout {
+    background: rgb(3,46,87);
+    border: none;
+}
+
+
+#btns-lg-screen, #btns-sm-screen {
+    margin-top: 5.5vh;
+}
+
+
+#btns-sm-screen {
+    display: none;
+}
+
+@media screen and (max-width: 900px) {
+    .navbar-nav .nav-item {
+        margin-right: 0;
+        margin-left: 2vh;
+    }
+
+    #btns-sm-screen {
+        display: inline-block;
+        float: left;
+        margin-top: 0;
+    }
+
+    #btns-lg-screen {
+        display: none;
+    }
+
+    #btns-sm-screen .navbar-nav {
+        margin-top: 2.5vh;
+        float: left;
+        padding-left: 0;
+    }
+
+        #btns-sm-screen .navbar-nav .nav-item a, #logout {
+            display: inline-block;
+            padding: 0;
+        }
+}
+
+.form-container h1 {
+    color: rgb(255,255,255);
+    line-height: 60px;
+}
+
+.form-container h2 {
+    color: rgb(255,255,255);
+    line-height: 45px;
+}
+
+
+.overview-boxes {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    padding: 0 20px;
+    margin-bottom: 26px;
+}
+
+    .overview-boxes .box {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        width: calc(100% / 4 - 15px);
+        background: #fff;
+        padding: 15px 14px;
+        border-radius: 12px;
+        box-shadow: 0 5px 10px rgba(0,0,0,0.1);
+        text-align: center;
+        border: 2px solid rgb(0,0,0);
+    }
+
+    .overview-boxes .box-topic {
+        font-size: 20px;
+        font-weight: 500;
+    }
+
+        .overview-boxes .box-topic h2 {
+            font-size: 100%;
+        }
+
+#EditDetails {
+    margin: 20vh auto;
+    padding: 5vh 10vh;
+    width: 85%;
+    background: rgb(255,255,255);
+    border: 2px solid rgb(0,0,0);
+    border-radius: 10px;
+    text-align: justify;
+    z-index: 900;
+    position: absolute;
+    top: 0;
+    margin-left: 6vw;
+    display: none;
+}
+
+    #EditDetails label {
+        float: left;
+        margin-top: 5vh;
+    }
+
+    .btn, #EditDetails input, #EditDetails select {
+        margin-top: 2.5vh;
+        width: 95%;
+        margin-left: 5%;
+        padding: 2vh;
+        border: 2px solid rgb(0,0,0);
+        border-radius: 10px;
+        font-size: 110%;
+    }
+
+        .btn, #EditDetails input[type=submit], #EditDetails input[type=reset] {
+            width: auto;
+            margin-left: 0;
+            margin-top: 5%;
+            cursor: pointer;
+            transition-duration: 0.5s;
+            margin-right: 20px;
+        }
+
+            .btn:hover, #EditDetails input[type=submit]:hover, #EditDetails input[type=reset]:hover {
+                background-color: rgb(0,146,106);
+                color: rgb(255,255,255);
+            }
+
+@media (max-width: 1000px) {
+    .overview-boxes .box {
+        width: calc(100% / 2 - 15px);
+        margin-bottom: 15px;
+    }
+}
+
+
+
+div.content {
+    background-color: rgb(255,255,255);
+    padding: 5vh;
+    color: rgb(0,0,0);
+    margin: 5vh 0;
+    display: flex;
+    justify-content: center;
+}
+
+    div.content img {
+        width: 32%;
+        float: left;
+    }
+
+    div.content div {
+        width: 66%;
+        float: right;
+        padding-left: 20px;
+    }
+
+label {
+    display: block;
+    font-size: 130%;
+    font-weight: 500;
+}
+
+.button {
+    border: none;
+    color: white;
+    padding: 15px 32px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 18px;
+    margin: 4px 2px;
+    cursor: pointer;
+    background-color: rgb(0,146,106);
+}
+
+    .button:hover {
+        background-color: rgb(0,110,80);
+    }
+
+@media screen and (max-width: 1050px) {
+    div.content img {
+        width: 45%;
+        float: left;
+    }
+
+    div.content div {
+        width: 52%;
+        float: right;
+        padding-left: 20px;
+    }
+}
+
+@media screen and (max-width: 900px) {
+    div.content {
+        display: block;
+    }
+
+        div.content img {
+            display: block;
+            width: 100%;
+            margin-bottom: 40px;
+        }
+
+        div.content div {
+            display: block;
+            width: 100%;
+            padding-left: 0;
+        }
+}
+
+@media screen and (max-width: 500px) {
+    div.tab-pane {
+        padding: 2vh;
+    }
+
+    div.content {
+        padding: 2vh;
+    }
+}

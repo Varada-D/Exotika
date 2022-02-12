@@ -54,7 +54,13 @@ namespace ExotikaTrial2.Controllers
         public IActionResult ResortsList()
         {
             var resorts = _unitOfWork.Resort.GetAll();
-            return View(resorts);
+            var handicrafts = _unitOfWork.Product.GetAll(includeProperties: "HandicraftDealer");
+            var data = new TouristHomeVM()
+            {
+                Resorts = resorts,
+                Products = handicrafts
+            };
+            return View(data);
         }
 
         public IActionResult VendorHome()

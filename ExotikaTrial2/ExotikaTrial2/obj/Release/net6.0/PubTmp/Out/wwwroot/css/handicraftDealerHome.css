@@ -1,0 +1,91 @@
+﻿
+main > div {
+    background-color: rgb(3,46,87);
+    color: rgb(255,255,255);
+    padding: 10vh 5vh;
+    border-radius: 12px;
+}
+
+    main > div > img {
+        float: left;
+        width: 40%;
+        border-radius: 6px;
+        height: 60vh;
+    }
+
+    main > div > h1 {
+        margin-bottom: 7.5vh;
+    }
+
+    main > div > p {
+        line-height: 30px;
+        text-align: justify;
+        float: right;
+        width: 58%;
+        margin-bottom: 2.5vh;
+    }
+
+    main > div > h2 {
+        margin-top: 7.5vh;
+        margin-bottom: 2.5vh;
+    }
+
+    main > div > span {
+        font-size: 150%;
+        color: rgb(244,247,118);
+        float: right;
+        width: 58%;
+    }
+
+.GoToPortalBtn {
+    margin-left: 60%;
+    float: left;
+}
+
+@media screen and (max-width: 1200px) {
+    main > div > img {
+        clear: both;
+        width: 80%;
+        height: auto;
+        margin-left: 10%;
+        margin-bottom: 5vh;
+    }
+
+    main > div > p {
+        line-height: 30px;
+        text-align: justify;
+        clear: both;
+        width: 100%;
+        margin-bottom: 2.5vh;
+    }
+
+    main > div > span {
+        font-size: 150%;
+        color: rgb(244,247,118);
+        clear: both;
+        width: 100%;
+    }
+
+    .GoToPortalBtn {
+        margin-left: 0;
+        clear: both;
+    }
+}
+
+@media screen and (max-width: 750px) {
+    main > div {
+        padding: 7.5vh 5vh;
+    }
+
+        main > div > img {
+            width: 100%;
+            margin-left: 0;
+            margin-bottom: 5vh;
+        }
+}
+
+@media screen and (max-width: 500px) {
+    main > div {
+        padding: 5vh 2.5vh;
+    }
+}

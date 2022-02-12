@@ -1,0 +1,174 @@
+﻿
+main > div {
+    background-color: rgb(3,46,87);
+    color: rgb(255,255,255);
+    padding: 10vh 5vh;
+    border-radius: 12px;
+    font-size: 120%;
+}
+
+    main > div > div {
+        width: 100%;
+        padding: 0 7.5vh;
+        margin-top: 5vh;
+    }
+
+    main > div > img {
+        float: left;
+        width: 48%;
+        border-radius: 6px;
+        height: 40vh;
+        margin-bottom: 10vh;
+    }
+
+    main > div > h1 {
+        margin-bottom: 7.5vh;
+        margin-top: 2vh;
+    }
+
+    main > div > p {
+        line-height: 30px;
+        text-align: justify;
+        float: right;
+        width: 48%;
+        margin-bottom: 2.5vh;
+    }
+
+        main > div > p:first-of-type {
+            margin-top: 5vh;
+        }
+
+#TouristOutreach > img {
+    width: 48%;
+    float: right;
+    border-radius: 6px;
+    height: 40vh;
+    margin-top: 5vh;
+}
+
+#TouristOutreach > h2 {
+    width: 48%;
+    float: left;
+}
+
+#TouristOutreach > p {
+    width: 48%;
+    float: left;
+    line-height: 30px;
+    text-align: justify;
+    margin-bottom: 2.5vh;
+}
+
+#ResortNeeds > h2 {
+    width: 48%;
+    float: right;
+}
+
+#ResortNeeds > img {
+    width: 48%;
+    float: left;
+    border-radius: 6px;
+    height: 40vh;
+    margin-top: 8vh;
+}
+
+#ResortNeeds > p {
+    width: 48%;
+    float: right;
+    line-height: 30px;
+    text-align: justify;
+    margin-bottom: 2.5vh;
+}
+
+    #ResortNeeds > p:last-child {
+        width: 100%;
+        clear: both;
+    }
+
+main > div > div > h2 {
+    margin-top: 7.5vh;
+    margin-bottom: 2.5vh;
+}
+
+main > div > span {
+    font-size: 150%;
+    color: rgb(244,247,118);
+}
+
+.GoToPortalBtn {
+    margin-left: 5%;
+}
+
+@media screen and (max-width: 1200px) {
+    main > div > div {
+        padding: 0 2.5vh;
+    }
+
+    main > div > img {
+        clear: both;
+        width: 80%;
+        height: auto;
+        margin-left: 10%;
+        margin-bottom: 5vh;
+    }
+
+    main > div > p {
+        line-height: 30px;
+        text-align: justify;
+        clear: both;
+        width: 100%;
+        margin-bottom: 2.5vh;
+    }
+
+    main > div > span {
+        font-size: 150%;
+        color: rgb(244,247,118);
+        clear: both;
+        width: 100%;
+    }
+
+    .GoToPortalBtn {
+        margin-left: 0;
+        clear: both;
+    }
+}
+
+@media screen and (max-width: 1000px) {
+    #TouristOutreach h2, #ResortNeeds h2 {
+        width: 100%;
+    }
+
+    #TouristOutreach img, #ResortNeeds img {
+        width: 80%;
+        clear: both;
+        margin: 1vh 10% 2.5vh 10%;
+        height: auto;
+    }
+
+    #TouristOutreach p, #ResortNeeds p {
+        width: 100%;
+        clear: both;
+    }
+}
+
+@media screen and (max-width: 750px) {
+    main > div > img {
+        width: 100%;
+        margin: 0;
+    }
+
+    #TouristOutreach img, #ResortNeeds img {
+        width: 100%;
+        margin: 1vh 0 2.5vh 0;
+    }
+}
+
+@media screen and (max-width: 500px) {
+    main > div {
+        padding: 5vh 2.5vh;
+    }
+
+        main > div > div {
+            padding: 0;
+        }
+}

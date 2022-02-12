@@ -21,6 +21,7 @@ namespace ExotikaTrial2.DataAccess.Repository.IRepository
         IRequirementRepository Requirement { get; }
         IPackageRepository Package { get; }
         IFeedbackRepository Feedback { get; }
+        IProductRepository Product { get; }
 
         void Save();
     }

@@ -1,0 +1,150 @@
+﻿
+.BlurBg {
+    filter: blur(5px);
+}
+
+#Details {
+    margin: 20vh auto;
+    padding: 5vh 5vh;
+    width: 85%;
+    background: rgb(255,255,255);
+    border: 2px solid rgb(0,0,0);
+    border-radius: 10px;
+}
+
+#Details {
+    background: rgba(255,255,255,0);
+    border: none;
+    padding: 0;
+}
+
+    #Details p {
+        font-size: 110%;
+    }
+/*
+#EditDetails {
+    position: absolute;
+    top: 0;
+    margin-left: 6vw;
+    display: none;
+}
+
+    #EditDetails label {
+        float: left;
+        margin-top: 5vh;
+    }
+
+    .btn, #EditDetails input {
+        margin-top: 2.5vh;
+        width: 95%;
+        margin-left: 5%;
+        padding: 2vh;
+        border: 2px solid rgb(0,0,0);
+        border-radius: 10px;
+        font-size: 110%;
+    }
+
+        .btn {
+            width: auto;
+            margin-left: 0;
+            margin-top: 5%;
+            cursor: pointer;
+            transition-duration: 0.5s;
+            margin-right: 20px;
+        }
+
+            .btn:hover, #EditDetails input[type=submit]:hover, #EditDetails input[type=reset]:hover {
+                background-color: rgb(0,146,106);
+                color: rgb(255,255,255);
+            }*/
+
+div.content-box {
+    background-color: rgb(255,255,255);
+    padding: 5vh;
+    color: rgb(0,0,0);
+    margin: 5vh 0;
+    display: flex;
+    justify-content: center;
+    border-radius: 12px;
+    box-shadow: 0 5px 10px rgba(0,0,0,0.1);
+    border: 2px solid rgb(0,0,0);
+}
+
+    div.content-box img {
+        width: 32%;
+        float: left;
+        border-radius: 12px;
+        border: 2px solid rgb(0,0,0);
+    }
+
+    div.content-box div {
+        width: 66%;
+        float: right;
+        padding-left: 20px;
+    }
+
+label {
+    display: block;
+    font-size: 130%;
+    font-weight: 500;
+}
+
+.button {
+    border: none;
+    color: white;
+    padding: 15px 32px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 18px;
+    margin: 4px 2px;
+    cursor: pointer;
+    background-color: rgb(0,146,106);
+}
+
+    .button:hover {
+        background-color: rgb(0,110,80);
+    }
+
+@media screen and (max-width: 1050px) {
+    div.content-box img {
+        width: 45%;
+        float: left;
+    }
+
+    div.content-box div {
+        width: 52%;
+        float: right;
+        padding-left: 20px;
+    }
+}
+
+@media screen and (max-width: 900px) {
+    div.content-box {
+        display: block;
+    }
+
+        div.content-box img {
+            display: block;
+            width: 100%;
+            margin-bottom: 40px;
+        }
+
+        div.content-box div {
+            display: block;
+            width: 100%;
+            padding-left: 0;
+        }
+}
+
+@media screen and (max-width: 500px) {
+    div.content-box {
+        padding: 2vh;
+    }
+}
+
+#Details p{
+    border:none;
+    background:none;
+    margin-top: 0;
+}

@@ -309,6 +309,39 @@ namespace ExotikaTrial2.DataAccess.Migrations
                     b.ToTable("Packages");
                 });
 
+            modelBuilder.Entity("ExotikaTrial2.Models.Product", b =>
+                {
+                    b.Property<int>("ProductId")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("ProductId"), 1L, 1);
+
+                    b.Property<string>("Description")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("HandicraftDealerId")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(450)");
+
+                    b.Property<int>("Price")
+                        .HasColumnType("int");
+
+                    b.Property<string>("ProductName")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<DateTime>("lastUpdated")
+                        .HasColumnType("datetime2");
+
+                    b.HasKey("ProductId");
+
+                    b.HasIndex("HandicraftDealerId");
+
+                    b.ToTable("Products");
+                });
+
             modelBuilder.Entity("ExotikaTrial2.Models.Requirement", b =>
                 {
                     b.Property<int>("RequirementId")
@@ -851,6 +884,17 @@ namespace ExotikaTrial2.DataAccess.Migrations
                     b.Navigation("tourist");
 
                     b.Navigation("vendor");
+                });
+
+            modelBuilder.Entity("ExotikaTrial2.Models.Product", b =>
+                {
+                    b.HasOne("ExotikaTrial2.Models.HandicraftDealer", "HandicraftDealer")
+                        .WithMany()
+                        .HasForeignKey("HandicraftDealerId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("HandicraftDealer");
                 });
 
             modelBuilder.Entity("ExotikaTrial2.Models.Requirement", b =>

@@ -1,0 +1,36 @@
+﻿@model ExotikaTrial2.Models.Product
+
+@{
+    ViewData["Title"] = "Product Details";
+}
+
+
+<div style="padding: 10vh;">
+    <div style="padding: 10vh; background-color:rgb(255,255,255); border: 2px solid rgb(0,0,0); border-radius: 12px;">
+        <h1>Product Details</h1>
+        <div>
+            <hr /><br><br />
+            <div class="row">
+                <div class="mb-5">
+                    <h2>@Html.DisplayNameFor(model => model.ProductName)</h2>
+                    <p>@Html.DisplayFor(model => model.ProductName)</p>
+                </div>
+                <div class="mb-5">
+                    <h2>@Html.DisplayNameFor(model => model.Description)</h2>
+                    <p>@Html.DisplayFor(model => model.Description)</p>
+                </div>
+                <div class="mb-5">
+                    <h2>@Html.DisplayNameFor(model => model.Price)</h2>
+                    <p>@Html.DisplayFor(model => model.Price)</p>
+                </div>@*
+                <div class="mb-5">
+                    <h2>@Html.DisplayNameFor(model => model.DateOfJoining)</h2>
+                    <p>@Html.DisplayFor(model => model.DateOfJoining)</p>
+                </div>*@
+            </div>
+        </div>
+            <br /><br /><hr /><br /><br />
+            <a asp-action="EditProduct" asp-route-pdtId="@Model?.ProductId" class="btn1" style="width:auto">Edit</a>
+            <a asp-action="ProductsList" class="btn1" style="width:auto">Back to Product List</a>
+    </div>
+</div>

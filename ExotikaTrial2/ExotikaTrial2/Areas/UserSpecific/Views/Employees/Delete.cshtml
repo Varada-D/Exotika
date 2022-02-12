@@ -1,7 +1,7 @@
-﻿@model ExotikaTrial2.Models.Employee
+﻿@model ExotikaTrial2.Models.Product
 
 @{
-    ViewData["Title"] = "Delete Employee";
+    ViewData["Title"] = "Delete Product";
 }
 
 <div style="padding: 10vh;">
@@ -14,28 +14,28 @@
             <hr />
             <div class="row">
                 <div class="mb-5">
-                    <h2>@Html.DisplayNameFor(model => model.EmployeeName)</h2>
-                    <p>@Html.DisplayFor(model => model.EmployeeName)</p>
+                    <h2>@Html.DisplayNameFor(model => model.ProductName)</h2>
+                    <p>@Html.DisplayFor(model => model.ProductName)</p>
                 </div>
                 <div class="mb-5">
-                    <h2>@Html.DisplayNameFor(model => model.Designation)</h2>
-                    <p>@Html.DisplayFor(model => model.Designation)</p>
+                    <h2>@Html.DisplayNameFor(model => model.Description)</h2>
+                    <p>@Html.DisplayFor(model => model.Description)</p>
                 </div>
                 <div class="mb-5">
-                    <h2>@Html.DisplayNameFor(model => model.PhoneNumber)</h2>
-                    <p>@Html.DisplayFor(model => model.PhoneNumber)</p>
-                </div>
+                    <h2>@Html.DisplayNameFor(model => model.Price)</h2>
+                    <p>@Html.DisplayFor(model => model.Price)</p>
+                </div>@*
                 <div class="mb-5">
                     <h2>@Html.DisplayNameFor(model => model.DateOfJoining)</h2>
                     <p>@Html.DisplayFor(model => model.DateOfJoining)</p>
-                </div>
+                </div>*@
             </div>
         </div>
         <br /><br /><hr /><br /><br />
-        <form asp-action="Delete" style="overflow-y: hidden;">
-            <input type="hidden" asp-for="EmployeeId" />
+        <form asp-action="DeleteProduct" style="overflow-y: hidden;">
+            <input type="hidden" asp-for="ProductId" />
             <input type="submit" value="Delete" class="btn1" style="background-color: rgb(255,0,0);" />
-            <a asp-action="Index" class="btn1">Back to List</a>
+            <a asp-action="ProductList" class="btn1">Back to Product List</a>
         </form>
     </div>
 </div>

@@ -145,7 +145,8 @@
             {
                 if (User.IsInRole(SD.Role_User_Tourist))
                 {
-                    <li><a asp-area="UserSpecific" asp-controller="Tourists" asp-action="Index"><i class='bx bxs-contact'></i><span class="links_name">Tourist  Details</span></a></li>
+                    <li><a asp-area="Identity" asp-page="/Account/Manage/Index"><i class='bx bxs-contact'></i><span class="links_name">Manage Account</span></a></li>
+                    @*<li><a asp-area="UserSpecific" asp-controller="Tourists" asp-action="Index"><i class='bx bxs-contact'></i><span class="links_name">Tourist  Details</span></a></li>*@
                     <li><a asp-area="UserSpecific" asp-controller="Tourists" asp-action="BookingHistory"><i class='bx bxs-data'></i><span class="links_name">Booking History</span></a></li>
                     <li><a asp-area="UserSpecific" asp-controller="Tourists" asp-action="Feedbacks"><i class='bx bx-message'></i><span class="links_name">Feedbacks</span></a></li>
                 }
@@ -154,6 +155,7 @@
                     if (User.IsInRole(SD.Role_User_Vendor))
                     {
                         <li><a asp-area="UserSpecific" asp-controller="Vendors" asp-action="VendorDashboard"><i class='bx bx-grid-alt'></i><span class="links_name">Statistics</span></a></li>
+                        <li><a asp-area="Identity" asp-page="/Account/Manage/Index"><i class='bx bxs-contact'></i><span class="links_name">Manage Account</span></a></li>
                         <li><a asp-area="UserSpecific" asp-controller="Vendors" asp-action="ContractList"><i class='bx bxs-contact'></i><span class="links_name">Contracts</span></a></li>
                         <li><a asp-area="UserSpecific" asp-controller="Vendors" asp-action="Feedbacks"><i class='bx bx-message'></i><span class="links_name">Feedbacks</span></a></li>
                     }
@@ -161,16 +163,17 @@
                     {
                         if (User.IsInRole(SD.Role_User_HandicraftDealer))
                         {
-                            <li><a asp-area="UserSpecific" asp-controller="HandicraftDealer" asp-action="Index"><i class='bx bx-grid-alt'></i><span class="links_name">Statistics</span></a></li>
-                            <li><a asp-area="UserSpecific" asp-controller="HandicraftDealer" asp-action="Details"><i class='bx bxs-contact'></i><span class="links_name">Business Details</span></a></li>
-                            <li><a asp-area="UserSpecific" asp-controller="HandicraftDealer" asp-action="Products"><i class='bx bx-paint'></i><span class="links_name">Products Available</span></a></li>
-                            <li><a asp-area="UserSpecific" asp-controller="HandicraftDealer" asp-action="Feedbacks"><i class='bx bx-message'></i><span class="links_name">Feedbacks</span></a></li>
+                            <li><a asp-area="UserSpecific" asp-controller="HandicraftDealers" asp-action="HandicraftDealerDashboard"><i class='bx bx-grid-alt'></i><span class="links_name">Statistics</span></a></li>
+                            <li><a asp-area="Identity" asp-page="/Account/Manage/Index"><i class='bx bxs-contact'></i><span class="links_name">Manage Account</span></a></li>
+                            <li><a asp-area="UserSpecific" asp-controller="HandicraftDealers" asp-action="ProductsList"><i class='bx bx-paint'></i><span class="links_name">Products Available</span></a></li>
+                            <li><a asp-area="UserSpecific" asp-controller="HandicraftDealers" asp-action="Feedbacks"><i class='bx bx-message'></i><span class="links_name">Feedbacks</span></a></li>
                         }
                         else
                         {
                             if (User.IsInRole(SD.Role_Admin))
                             {
                                 <li><a asp-area="UserSpecific" asp-controller="Admin" asp-action="Index"><i class='bx bx-grid-alt'></i><span class="links_name">Dashboard</span></a></li>
+                                <li><a asp-area="Identity" asp-page="/Account/Manage/Index"><i class='bx bxs-contact'></i><span class="links_name">Manage Account</span></a></li>
                                 <li><a asp-area="UserSpecific" asp-controller="Admin" asp-action="TouristStats"><i class='bx bx-walk'></i><span class="links_name">Tourists</span></a></li>
                                 <li><a asp-area="UserSpecific" asp-controller="Admin" asp-action="ResortStats"><i class='bx bx-building-house'></i><span class="links_name">Resorts</span></a></li>
                                 <li><a asp-area="UserSpecific" asp-controller="Admin" asp-action="VendorStats"><i class='bx bx-cart-alt'></i><span class="links_name">Vendors</span></a></li>

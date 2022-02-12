@@ -35,5 +35,7 @@ namespace ExotikaTrial2.Data
 
         public DbSet<Package> Packages { get; set; }
         public DbSet<Feedback> Feedbacks { get; set; }
+
+        public DbSet<Product> Products { get; set; }
     }
 }

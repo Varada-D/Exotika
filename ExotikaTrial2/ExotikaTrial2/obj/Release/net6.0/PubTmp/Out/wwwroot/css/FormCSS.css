@@ -1,0 +1,344 @@
+#RegistrationForm, #SignInForm {
+	width: 50%;
+	margin: 0 auto;
+	background-color: rgb(3,46,87);
+	padding: 10vh;
+	color: rgb(255,255,255);
+}
+
+
+#FeedbackGrievanceForm form {
+	background-color: rgb(3,46,87);
+	padding: 10vh 5vh;
+	color: rgb(255,255,255);
+}
+
+
+table {
+	margin-bottom: 5vh;
+}
+
+
+td {
+	padding: 2vh;
+}
+
+
+#FeedbackGrievanceForm input[type=submit] {
+	float: left;
+	margin-left: 5vh;
+}
+
+
+#FeedbackGrievanceForm input[type=reset] {
+	float: right;
+	margin-right: 15vh;
+}
+
+
+label {
+	font-size: 120%;
+}
+
+
+
+input[type=email], input[type=password], input[type=text], input[type=tel], input[type=number], select, option, textarea {
+	width: 75%;
+	border: 2px solid rgb(0,146,106);
+	border-radius: 5px;
+	font-size: 120%;
+	padding: 1vh;
+	margin-left: 5vh;
+}
+
+
+
+input[type=submit], input[type=reset], .btn1 {
+	background-color: rgb(0,146,106);
+	border: 2px solid rgb(3,46,87);
+	font-size: 120%;
+	color: rgb(255,255,255);
+	border: none;
+	border-radius: 5px;
+	padding: 1.5vh 2vh;
+	cursor: pointer;
+	transition-duration: 1s;
+}
+
+
+.btn1 {
+	text-decoration: none;
+}
+
+
+input[type=submit] {
+	margin-right: 2vh;
+}
+
+input[type=submit]:hover, input[type=reset]:hover, .btn1:hover {
+	background-color: rgb(3,46,87);
+	border: 2px solid rgb(0,146,106);
+}
+
+
+#SignInForm p {
+	font-size: 120%;
+	text-align: center;
+}
+
+
+#SignInForm button, #RegistrationForm button  {
+	background-color: rgb(3,46,87);
+	color: rgb(244, 247, 118);
+	border: 2px solid rgb(0,146,106);
+	font-size: 100%;
+	cursor: pointer;
+	margin-left: 2vh;
+}
+
+
+#SignInForm button:hover, #RegistrationForm button:hover {
+	border: none;
+	text-decoration: underline;
+}
+
+
+#Register {
+	background: url('../Images/bg2.jpg') no-repeat center;
+	background-size: cover;
+	width: 50%;
+	padding: 10vh;
+	position: fixed;
+	top: 40vh;
+	left: 20vw;
+	display: none;
+	border: 2px solid rgb(0,146,106);
+	border-radius: 10px;
+	box-shadow: rgb(38, 57, 77) 0px 20px 30px -10px;
+}
+
+
+.BlurBg {
+    filter: blur(10px);
+    -webkit-filter: blur(10px);
+    -moz-filter: blur(10px);
+    -o-filter: blur(10px);
+    -ms-filter: blur(10px);
+}
+
+
+
+#Register .modal-header {
+	margin-bottom: 5vh;
+}
+
+
+#Register .modal-header h1 {
+	color: rgb(3,46,87);
+	display: inline-block;
+	float: left;
+}
+
+
+#Register .modal-header button {
+	float: right;
+	background-color: rgba(255,255,255,0);
+	color: rgb(3,46,87);
+	border: 2px solid rgb(0,146,106);
+	font-size: 100%;
+	cursor: pointer;
+	margin-left: 2vh;
+	font-weight: 900;
+}
+
+
+#Register .modal-header button:hover {
+	background-color: rgb(3,46,87);
+	color: rgb(255,255,255);
+	border: 2px solid rgb(0,146,106);
+}
+
+
+#Register .modal-body ul li {
+	margin: 2vh 0;
+	font-size: 120%;
+}
+
+
+
+#Register .modal-body ul li a {
+	color: rgb(3,46,87);
+	text-decoration: none;
+	font-weight: 700;
+}
+
+
+
+#Register .modal-body ul li a:hover {
+	text-decoration: underline;
+	font-weight: 900;
+}
+
+
+.form-group {
+	margin: 2vh;
+}
+
+
+
+@media screen and (max-width: 1330px) {
+	#SignInForm, #Register, #RegistrationForm {
+		width: 60vw;
+	}
+}
+
+
+
+@media screen and (max-width: 880px) {
+	#SignInForm, #Register, #RegistrationForm {
+		width: 75vw;
+	}
+	#Register {
+		left: 12.5vw;
+	}
+}
+
+
+
+@media screen and (max-width: 700px) {
+	#SignInForm label, #RegistrationForm label {
+		display: block;
+	}
+}
+
+
+
+
+
+@media screen and (max-width: 480px) {
+	#SignInForm, #Register, #RegistrationForm {
+		padding: 5vw;
+	}
+	input[type=email], input[type=password] {
+		width: 85%;
+	}
+}
+
+
+
+@media screen and (max-width: 355px) {
+	#SignInForm, #RegistrationForm {
+		width: 100%;
+	}
+	#Register {
+		left: 5vw;
+		width: 90%;
+	}
+	input[type=submit] {
+		margin-right: 0;
+		margin-bottom: 2vh;
+	}
+}
+
+
+
+
+
+
+
+
+
+
+
+#Search {
+	padding: 5vh 0;
+	color: rgb(3,46,87);
+	font-size: 120%;
+}
+
+
+#Search input[type=text] {
+	width: 86vw;
+	border: 2px solid rgb(0,146,106);
+	border-radius: 5px;
+	font-size: 120%;
+	padding: 1vh;
+	margin-left: 0;
+}
+
+
+.SearchBtn {
+	background-color: rgb(0,146,106);
+	font-size: 120%;
+	color: rgb(255,255,255);
+	border: none;
+	border-radius: 5px;
+	padding: 1.5vh 2vh;
+	cursor: pointer;
+	transition-duration: 1s;
+}
+
+
+.SearchBtn:hover {
+	background-color: rgba(255,255,255,0);
+	color: rgb(3,46,87);
+	border: 2px solid rgb(0,146,106);
+	padding: 0.75vh 1.75vh;
+}
+
+
+
+@media screen and (max-width: 1235px) {
+	#Search input[type=text] {
+		width: 80vw;
+	}
+}
+
+
+
+@media screen and (max-width: 930px) {
+	#Search input[type=text] {
+		width: 75vw;
+	}
+}
+
+
+
+@media screen and (max-width: 760px) {
+	#Search input[type=text] {
+		width: 70vw;
+	}
+}
+
+
+
+@media screen and (max-width: 635px) {
+	#Search input[type=text] {
+		width: 60vw;
+	}
+}
+
+
+@media screen and (max-width: 635px) {
+	#Search input[type=text] {
+		width: 60vw;
+	}
+}
+
+.login-pg-links {
+	margin-top: 4vh;
+}
+
+.login-pg-links p {
+	margin-top: 10px;
+}
+
+	.login-pg-links p a {
+		color: rgb(255,255,255);
+		text-decoration: none;
+	}
+
+	.login-pg-links p a:hover {
+		color: rgb(244, 247, 118);
+		text-decoration: underline;
+	}

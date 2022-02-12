@@ -1,4 +1,4 @@
-﻿@model IEnumerable<ExotikaTrial2.Models.Resort>
+﻿@model ExotikaTrial2.Models.ViewModels.TouristHomeVM
 @{
     Layout = "_Layout";
     <link rel="stylesheet" href="~/css/VisitorPortalCSS.css" runat="server" />
@@ -70,7 +70,7 @@
     </div>
     <div class="tab-content" id="nav-tabContent">
         <div class="tab-pane fade show active" id="nav-resorts-content" role="tabpanel" aria-labelledby="nav-resorts">
-            @foreach (var resort in Model)
+            @foreach (var resort in Model.Resorts)
             {
                 <div class="content nav-resorts-content-div">
                     <img src="~/Images/CrescentResort.jpg" alt="Image of the Resort: Cresent Resort" />
@@ -103,24 +103,19 @@
             </div>
         </div>
         <div class="tab-pane fade" id="nav-handicrafts-content" role="tabpanel" aria-labelledby="nav-handicrafts">
-            <div class="content nav-handicrafts-content-div">
-                <img src="~/Images/handicraft.jpg" alt="Image of the Handicraft" />
-                <div class="nav-handicrafts-content-info">
-                    <h2>Handicraft Name</h2>
-                    <p>Short Description</p>
-                    <h3>Dealer Name</h3>
-                    <p>Dealer Details</p>
+            @foreach (var handicraft in Model.Products)
+            {
+                <div class="content nav-handicrafts-content-div">
+                    <img src="~/Images/handicraft.jpg" alt="Image of the Handicraft: @handicraft.ProductName" />
+                    <div class="nav-handicrafts-content-info">
+                        <h2 class="mb-2">@handicraft.ProductName</h2>
+                        <p class="mb-5"><b style="color:rgba(0,0,0,0.5)">Product Description: </b>@handicraft.Description</p>
+                        <h3 class="mb-2">@handicraft.HandicraftDealer.Name</h3>
+                        <p class="mb-1"><b style="color:rgba(0,0,0,0.5)">Address: </b>@handicraft.HandicraftDealer.StreetAddress, @handicraft.HandicraftDealer.City, @handicraft.HandicraftDealer.State - @handicraft.HandicraftDealer.PostalCode</p>
+                        <p><b style="color:rgba(0,0,0,0.5)">Phone Number: </b>@handicraft.HandicraftDealer.PhoneNumber</p>
+                    </div>
                 </div>
-            </div>
-            <div class="content nav-handicrafts-content-div">
-                <img src="~/Images/handicraft.jpg" alt="Image of the Handicraft" />
-                <div class="nav-handicrafts-content-info">
-                    <h2>Handicraft Name</h2>
-                    <p>Short Description</p>
-                    <h3>Dealer Name</h3>
-                    <p>Dealer Details</p>
-                </div>
-            </div>
+            }
         </div>
     </div>
 </section>

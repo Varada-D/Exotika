@@ -24,6 +24,7 @@ namespace ExotikaTrial2.DataAccess.Repository
         public IPackageRepository Package { get; private set; }
         public IRequirementRepository Requirement { get; private set; }
         public IFeedbackRepository Feedback { get; private set; }
+        public IProductRepository Product { get; private set; }
 
         private ExotikaTrial2Context _db;
         public UnitOfWork(ExotikaTrial2Context db)
@@ -42,6 +43,7 @@ namespace ExotikaTrial2.DataAccess.Repository
             Package = new PackageRepository(_db);
             Feedback = new FeedbackRepository(_db);
             Requirement = new RequirementRepository(_db);
+            Product = new ProductRepository(_db);
         }
 
         public void Save()

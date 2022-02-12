@@ -1,0 +1,40 @@
+﻿@model ExotikaTrial2.Models.Product
+
+@{
+    ViewData["Title"] = "Delete Product";
+}
+
+<div style="padding: 10vh;">
+    <div style="padding: 10vh; background-color:rgb(255,255,255); border: 2px solid rgb(0,0,0); border-radius: 12px;">
+        <h1>Delete Product</h1>
+        <div>
+            <p><b>Are you sure you want to delete this?</b></p>
+            <br /><br />
+            <hr />
+            <div class="row">
+                <div class="mb-5">
+                    <h2>@Html.DisplayNameFor(model => model.ProductName)</h2>
+                    <p>@Html.DisplayFor(model => model.ProductName)</p>
+                </div>
+                <div class="mb-5">
+                    <h2>@Html.DisplayNameFor(model => model.Description)</h2>
+                    <p>@Html.DisplayFor(model => model.Description)</p>
+                </div>
+                <div class="mb-5">
+                    <h2>@Html.DisplayNameFor(model => model.Price)</h2>
+                    <p>@Html.DisplayFor(model => model.Price)</p>
+                </div>
+                <div class="mb-5">
+                    <h2>@Html.DisplayNameFor(model => model.lastUpdated)</h2>
+                    <p>@Model.lastUpdated.ToLongDateString()</p>
+                </div>
+            </div>
+        </div>
+        <br /><br /><hr /><br /><br />
+        <form asp-action="DeleteProduct" style="overflow-y: hidden;">
+            <input type="hidden" asp-for="ProductId" />
+            <input type="submit" value="Delete" class="btn1" style="background-color: rgb(255,0,0);" />
+            <a asp-action="ProductsList" class="btn1">Back to Products List</a>
+        </form>
+    </div>
+</div>

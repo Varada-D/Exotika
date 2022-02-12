@@ -1,0 +1,15 @@
+C:\Users\varad\source\ExotikaTrial2\ExotikaTrial2.Models\bin\Release\net6.0\ExotikaTrial2.Models.deps.json
+C:\Users\varad\source\ExotikaTrial2\ExotikaTrial2.Models\bin\Release\net6.0\ExotikaTrial2.Models.dll
+C:\Users\varad\source\ExotikaTrial2\ExotikaTrial2.Models\bin\Release\net6.0\ref\ExotikaTrial2.Models.dll
+C:\Users\varad\source\ExotikaTrial2\ExotikaTrial2.Models\bin\Release\net6.0\ExotikaTrial2.Models.pdb
+C:\Users\varad\source\ExotikaTrial2\ExotikaTrial2.Models\bin\Release\net6.0\ExotikaTrial2.Utility.dll
+C:\Users\varad\source\ExotikaTrial2\ExotikaTrial2.Models\bin\Release\net6.0\ExotikaTrial2.Utility.pdb
+C:\Users\varad\source\ExotikaTrial2\ExotikaTrial2.Models\obj\Release\net6.0\ExotikaTrial2.Models.csproj.AssemblyReference.cache
+C:\Users\varad\source\ExotikaTrial2\ExotikaTrial2.Models\obj\Release\net6.0\ExotikaTrial2.Models.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\varad\source\ExotikaTrial2\ExotikaTrial2.Models\obj\Release\net6.0\ExotikaTrial2.Models.AssemblyInfoInputs.cache
+C:\Users\varad\source\ExotikaTrial2\ExotikaTrial2.Models\obj\Release\net6.0\ExotikaTrial2.Models.AssemblyInfo.cs
+C:\Users\varad\source\ExotikaTrial2\ExotikaTrial2.Models\obj\Release\net6.0\ExotikaTrial2.Models.csproj.CoreCompileInputs.cache
+C:\Users\varad\source\ExotikaTrial2\ExotikaTrial2.Models\obj\Release\net6.0\ExotikaTrial2.Models.csproj.CopyComplete
+C:\Users\varad\source\ExotikaTrial2\ExotikaTrial2.Models\obj\Release\net6.0\ExotikaTrial2.Models.dll
+C:\Users\varad\source\ExotikaTrial2\ExotikaTrial2.Models\obj\Release\net6.0\ref\ExotikaTrial2.Models.dll
+C:\Users\varad\source\ExotikaTrial2\ExotikaTrial2.Models\obj\Release\net6.0\ExotikaTrial2.Models.pdb
